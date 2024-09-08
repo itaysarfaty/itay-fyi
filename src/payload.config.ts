@@ -29,6 +29,7 @@ export default buildConfig({
   },
   db: sqliteAdapter({
     client: {
+      authToken: process.env.DATABASE_AUTH_TOKEN || '',
       url: process.env.DATABASE_URI || '',
     },
   }),
