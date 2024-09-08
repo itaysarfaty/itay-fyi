@@ -14,7 +14,7 @@
     "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
     "start": "cross-env NODE_OPTIONS=--no-deprecation next start",
     "db:seed": "tsx ./src/lib/seed.ts",
-    "ci": "payload migrate && pnpm build"
+    "ci": "pnpm payload migrate && pnpm build"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "beta",
