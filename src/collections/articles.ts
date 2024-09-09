@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload'
 
-const Articles: CollectionConfig = {
+export const Articles: CollectionConfig = {
   slug: 'articles',
   labels: {
     singular: 'Article',
@@ -35,5 +35,3 @@ const Articles: CollectionConfig = {
     },
   ],
 }
-
-export default Articles

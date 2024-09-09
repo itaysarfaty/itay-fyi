@@ -17,6 +17,7 @@
     "db:seed": "tsx ./src/lib/seed.ts"
   },
   "dependencies": {
+    "@libsql/client": "^0.10.0",
     "@payloadcms/db-sqlite": "beta",
     "@payloadcms/next": "beta",
     "@payloadcms/plugin-cloud": "beta",

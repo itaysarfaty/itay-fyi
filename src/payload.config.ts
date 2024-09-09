@@ -1,14 +1,16 @@
+import sharp from 'sharp'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { buildConfig } from 'payload'
+
 // storage-adapter-import-placeholder
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-import path from 'path'
-import { buildConfig } from 'payload'
-import { fileURLToPath } from 'url'
-import sharp from 'sharp'
 
 import { Users } from './collections/users'
 import { Media } from './collections/media'
-import Articles from './collections/articles'
+import { Articles } from './collections/articles'
+
 import 'dotenv/config'
 
 const filename = fileURLToPath(import.meta.url)
