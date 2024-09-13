@@ -49,7 +49,7 @@ export const ArticleList = async ({ page }: { page: string }) => {
     <section className="grid gap-8 items-center @lg:gap-10">
       <header className="flex gap-4 items-center @lg:gap-5">
         <h3 className=" w-fit  pointer-events-none">
-          <Highlight className="bg-yellow" delay={DELAYS[1]}>
+          <Highlight className="bg-yellow" delay={1}>
             good reads
           </Highlight>
         </h3>
@@ -67,7 +67,9 @@ export const ArticleList = async ({ page }: { page: string }) => {
                 className="lowercase grid gap-0 w-fit"
               >
                 <p className=" w-fit pr-1 font-normal text-base text-black/50">{tag}</p>
-                <p className="underline">{title}</p>
+                <Highlight whileHover={true} className="bg-gray-400/10">
+                  <p className="underline">{title}</p>
+                </Highlight>
               </a>
             </li>
           )

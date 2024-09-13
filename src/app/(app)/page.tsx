@@ -10,8 +10,11 @@ export default async function Page({ searchParams }: { searchParams: { page?: st
       <Navbar />
       <section>
         <h2 className="leading-9 text-pretty">
-          i&apos;m a <Highlight delay={DELAYS[0]}>software engineer</Highlight> with 2 years of
-          experience in the logistics industry
+          i&apos;m a{' '}
+          <Highlight delay={0.5} className="bg-green">
+            software engineer
+          </Highlight>{' '}
+          with 2 years of experience in the logistics industry
         </h2>
       </section>
       <ArticleList page={searchParams.page ?? '1'} />

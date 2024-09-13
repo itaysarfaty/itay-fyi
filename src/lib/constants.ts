@@ -1,1 +1,1 @@
-export const DELAYS = [0.5, 1, 1.6] as const
+export const DELAYS = [0.5, 1, 1] as const

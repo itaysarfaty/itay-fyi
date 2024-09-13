@@ -1,5 +1,4 @@
 'use client'
-import { DELAYS } from '@/lib/constants'
 import { cn } from '@/lib/utils'
 import { motion, Variants } from 'framer-motion'
 import Link from 'next/link'
@@ -8,7 +7,7 @@ import Link from 'next/link'
 const pagination: Variants = {
   hidden: {
     opacity: 0,
-    x: '-10%',
+    x: '-5%',
     y: 0,
   },
   visible: {
@@ -46,7 +45,7 @@ export const Pagination = ({ page, totalPages, className }: PaginationProps) => 
       initial="hidden"
       variants={pagination}
       animate="visible"
-      transition={{ duration: 0.4, ease: 'easeOut', delay: DELAYS[2] }}
+      transition={{ duration: 0.4, ease: 'easeOut', delay: 1.5 }}
     >
       <span className="opacity-50 pointer-events-none hidden md:flex">/</span>
       <p className="pointer-events-none">page</p>
@@ -55,7 +54,10 @@ export const Pagination = ({ page, totalPages, className }: PaginationProps) => 
           <Link
             key={pageNumber}
             href={`?page=${pageNumber}`}
-            className={cn('px-1 hover:bg-yellow', pageNumber === page ? 'bg-yellow' : '')}
+            className={cn(
+              'px-1 hover:bg-yellow transition-colors duration-100',
+              pageNumber === page ? 'bg-yellow' : '',
+            )}
             scroll={false}
           >
             {pageNumber}
