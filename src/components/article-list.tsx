@@ -13,7 +13,7 @@ const getArticles = async (page?: number) => {
       page: page ?? 1,
       limit: 5,
       pagination: true,
-      sort: 'createdAt',
+      sort: '-createdAt',
     })
     return articles
   } catch (error) {
