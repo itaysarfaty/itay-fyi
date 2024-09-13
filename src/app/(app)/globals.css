@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --blue: #c9dbf8;
+  --green: #d9ead3;
+  --yellow: #fff3cc;
+}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);

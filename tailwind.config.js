@@ -12,9 +12,9 @@ module.exports = {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
       colors: {
-        blue: '#C9DBF8',
-        green: '#D9EAD3',
-        yellow: '#FFF3CC',
+        blue: 'var(--blue)',
+        green: 'var(--green)',
+        yellow: 'var(--yellow)',
       },
     },
   },
