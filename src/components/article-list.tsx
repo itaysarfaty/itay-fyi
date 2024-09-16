@@ -4,9 +4,8 @@ import { redirect } from 'next/navigation'
 import { z } from 'zod'
 import { Highlight } from './highlight-div'
 import { Pagination } from './pagination'
-import { DELAYS } from '@/lib/constants'
 
-const getArticles = async (page?: number) => {
+export const getArticles = async (page?: number) => {
   'use server'
   try {
     const payload = await getPayloadHMR({ config })
@@ -46,16 +45,7 @@ export const ArticleList = async ({ page }: { page: string }) => {
   }
 
   return (
-    <section className="grid gap-8 items-center @lg:gap-10">
-      <header className="flex gap-4 items-center @lg:gap-5">
-        <h3 className=" w-fit  pointer-events-none">
-          <Highlight className="bg-yellow" delay={1}>
-            good reads
-          </Highlight>
-        </h3>
-
-        <Pagination page={pageNumber} totalPages={articles.totalPages} className="hidden md:flex" />
-      </header>
+    <>
       <ul className="grid gap-8 @lg:gap-10">
         {articles.docs.map(({ title, id, link, tag }) => {
           return (
@@ -75,7 +65,7 @@ export const ArticleList = async ({ page }: { page: string }) => {
           )
         })}
       </ul>
-      <Pagination page={pageNumber} totalPages={articles.totalPages} className="md:hidden" />
-    </section>
+      <Pagination page={pageNumber} totalPages={articles.totalPages} />
+    </>
   )
 }
