@@ -4,6 +4,7 @@ import { CollectionConfig } from 'payload'
 export const Articles: CollectionConfig = {
   slug: 'articles',
   hooks: {
+    afterDelete: [() => revalidatePath('/', 'layout')],
     afterChange: [() => revalidatePath('/', 'layout')],
   },
   labels: {
