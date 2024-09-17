@@ -1,7 +1,8 @@
 'use client'
+import { useOnFirstLoad } from '@/hooks/useOnFirstLoad'
 import { cn } from '@/lib/utils'
 import { motion, useAnimation, Variants } from 'framer-motion'
-import { useLayoutEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 
 export interface HighlightProps {
   children: React.ReactNode
@@ -20,20 +21,12 @@ export const Highlight = ({
 }: HighlightProps) => {
   const controls = useAnimation()
 
-  useLayoutEffect(() => {
-    if (whileHover || !id) return
-    const sessionId = `highlight-complete-${id}`
-    const isComplete = sessionStorage.getItem(sessionId)
-
-    if (isComplete !== 'true') {
-      // First load: start animation and set sessionStorage
-      controls.start('visible')
-      sessionStorage.setItem(sessionId, 'true')
-    } else {
-      // Skip the animation on subsequent loads
-      controls.set('visible') // Instantly set to visible
-    }
-  }, [controls, whileHover, id])
+  useOnFirstLoad({
+    id: `highlight-${id}`,
+    onFirstLoad: () => controls.start('visible'),
+    onSubsequentLoad: () => controls.set('visible'),
+    disabled: whileHover || !id,
+  })
 
   const item = useMemo<Variants>(
     () => ({

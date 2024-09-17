@@ -38,7 +38,7 @@ export default async function Page({ params }: { params: { page?: string } }) {
         </h2>
       </section>
 
-      <section className="grid gap-8 items-center @lg:gap-10">
+      <section className="grid gap-8 items-center @lg:gap-10 pb-6">
         <header className="flex gap-4 items-center @lg:gap-5">
           <h3 className=" w-fit  pointer-events-none">
             <Highlight className="bg-yellow" delay={1} id="reads">
