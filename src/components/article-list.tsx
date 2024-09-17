@@ -41,7 +41,7 @@ export const ArticleList = async ({ page }: { page: string }) => {
     redirect('/')
   }
   if (pageNumber > articles.totalPages) {
-    redirect(`?page=${articles.totalPages}`)
+    redirect(`/${articles.totalPages}`)
   }
 
   return (

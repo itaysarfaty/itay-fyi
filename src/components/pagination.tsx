@@ -33,7 +33,7 @@ export const Pagination = ({ page, totalPages, className }: PaginationProps) => 
         {pages.map((pageNumber) => (
           <Link
             key={pageNumber}
-            href={`?page=${pageNumber}`}
+            href={`/${pageNumber}`}
             className={cn(
               'px-1 hover:bg-yellow transition-colors duration-100',
               pageNumber === page ? 'bg-yellow' : '',

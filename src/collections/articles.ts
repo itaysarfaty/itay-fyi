@@ -1,7 +1,11 @@
+import { revalidatePath } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
 export const Articles: CollectionConfig = {
   slug: 'articles',
+  hooks: {
+    afterChange: [() => revalidatePath('/', 'layout')],
+  },
   labels: {
     singular: 'Article',
     plural: 'Articles',
