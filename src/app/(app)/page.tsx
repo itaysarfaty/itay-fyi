@@ -2,7 +2,6 @@ import { ArticleList } from '@/components/article-list'
 import { Highlight } from '@/components/highlight-div'
 import { LoadingArticleList } from '@/components/loading-article-list'
 import { Navbar } from '@/components/navbar'
-import { DELAYS } from '@/lib/constants'
 import { Suspense } from 'react'
 
 // Generate an array of 10 react article titles

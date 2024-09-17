@@ -11,8 +11,8 @@ const fontSans = Noto_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'Itay Sarfaty',
-  description: "Itay Sarfaty's personal website",
+  title: "I'm Itay",
+  description: 'My portion of the internet and my name is pronounced [EE-tie].',
 }
 
 export default async function RootLayout({
