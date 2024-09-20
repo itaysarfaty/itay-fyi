@@ -6,16 +6,16 @@ import { TextScaffold } from './text-scaffold'
 
 export const NavBar = () => {
   return (
-    <TextScaffold>
-      <nav>
+    <nav className="pb-[40px]">
+      <TextScaffold>
         <ul className="flex flex-col sm:flex-row flex-wrap gap-x-6 sm:gap-x-10 gap-y-2">
           <NavButton label="home" href="/" />
           <NavButton label="about" href="/about" />
           <NavButton label="projects" href="/projects" />
           <NavButton label="contact" href="/contact" />
         </ul>
-      </nav>
-    </TextScaffold>
+      </TextScaffold>
+    </nav>
   )
 }
 
@@ -25,7 +25,7 @@ const NavButton = ({ label, href }: { label: string; href: string }) => {
   return (
     <li>
       <Link href={href}>
-        <p className={cn('text-2xl', highlight ? 'font-medium' : '')}>{label}</p>
+        <p className={cn('text-2xl', highlight ? 'font-semibold' : '')}>{label}</p>
       </Link>
     </li>
   )

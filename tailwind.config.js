@@ -20,7 +20,8 @@ module.exports = {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
       colors: {
-        primary: 'var(--primary)',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
       },
     },
   },

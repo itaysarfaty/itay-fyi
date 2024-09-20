@@ -12,8 +12,8 @@ const fontSans = Josefin_Slab({
 })
 
 export const metadata: Metadata = {
-  title: "I'm Itay",
-  description: 'My portion of the internet and my name is pronounced [EE-tie].',
+  title: 'Itay',
+  description: 'My corner of the internet.',
 }
 
 export default async function RootLayout({
@@ -25,12 +25,12 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'flex min-h-[100svh] bg-background font-sans font-light antialiased w-full',
+          'flex min-h-[100svh] bg-background font-sans font-light antialiased w-full text-foreground',
           fontSans.variable,
         )}
       >
         <div className="container px-2">
-          <div className="max-w-[90%] h-full mx-auto overflow-visible x-dash grid gap-3 pb-5">
+          <div className="max-w-[90%] h-full mx-auto overflow-visible x-dash grid gap-3">
             {children}
             <NavBar />
           </div>

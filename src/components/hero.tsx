@@ -7,15 +7,15 @@ export interface HeaderProps {
 
 export const Hero = ({ title, subTitle }: HeaderProps) => {
   return (
-    <div className="h-[calc(100svh-80px)] flex items-center w-full">
-      <div className="grid gap-6 w-full">
+    <section className="h-[calc(100svh-84px)] flex items-center w-full">
+      <header className="grid gap-6 w-full">
         <TextScaffold>
-          <h1 className="text-5xl sm:text-6xl ">{title}</h1>
+          <h1 className="text-5xl sm:text-6xl font-medium ">{title}</h1>
         </TextScaffold>
         <TextScaffold>
-          <h1 className="text-2xl ">{subTitle}</h1>
+          <h2 className="text-2xl ">{subTitle}</h2>
         </TextScaffold>
-      </div>
-    </div>
+      </header>
+    </section>
   )
 }
