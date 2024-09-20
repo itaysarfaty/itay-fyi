@@ -18,7 +18,7 @@ export default async function AboutPage() {
         />
         <Paragraph
           title="Design"
-          text="Just as an author has a purpose for every word in a book, there should be a reason behind every design decision. I prioritize functional design and strive to make choices based on human psychology."
+          text="Just as an author has a purpose for every word in a book, there should be a reason behind every design decision. My approach centers around functional design, where I strive to make choices based on human psychology."
         />
         <Paragraph
           title="Logistics"
