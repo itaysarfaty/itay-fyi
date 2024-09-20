@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --background: #eeeeee;
+  --background: #f4f4f4;
   --foreground: #1b1b1b;
-  --dash-color: #1b1b1b39;
+  --dash-color: #00000015;
   /* --background: #405cb1;
   --foreground: #e4eaf6;
   --dash-color: #98aedd; */
   --dash-length: 10px;
   --dash-spacing: 15px;
-  --dash-thickness: 0.5px;
+  --dash-thickness: 1px;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0f0f0f;
     --foreground: #c7c7c7;
-    --dash-color: #313131;
+    --dash-color: #ffffff11;
   }
 }
 
