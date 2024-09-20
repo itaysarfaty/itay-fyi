@@ -20,6 +20,7 @@ export const useOnFirstLoad = ({
     if (disabled) return
     const savedData = sessionStorage.getItem('firstLoad')
     const parsedData = FirstLoadSchema.safeParse(savedData ? JSON.parse(savedData) : undefined)
+    console.log(parsedData)
 
     if (!parsedData.success) return
 

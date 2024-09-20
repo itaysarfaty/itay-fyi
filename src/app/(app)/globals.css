@@ -3,9 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --blue: #c9dbf8;
-  --green: #d9ead3;
-  --yellow: #fff3cc;
+  --primary: #ffeba6;
+  --dash-color: #00000027;
 }
 
 @keyframes spin {
@@ -16,3 +15,83 @@
     transform: rotate(360deg);
   }
 }
+
+.y-dash {
+  background-image: repeating-linear-gradient(0deg, transparent, transparent 0px),
+    repeating-linear-gradient(
+      90deg,
+      var(--dash-color),
+      var(--dash-color) 10px,
+      transparent 10px,
+      transparent 15px,
+      var(--dash-color) 15px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 0px,
+      transparent 0px,
+      transparent 28px,
+      transparent 28px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--dash-color),
+      var(--dash-color) 10px,
+      transparent 10px,
+      transparent 15px,
+      var(--dash-color) 15px
+    );
+  background-size:
+    100% 0.5px,
+    100% 0.5px,
+    100% 0.5px,
+    100% 0.5px;
+  background-position:
+    100% 0,
+    0 0,
+    0 0,
+    0 100%;
+  background-repeat: no-repeat;
+}
+
+.x-dash {
+  background-image: repeating-linear-gradient(90deg, transparent, transparent 0px),
+    repeating-linear-gradient(
+      0deg,
+      var(--dash-color),
+      var(--dash-color) 10px,
+      transparent 10px,
+      transparent 15px,
+      var(--dash-color) 15px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 0px,
+      transparent 0px,
+      transparent 28px,
+      transparent 28px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      var(--dash-color),
+      var(--dash-color) 10px,
+      transparent 10px,
+      transparent 15px,
+      var(--dash-color) 15px
+    );
+  background-size:
+    0.5px 100%,
+    0.5px 100%,
+    0.5px 100%,
+    0.5px 100%;
+  background-position:
+    0 0,
+    0 0,
+    100% 0,
+    100% 0;
+  background-repeat: no-repeat;
+}
+
+/* Create a class where all p tags within a nav div show have a text shadow when hovered */

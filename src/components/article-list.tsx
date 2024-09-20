@@ -2,7 +2,6 @@ import config from '@/payload.config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { redirect } from 'next/navigation'
 import { z } from 'zod'
-import { Highlight } from './highlight-div'
 import { Pagination } from './pagination'
 
 export const getArticles = async (page?: number) => {
@@ -57,9 +56,7 @@ export const ArticleList = async ({ page }: { page: string }) => {
                 className="lowercase grid gap-0 w-fit"
               >
                 <p className=" w-fit pr-1 font-normal text-base text-black/50">{tag}</p>
-                <Highlight whileHover={true} className="bg-gray-400/10">
-                  <p className="underline">{title}</p>
-                </Highlight>
+                <p className="underline">{title}</p>
               </a>
             </li>
           )

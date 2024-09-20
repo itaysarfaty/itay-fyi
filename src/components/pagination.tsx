@@ -23,6 +23,10 @@ export const Pagination = ({ page, totalPages, className }: PaginationProps) => 
 
   const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i)
 
+  const counts = { 1: 2, 2: 5 }
+  const test = Object.entries(counts).sort(([_, a], [__, b]) => a - b)
+  console.log(test)
+
   return (
     <nav
       // @ts-ignore
@@ -35,8 +39,8 @@ export const Pagination = ({ page, totalPages, className }: PaginationProps) => 
             key={pageNumber}
             href={`/${pageNumber}`}
             className={cn(
-              'px-1 hover:bg-yellow transition-colors duration-100',
-              pageNumber === page ? 'bg-yellow' : '',
+              'px-1 hover:bg-primary transition-colors duration-100',
+              pageNumber === page ? 'bg-primary' : '',
             )}
             scroll={false}
           >
