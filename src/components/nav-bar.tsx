@@ -8,7 +8,7 @@ export const NavBar = () => {
   return (
     <nav className="pb-[40px]">
       <TextScaffold>
-        <ul className="flex flex-col sm:flex-row flex-wrap gap-x-6 sm:gap-x-10 gap-y-2">
+        <ul className="flex flex-col sm:flex-row flex-wrap gap-x-6 sm:gap-x-10 gap-y-3">
           <NavButton label="home" href="/" />
           <NavButton label="about" href="/about" />
           <NavButton label="projects" href="/projects" />
