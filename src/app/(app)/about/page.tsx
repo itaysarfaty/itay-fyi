@@ -8,7 +8,7 @@ export default async function AboutPage() {
       <div className="grid gap-36 pb-24">
         <Paragraph
           title="TLDR;"
-          text="The past two years I've been working as a user interface engineer in the logistics industry."
+          text="I've been working as a user interface engineer in the logistics industry for the past two years."
         />
         <Paragraph
           title="Software"
