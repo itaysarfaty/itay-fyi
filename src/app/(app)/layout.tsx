@@ -1,14 +1,19 @@
 import type { Metadata } from 'next'
-import { Josefin_Slab } from 'next/font/google'
+import { Josefin_Slab, Inter } from 'next/font/google'
 
 import { cn } from '@/lib/utils'
 
 import './globals.css'
 import { NavBar } from '@/components/nav-bar'
 
-const fontSans = Josefin_Slab({
+const fontSans = Inter({
   subsets: ['latin'],
   variable: '--font-sans',
+})
+
+const fontSerif = Josefin_Slab({
+  subsets: ['latin'],
+  variable: '--font-serif',
 })
 
 export const metadata: Metadata = {
@@ -25,7 +30,8 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          'flex min-h-[100svh] bg-background font-sans font-light antialiased w-full text-foreground',
+          'flex min-h-[100svh] bg-background font-serif font-light antialiased w-full text-foreground',
+          fontSerif.variable,
           fontSans.variable,
         )}
       >

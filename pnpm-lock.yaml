@@ -45,6 +45,9 @@ importers:
       graphql:
         specifier: ^16.8.1
         version: 16.9.0
+      html-to-image:
+        specifier: ^1.11.11
+        version: 1.11.11
       libsql:
         specifier: 0.4.2-pre.3
         version: 0.4.2-pre.3
@@ -2761,6 +2764,9 @@ packages:
 
   hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
+
+  html-to-image@1.11.11:
+    resolution: {integrity: sha512-9gux8QhvjRO/erSnDPv28noDZcPZmYE7e1vFsBLKLlRlKDSqNJYebj6Qz1TGd5lsRV+X+xYyjCKjuZdABinWjA==}
 
   html-to-text@9.0.3:
     resolution: {integrity: sha512-hxDF1kVCF2uw4VUJ3vr2doc91pXf2D5ngKcNviSitNkhP9OMOaJkDrFIFL6RMvko7NisWTEiqGpQ9LAxcVok1w==}
@@ -7612,6 +7618,8 @@ snapshots:
   hoist-non-react-statics@3.3.2:
     dependencies:
       react-is: 16.13.1
+
+  html-to-image@1.11.11: {}
 
   html-to-text@9.0.3:
     dependencies:

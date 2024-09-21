@@ -18,6 +18,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
+        serif: ['var(--font-serif)', ...fontFamily.serif],
       },
       colors: {
         background: 'var(--background)',
