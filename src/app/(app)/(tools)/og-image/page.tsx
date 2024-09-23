@@ -95,7 +95,7 @@ const HeaderContent = forwardRef<
         title: string
         subTitle: string
     }
->(({ title = defaultValues.title, subTitle = defaultValues.subTitle }, ref) => {
+>(({ title, subTitle }, ref) => {
     return (
         <div className="fixed -top-[1000px]">
             <div
@@ -114,7 +114,9 @@ const HeaderContent = forwardRef<
                                 </h1>
                             </TextScaffold>
                             <TextScaffold>
-                                <h2 className="text-2xl">{subTitle}</h2>
+                                <h2 className="text-2xl">
+                                    {subTitle || defaultValues.subTitle}
+                                </h2>
                             </TextScaffold>
                         </header>
                     </section>

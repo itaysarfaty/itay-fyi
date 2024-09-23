@@ -14,16 +14,16 @@ export const Footer = () => {
             <nav className="pb-[40px]">
                 <TextScaffold className="justify-between">
                     <ul className="flex flex-col flex-wrap gap-x-6 gap-y-3 sm:flex-row sm:gap-x-10">
-                        <NavButton label="home" href="/" />
-                        <NavButton label="about" href="/about" />
+                        <Button label="home" href="/" />
+                        <Button label="about" href="/about" />
                     </ul>
                     <ul className="flex flex-row flex-wrap gap-x-6">
-                        <NavButton href="https://www.linkedin.com/in/itaysarfaty/">
+                        <Link href="https://www.linkedin.com/in/itaysarfaty/">
                             <LinkedinIcon className="stroke-[0.7] hover:stroke-1" />
-                        </NavButton>
-                        <NavButton href="https://github.com/itaysarfaty">
+                        </Link>
+                        <Link href="https://github.com/itaysarfaty">
                             <GithubIcon className="stroke-[0.7px] hover:stroke-1" />
-                        </NavButton>
+                        </Link>
                     </ul>
                 </TextScaffold>
             </nav>
@@ -31,31 +31,15 @@ export const Footer = () => {
     )
 }
 
-const NavButton = ({
-    label,
-    href,
-    children,
-}: {
-    label?: string
-    href: string
-    children?: React.ReactNode
-}) => {
+const Button = ({ label, href }: { label: string; href: string }) => {
     const pathName = usePathname()
     const highlight = pathName === href
     return (
         <li>
             <Link href={href}>
-                {children}
-                {label && (
-                    <p
-                        className={cn(
-                            'text-2xl',
-                            highlight ? 'font-semibold' : ''
-                        )}
-                    >
-                        {label}
-                    </p>
-                )}
+                <p className={cn('text-2xl', highlight ? 'font-semibold' : '')}>
+                    {label}
+                </p>
             </Link>
         </li>
     )
