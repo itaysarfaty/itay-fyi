@@ -3,104 +3,112 @@
 @tailwind utilities;
 
 :root {
-  --background: #f4f4f4;
-  --foreground: #1b1b1b;
-  --dash-color: #00000015;
-  /* --background: #405cb1;
+    --background: #f4f4f4;
+    --foreground: #1b1b1b;
+    --dash-color: #00000015;
+    /* --background: #405cb1;
   --foreground: #e4eaf6;
   --dash-color: #98aedd; */
-  --dash-length: 10px;
-  --dash-spacing: 15px;
-  --dash-thickness: 1px;
+    --dash-length: 10px;
+    --dash-spacing: 15px;
+    --dash-thickness: 1px;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f0f0f;
-    --foreground: #c7c7c7;
-    --dash-color: #ffffff11;
-  }
+    :root {
+        --background: #0f0f0f;
+        --foreground: #c7c7c7;
+        --dash-color: #ffffff11;
+    }
 }
 
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .y-dash {
-  background-image: repeating-linear-gradient(0deg, transparent, transparent 0px),
-    repeating-linear-gradient(
-      90deg,
-      var(--dash-color),
-      var(--dash-color) var(--dash-length),
-      transparent var(--dash-length),
-      transparent var(--dash-spacing),
-      var(--dash-color) var(--dash-spacing)
-    ),
-    repeating-linear-gradient(0deg, transparent, transparent 0px),
-    repeating-linear-gradient(
-      90deg,
-      var(--dash-color),
-      var(--dash-color) var(--dash-length),
-      transparent var(--dash-length),
-      transparent var(--dash-spacing),
-      var(--dash-color) var(--dash-spacing)
-    );
-  background-size:
-    100% var(--dash-thickness),
-    100% var(--dash-thickness),
-    100% var(--dash-thickness),
-    100% calc(var(--dash-thickness) * 0.9);
-  background-position:
-    0 0,
-    0 0,
-    100% 0,
-    0 100%;
-  background-repeat: no-repeat;
+    background-image: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 0px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--dash-color),
+            var(--dash-color) var(--dash-length),
+            transparent var(--dash-length),
+            transparent var(--dash-spacing),
+            var(--dash-color) var(--dash-spacing)
+        ),
+        repeating-linear-gradient(0deg, transparent, transparent 0px),
+        repeating-linear-gradient(
+            90deg,
+            var(--dash-color),
+            var(--dash-color) var(--dash-length),
+            transparent var(--dash-length),
+            transparent var(--dash-spacing),
+            var(--dash-color) var(--dash-spacing)
+        );
+    background-size:
+        100% var(--dash-thickness),
+        100% var(--dash-thickness),
+        100% var(--dash-thickness),
+        100% calc(var(--dash-thickness) * 0.9);
+    background-position:
+        0 0,
+        0 0,
+        100% 0,
+        0 100%;
+    background-repeat: no-repeat;
 }
 
 .x-dash {
-  background-image: repeating-linear-gradient(90deg, transparent, transparent 0px),
-    repeating-linear-gradient(
-      0deg,
-      var(--dash-color),
-      var(--dash-color) var(--dash-length),
-      transparent var(--dash-length),
-      transparent var(--dash-spacing),
-      var(--dash-color) var(--dash-spacing)
-    ),
-    repeating-linear-gradient(90deg, transparent, transparent 0px),
-    repeating-linear-gradient(
-      0deg,
-      var(--dash-color),
-      var(--dash-color) var(--dash-length),
-      transparent var(--dash-length),
-      transparent var(--dash-spacing),
-      var(--dash-color) var(--dash-spacing)
-    );
-  background-size:
-    var(--dash-thickness) 100%,
-    calc(var(--dash-thickness) * 0.9) 100%,
-    var(--dash-thickness) 100%,
-    var(--dash-thickness) 100%;
-  background-position:
-    0 0,
-    0 0,
-    100% 0,
-    100% 0;
-  background-repeat: no-repeat;
+    background-image: repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 0px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            var(--dash-color),
+            var(--dash-color) var(--dash-length),
+            transparent var(--dash-length),
+            transparent var(--dash-spacing),
+            var(--dash-color) var(--dash-spacing)
+        ),
+        repeating-linear-gradient(90deg, transparent, transparent 0px),
+        repeating-linear-gradient(
+            0deg,
+            var(--dash-color),
+            var(--dash-color) var(--dash-length),
+            transparent var(--dash-length),
+            transparent var(--dash-spacing),
+            var(--dash-color) var(--dash-spacing)
+        );
+    background-size:
+        var(--dash-thickness) 100%,
+        calc(var(--dash-thickness) * 0.9) 100%,
+        var(--dash-thickness) 100%,
+        var(--dash-thickness) 100%;
+    background-position:
+        0 0,
+        0 0,
+        100% 0,
+        100% 0;
+    background-repeat: no-repeat;
 }
 
 ::-moz-selection {
-  /* Code for Firefox */
-  color: var(--background);
-  background: var(--foreground);
+    /* Code for Firefox */
+    color: var(--background);
+    background: var(--foreground);
 }
 
 ::selection {
-  color: var(--background);
-  background: var(--foreground);
+    color: var(--background);
+    background: var(--foreground);
 }

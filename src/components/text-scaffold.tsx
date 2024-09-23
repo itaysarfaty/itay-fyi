@@ -1,19 +1,19 @@
 import { cn } from '@/lib/utils'
 
 export interface TextScaffoldProps {
-  className?: string
-  children?: React.ReactNode
+    className?: string
+    children?: React.ReactNode
 }
 
 export const TextScaffold = ({ children, className }: TextScaffoldProps) => {
-  return (
-    <div
-      className={cn(
-        'w-[110%] -ml-[5%] px-[5%]  flex items-start justify-start h-fit y-dash',
-        className,
-      )}
-    >
-      {children}
-    </div>
-  )
+    return (
+        <div
+            className={cn(
+                'y-dash -ml-[5%] flex h-fit w-[110%] items-start justify-start px-[5%]',
+                className
+            )}
+        >
+            {children}
+        </div>
+    )
 }
