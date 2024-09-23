@@ -1,22 +1,22 @@
 'use client'
 import { TextScaffold } from '@/components/text-scaffold'
 import { toPng } from 'html-to-image'
-import { useRef, useState } from 'react'
+import { forwardRef, useRef, useState } from 'react'
+
+const canvasSize = {
+  width: 600,
+  height: 315,
+}
+
+const defaultValues = {
+  title: 'Itay Sarfaty',
+  subTitle: 'Software Engineer',
+}
 
 export default function OGImagePage() {
   const [title, setTitle] = useState('')
   const [subTitle, setSubTitle] = useState('')
   const canvasRef = useRef<HTMLDivElement>(null)
-
-  const canvasSize = {
-    width: 600,
-    height: 315,
-  }
-
-  const defaultValues = {
-    title: 'Itay Sarfaty',
-    subTitle: 'Software Engineer',
-  }
 
   const handleDownload = async () => {
     if (canvasRef.current === null) {
@@ -35,6 +35,7 @@ export default function OGImagePage() {
   }
   return (
     <div>
+      <HeaderContent ref={canvasRef} title={title} subTitle={subTitle} />
       <section className={'h-[500px] flex items-center w-full @container'}>
         <header className="grid gap-6 w-full">
           <TextScaffold>
@@ -60,56 +61,54 @@ export default function OGImagePage() {
 
       <div className="flex flex-col gap-6">
         <TextScaffold>
-          <h3 className="text-2xl font-medium">Header Image Generator</h3>
+          <h3 className="text-2xl font-medium">Open Graph Generator</h3>
         </TextScaffold>
         <TextScaffold>
-          <p className="text-xl">Change the title and subtitle above and download when ready.</p>
+          <p className="text-xl">
+            I built this tool to easily generate an open graph image. Update the header above and
+            download.
+          </p>
         </TextScaffold>
         <button
-          className="mt-4 w-fit shrink-0 bg-foreground font-sans text-sm  text-background font-normal rounded py-2 px-4 grid place-items-center"
+          className="my-4 w-fit shrink-0 bg-foreground font-sans text-sm  text-background font-normal rounded py-2 px-4 grid place-items-center"
           onClick={handleDownload}
         >
           Download
         </button>
       </div>
-      <div className="fixed -top-[1000px]">
-        <div
-          className={`px-4 bg-background`}
-          style={{ width: canvasSize.width, height: canvasSize.height }}
-          ref={canvasRef}
-        >
-          <div className="max-w-[90%] h-full mx-auto overflow-visible x-dash grid gap-3">
-            <section className={'h-full flex items-center w-full @container'}>
-              <header className="grid gap-6 w-full">
-                <TextScaffold>
-                  <h1 className="text-6xl font-medium ">{title || defaultValues.title}</h1>
-                </TextScaffold>
-                <TextScaffold>
-                  <h2 className="text-2xl ">{subTitle || defaultValues.subTitle}</h2>
-                </TextScaffold>
-              </header>
-            </section>
-          </div>
-        </div>
-      </div>
     </div>
   )
 }
 
-interface InputProps {
-  value: string
-  onChange: (value: string) => void
-  placeholder: string
-}
-
-const Input: React.FC<InputProps> = ({ value, onChange, placeholder }) => {
+const HeaderContent = forwardRef<
+  HTMLDivElement,
+  {
+    title: string
+    subTitle: string
+  }
+>(({ title = defaultValues.title, subTitle = defaultValues.subTitle }, ref) => {
   return (
-    <input
-      type="text"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-      placeholder={placeholder}
-      className={`font-sans font-light h-[40px] w-full p-2 border-[0.5px] border-foreground/10 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-foreground bg-background text-foreground `}
-    />
+    <div className="fixed -top-[1000px]">
+      <div
+        className={`px-4 bg-background`}
+        style={{ width: canvasSize.width, height: canvasSize.height }}
+        ref={ref}
+      >
+        <div className="max-w-[90%] h-full mx-auto overflow-visible x-dash grid gap-3">
+          <section className={'h-full flex items-center w-full @container'}>
+            <header className="grid gap-6 w-full">
+              <TextScaffold>
+                <h1 className="text-6xl font-medium ">{title || defaultValues.title}</h1>
+              </TextScaffold>
+              <TextScaffold>
+                <h2 className="text-2xl ">{subTitle}</h2>
+              </TextScaffold>
+            </header>
+          </section>
+        </div>
+      </div>
+    </div>
   )
-}
+})
+
+HeaderContent.displayName = 'HeaderContent'
