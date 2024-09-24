@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 
+import TextAnim from './text-animation/text-animation'
 import { TextScaffold } from './text-scaffold'
 
 export interface HeaderProps {
@@ -23,7 +24,7 @@ export const Hero = ({ title, subTitle, className }: HeaderProps) => {
                     </h1>
                 </TextScaffold>
                 <TextScaffold>
-                    <h2 className="text-2xl">{subTitle}</h2>
+                    <TextAnim text={subTitle} />
                 </TextScaffold>
             </header>
         </section>
