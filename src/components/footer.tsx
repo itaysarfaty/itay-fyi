@@ -16,7 +16,6 @@ export const Footer = () => {
                 <ul className="flex flex-col flex-wrap gap-x-6 gap-y-3">
                     <Button label="home" href="/" />
                     <Button label="about" href="/about" />
-                    <Button label="about" href="/about" />
                 </ul>
                 <ul className="flex h-full flex-col items-end justify-between gap-4">
                     <div className="flex flex-row items-center gap-4">
