@@ -30,6 +30,13 @@ export default async function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <script
+                    defer
+                    src="https://cloud.umami.is/script.js"
+                    data-website-id="7a43974c-bf93-4f2e-8418-86ed2431cc4b"
+                />
+            </head>
             <body
                 className={cn(
                     `flex min-h-[100svh] w-full bg-background font-serif font-light text-foreground
