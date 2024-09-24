@@ -1,17 +1,26 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import {
+    CircleIcon,
     LightbulbIcon,
     LightbulbOffIcon,
     MoonIcon,
     SunIcon,
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import { useEffect, useState } from 'react'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 
 export const ThemeToggle = () => {
     const { resolvedTheme, setTheme } = useTheme()
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
     const props =
         resolvedTheme === 'dark'
             ? {
@@ -31,9 +40,21 @@ export const ThemeToggle = () => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
     }
 
+    if (!mounted) return <CircleIcon className="h-6 w-6 stroke-[0.7px]" />
+
     return (
         <button aria-label={props.alt} onClick={toggleTheme}>
-            <AccessibleIcon label={props.alt}>{props.icon}</AccessibleIcon>
+            <motion.div
+                whileTap={{ rotate: 180 }}
+                transition={{
+                    duration: 10,
+                    type: 'spring',
+                    stiffness: 100,
+                    damping: 8,
+                }}
+            >
+                <AccessibleIcon label={props.alt}>{props.icon}</AccessibleIcon>
+            </motion.div>
         </button>
     )
 }
