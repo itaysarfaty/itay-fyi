@@ -3,6 +3,7 @@
 import { CogIcon, LightbulbIcon, LightbulbOffIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 
+import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
 export const SettingsMenu = () => {
@@ -26,7 +27,9 @@ export const SettingsMenu = () => {
         <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
                 <button aria-label="website settings">
-                    <CogIcon className="stroke-[0.7px] hover:stroke-1" />
+                    <AccessibleIcon.Root label="settings">
+                        <CogIcon className="stroke-[0.7px] hover:stroke-1" />
+                    </AccessibleIcon.Root>
                 </button>
             </DropdownMenu.Trigger>
 

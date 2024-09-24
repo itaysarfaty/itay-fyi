@@ -4,6 +4,8 @@ import { GithubIcon, LinkedinIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
+
 import { cn } from '@/lib/utils'
 
 import { SettingsMenu } from './settings'
@@ -33,7 +35,9 @@ export const Footer = () => {
                                     href="https://www.linkedin.com/in/itaysarfaty/"
                                     data-umami-event="Linkedin button"
                                 >
-                                    <LinkedinIcon className="stroke-[0.7] hover:stroke-1" />
+                                    <AccessibleIcon.Root label="linkedin">
+                                        <LinkedinIcon className="stroke-[0.7] hover:stroke-1" />
+                                    </AccessibleIcon.Root>
                                 </Link>
                             </li>
                             <li>
@@ -41,7 +45,9 @@ export const Footer = () => {
                                     href="https://github.com/itaysarfaty"
                                     data-umami-event="Github button"
                                 >
-                                    <GithubIcon className="stroke-[0.7px] hover:stroke-1" />
+                                    <AccessibleIcon.Root label="github">
+                                        <GithubIcon className="stroke-[0.7px] hover:stroke-1" />
+                                    </AccessibleIcon.Root>
                                 </Link>
                             </li>
                         </ul>
