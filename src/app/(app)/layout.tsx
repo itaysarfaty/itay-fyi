@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
+import { ThemeProvider } from 'next-themes'
 import { Inter, Josefin_Slab } from 'next/font/google'
 
 import { Footer } from '@/components/footer'
+import { SettingsMenu } from '@/components/settings'
 import { cn } from '@/lib/utils'
 
 import './globals.css'
@@ -36,12 +38,19 @@ export default async function RootLayout({
                     fontSans.variable
                 )}
             >
-                <div className="container px-2">
-                    <div className="x-dash mx-auto grid h-full max-w-[90%] gap-3 overflow-visible">
-                        {children}
-                        <Footer />
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <div className="container px-2">
+                        <div className="x-dash mx-auto grid h-full max-w-[90%] gap-3 overflow-visible">
+                            {children}
+                            <Footer />
+                        </div>
                     </div>
-                </div>
+                </ThemeProvider>
             </body>
         </html>
     )

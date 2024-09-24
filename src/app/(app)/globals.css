@@ -2,19 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --background: #f4f4f4;
-    --foreground: #1b1b1b;
-    --dash-color: #00000015;
-    /* --background: #405cb1;
+@layer base {
+    :root {
+        --background: #f4f4f4;
+        --foreground: #1b1b1b;
+        --dash-color: #00000015;
+        /* --background: #405cb1;
   --foreground: #e4eaf6;
   --dash-color: #98aedd; */
-    --dash-length: 10px;
-    --dash-spacing: 15px;
-    --dash-thickness: 1px;
-}
-@media (prefers-color-scheme: dark) {
-    :root {
+        --dash-length: 10px;
+        --dash-spacing: 15px;
+        --dash-thickness: 1px;
+    }
+    .dark {
         --background: #0f0f0f;
         --foreground: #c7c7c7;
         --dash-color: #ffffff11;

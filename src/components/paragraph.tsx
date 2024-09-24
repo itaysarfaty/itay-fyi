@@ -1,6 +1,11 @@
 'use client'
 
-import { motion, useAnimation, useInView } from 'framer-motion'
+import {
+    motion,
+    useAnimation,
+    useInView,
+    useReducedMotion,
+} from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
 import { TextScaffold } from './text-scaffold'
@@ -13,20 +18,21 @@ export interface ParagraphProps {
 export const Paragraph = ({ title, text }: ParagraphProps) => {
     const ref = useRef<HTMLDivElement>(null)
     const controls = useAnimation()
+    const prefersReducedMotion = useReducedMotion()
     // @ts-ignore
     const isInView = useInView(ref, {
         once: true,
     })
 
     useEffect(() => {
-        if (isInView) {
+        if (isInView && !prefersReducedMotion) {
             controls.start({
                 opacity: 1,
                 y: 0,
                 transition: { duration: 0.5 },
             })
         }
-    }, [isInView, controls])
+    }, [isInView, controls, prefersReducedMotion])
 
     return (
         <motion.section
