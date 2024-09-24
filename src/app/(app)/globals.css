@@ -115,6 +115,10 @@
 
 /* Focus theme */
 :focus {
+    outline: none;
+}
+
+:focus-visible {
     outline: 1px solid var(--foreground);
     outline-offset: 2px;
     border-radius: 4px;
