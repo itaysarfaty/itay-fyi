@@ -112,3 +112,10 @@
     color: var(--background);
     background: var(--foreground);
 }
+
+/* Focus theme */
+:focus {
+    outline: 1px solid var(--foreground);
+    outline-offset: 2px;
+    border-radius: 4px;
+}

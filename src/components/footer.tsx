@@ -8,8 +8,8 @@ import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
 
 import { cn } from '@/lib/utils'
 
-import { SettingsMenu } from './settings'
 import { TextScaffold } from './text-scaffold'
+import { ThemeToggle } from './theme-toggle'
 
 export const Footer = () => {
     return (
@@ -29,31 +29,26 @@ export const Footer = () => {
                         />
                     </ul>
                     <div className="flex h-full flex-col items-end justify-between gap-4">
-                        <ul className="flex flex-row items-center gap-4">
-                            <li>
-                                <Link
-                                    href="https://www.linkedin.com/in/itaysarfaty/"
-                                    data-umami-event="Linkedin button"
-                                >
-                                    <AccessibleIcon.Root label="linkedin">
-                                        <LinkedinIcon className="stroke-[0.7] hover:stroke-1" />
-                                    </AccessibleIcon.Root>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    href="https://github.com/itaysarfaty"
-                                    data-umami-event="Github button"
-                                >
-                                    <AccessibleIcon.Root label="github">
-                                        <GithubIcon className="stroke-[0.7px] hover:stroke-1" />
-                                    </AccessibleIcon.Root>
-                                </Link>
-                            </li>
-                        </ul>
-                        <span className="absolute bottom-0 right-0 grid place-items-center">
-                            <SettingsMenu />
-                        </span>
+                        <div className="absolute bottom-0 right-0 flex gap-5">
+                            <ThemeToggle />
+
+                            <Link
+                                href="https://github.com/itaysarfaty"
+                                data-umami-event="Github button"
+                            >
+                                <AccessibleIcon.Root label="github">
+                                    <GithubIcon className="stroke-[0.7px] hover:stroke-1" />
+                                </AccessibleIcon.Root>
+                            </Link>
+                            <Link
+                                href="https://www.linkedin.com/in/itaysarfaty/"
+                                data-umami-event="Linkedin button"
+                            >
+                                <AccessibleIcon.Root label="linkedin">
+                                    <LinkedinIcon className="stroke-[0.7] hover:stroke-1" />
+                                </AccessibleIcon.Root>
+                            </Link>
+                        </div>
                     </div>
                 </TextScaffold>
             </div>
@@ -74,10 +69,12 @@ const Button = ({
     const highlight = pathName === href
     return (
         <li>
-            <Link href={href} data-umami-event={umamiEvent}>
-                <p className={cn('text-2xl', highlight ? 'font-semibold' : '')}>
-                    {label}
-                </p>
+            <Link
+                href={href}
+                data-umami-event={umamiEvent}
+                className={cn('text-xl', highlight ? 'font-bold' : '')}
+            >
+                {label}
             </Link>
         </li>
     )

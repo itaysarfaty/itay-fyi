@@ -8,19 +8,26 @@ export default function AboutPage() {
             <div className="grid gap-[12rem] pb-[12rem]">
                 <Paragraph
                     title="TLDR;"
-                    text="Hi, I'm Itay (pronounced EE-tie). I've been working as a user interface engineer in the logistics industry for the past two years."
+                    text={`Hi, I'm Itay (pronounced EE-tie). 
+                    I've been working as a user interface engineer in the logistics industry for the past two years.`}
                 />
                 <Paragraph
                     title="Software"
-                    text="I've been programming for over six years, earning a Bachelor's in Computer Science from Binghamton University along the way. Professionally, my focus has been on the frontend, where I built and maintained extensive component libraries using atomic design principles. Over the past year, I've been diving into full-stack projects with Next.js and really enjoy it."
+                    text={`I've been coding for over six years now, armed with a Bachelor's degree in Computer Science from 
+                    Binghamton University and a knack for making things work and look good. I've been with CargoMatrix as a UI engineer, 
+                    for the past two years, where I bring functional, user-friendly designs to life.`}
                 />
                 <Paragraph
                     title="Design"
-                    text="I've always been interested in design, though I don't consider myself super creative. What drives me is creating functional user interfaces that work intuitively. I'm interested in the psychology behind effective design, which I actively read about on my own."
+                    text={`I've always had a keen interest in design, even if I don't consider myself a creative genius. 
+                    What truly excites me is creating user interfaces that are functional and intuitive, leading to an experience that feel effortless. 
+                    I'm fascinated by the psychology that makes this possible and enjoy reading about it on my free time.`}
                 />
                 <Paragraph
                     title="Cooking"
-                    text="If I'm not working you'll probably find me in the kitchen. Much like designing a user interface, I love the balance of science and art cooking offers. You can measure everything perfectly, but ultimately, each person will have a unique experience."
+                    text={`If I'm not working you'll probably find me in the kitchen. 
+                    Much like designing a user interface, I love the balance of science and art cooking offers. 
+                    You can measure everything perfectly, but ultimately, each person will have a unique experience.`}
                 />
             </div>
         </>
