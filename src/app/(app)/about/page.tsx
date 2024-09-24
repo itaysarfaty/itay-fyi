@@ -16,7 +16,7 @@ export default function AboutPage() {
                 />
                 <Paragraph
                     title="Design"
-                    text="I've always been interested in design, though I don't consider myself super creative. What drives me is creating functional user interfaces that work intuitively. I'm particularly fascinated by the psychology behind effective design, which I actively read about on my own."
+                    text="I've always been interested in design, though I don't consider myself super creative. What drives me is creating functional user interfaces that work intuitively. I'm interested in the psychology behind effective design, which I actively read about on my own."
                 />
                 <Paragraph
                     title="Cooking"

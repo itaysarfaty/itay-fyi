@@ -109,12 +109,12 @@ const HeaderContent = forwardRef<
                     >
                         <header className="grid w-full gap-6">
                             <TextScaffold>
-                                <h1 className="text-6xl font-medium">
+                                <h1 className="text-7xl font-medium">
                                     {title || defaultValues.title}
                                 </h1>
                             </TextScaffold>
                             <TextScaffold>
-                                <h2 className="text-2xl">
+                                <h2 className="text-4xl">
                                     {subTitle || defaultValues.subTitle}
                                 </h2>
                             </TextScaffold>
