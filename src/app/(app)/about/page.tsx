@@ -7,16 +7,16 @@ export default function AboutPage() {
             <Hero title="About" subTitle="Thank's for taking an interest" />
             <div className="grid gap-[12rem] pb-[12rem]">
                 <Paragraph
-                    title="Me"
-                    text="Hi, I'm Itay (pronounced EE-tie). I've been working as a user interface engineer in the logistics industry for the past two years. Below, you'll find some insights into my mindset when it comes to software, design, and more."
+                    title="TLDR;"
+                    text="Hi, I'm Itay (pronounced EE-tie). I've been working as a user interface engineer in the logistics industry for the past two years."
                 />
                 <Paragraph
                     title="Software"
-                    text="When starting a project, I prioritize core requirements first. By focusing on the essentials, I build maintainable codebases — it's much easier to add features to reliable software than it is to add reliability to featureful software."
+                    text="I've been programming for over six years, earning a Bachelor's in Computer Science from Binghamton University along the way. Professionally, my focus has been on the frontend, where I built and maintained extensive component libraries using atomic design principles. Over the past year, I've been diving into full-stack projects with Next.js and really enjoy it."
                 />
                 <Paragraph
                     title="Design"
-                    text="My approach centers around functional design, where I make choices backed by human psychology. Just like an author has a purpose for every word, there should be a reason behind every element in a design."
+                    text="I've always been interested in design, though I don't consider myself super creative. What drives me is creating functional user interfaces that work intuitively. I'm particularly fascinated by the psychology behind effective design, which I actively read about on my own."
                 />
                 <Paragraph
                     title="Cooking"
