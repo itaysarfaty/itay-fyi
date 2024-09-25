@@ -8,23 +8,25 @@ export default function AboutPage() {
             <div className="grid gap-[12rem] pb-[12rem]">
                 <Paragraph
                     title="Hi there"
-                    text={`I'm Itay (pronounced EE-tie). 
-                    I've been working as a user interface engineer in the logistics industry for the past two years.`}
+                    text={`I'm Itay (pronounced EE-tie) a software engineer based in New York. I work at CargoMatrix, 
+                        a logistics company, where I lead the front-end development.`}
                 />
                 <Paragraph
                     title="Software"
                     text={`I've been coding for over six years now and have a knack for making things work and easy to use. 
-                        For the past two years I've been leading the front-end development at CargoMatrix.`}
+                        A lot of my professional experience has been front-end related; however, 
+                        I've been venturing into the world of full-stack development, and I love it.`}
                 />
                 <Paragraph
                     title="Design"
-                    text={`I'm by no means a creative genius, but I am passionate about functional design.
-                        Intrigued by the psychology that drives intuitive interfaces, I often read about it on my free time.`}
+                    text={`I'm by no means a creative genius, but I'm passionate about functional design. I enjoy reading about
+                         the psychology that drives intuitive interfaces. It's fascinating how small design choices can significantly 
+                         impact user experience.`}
                 />
                 <Paragraph
                     title="Cooking"
-                    text={`If I'm not working you'll probably find me in the kitchen. 
-                    Much like designing a user interface, I love the balance of science and art cooking offers. 
+                    text={`If I'm not working you'll probably find me cooking. 
+                    Much like designing a user interface, I love the balance of science and art it offers. 
                     You can measure everything perfectly, but ultimately, each person will have a unique experience.`}
                 />
                 <Paragraph
