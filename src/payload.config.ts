@@ -4,11 +4,10 @@ import { buildConfig } from 'payload'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
-// storage-adapter-import-placeholder
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
+import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
-import { Articles } from './collections/articles'
 import { Media } from './collections/media'
 import { Users } from './collections/users'
 
@@ -22,7 +21,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Users, Media, Articles],
+    collections: [Users, Media],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {
@@ -36,6 +35,14 @@ export default buildConfig({
     }),
     sharp,
     plugins: [
-        // storage-adapter-placeholder
+        vercelBlobStorage({
+            enabled: true, // Optional, defaults to true
+            // Specify which collections should use Vercel Blob
+            collections: {
+                [Media.slug]: true,
+            },
+            // Token provided by Vercel once Blob storage is added to your Vercel project
+            token: process.env.BLOB_READ_WRITE_TOKEN ?? '',
+        }),
     ],
 })

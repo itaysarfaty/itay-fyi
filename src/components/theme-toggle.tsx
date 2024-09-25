@@ -1,13 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-    CircleIcon,
-    LightbulbIcon,
-    LightbulbOffIcon,
-    MoonIcon,
-    SunIcon,
-} from 'lucide-react'
+import { LoaderIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 
@@ -40,12 +34,12 @@ export const ThemeToggle = () => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
     }
 
-    if (!mounted) return <CircleIcon className="h-6 w-6 stroke-[0.7px]" />
-
     return (
         <button aria-label={props.alt} onClick={toggleTheme}>
             <motion.div
                 whileTap={{ rotate: 180 }}
+                initial={{ rotate: -180 }}
+                animate={{ rotate: 0 }}
                 transition={{
                     duration: 10,
                     type: 'spring',
@@ -53,7 +47,13 @@ export const ThemeToggle = () => {
                     damping: 8,
                 }}
             >
-                <AccessibleIcon label={props.alt}>{props.icon}</AccessibleIcon>
+                {!mounted ? (
+                    <LoaderIcon className="h-6 w-6 stroke-[0.7px]" />
+                ) : (
+                    <AccessibleIcon label={props.alt}>
+                        {props.icon}
+                    </AccessibleIcon>
+                )}
             </motion.div>
         </button>
     )
