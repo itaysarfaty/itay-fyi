@@ -13,13 +13,13 @@ export default function AboutPage() {
                 />
                 <Paragraph
                     title="Software"
-                    text={`I've been coding for over six years now and have a knack for making things work and easy to use. I've been with CargoMatrix as a UI engineer, 
-                    for the past two years, where I lead the front-end development for our solutions.`}
+                    text={`I've been coding for over six years now and have a knack for making things work and easy to use. 
+                        For the past two years I've been leading the front-end development at CargoMatrix.`}
                 />
                 <Paragraph
                     title="Design"
-                    text={`I don't consider myself a creative genius, but I'm passionate about functional design. 
-                        I'm fascinated by the psychology behind intuitive interfaces and enjoy reading about it in my free time.`}
+                    text={`I'm by no means a creative genius, but I am passionate about functional design.
+                        Intrigued by the psychology that drives intuitive interfaces, I often read about it on my free time.`}
                 />
                 <Paragraph
                     title="Cooking"
