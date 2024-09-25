@@ -3,9 +3,10 @@ import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { Inter, Josefin_Slab } from 'next/font/google'
 
+import { cn } from '@/utils'
+
 import { Footer } from '@/components/footer'
 import { SettingsMenu } from '@/components/settings'
-import { cn } from '@/lib/utils'
 
 import './globals.css'
 

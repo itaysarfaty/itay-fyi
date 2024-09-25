@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation'
 
 import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/utils'
 
 import { TextScaffold } from './text-scaffold'
 import { ThemeToggle } from './theme-toggle'
