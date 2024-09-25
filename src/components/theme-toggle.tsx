@@ -40,6 +40,13 @@ export const ThemeToggle = () => {
                 whileTap={{ rotate: 180 }}
                 initial={{ rotate: -180 }}
                 animate={{ rotate: 0 }}
+                whileHover={{
+                    rotate: [0, 7, -7, 0],
+                    transition: {
+                        type: 'tween',
+                        duration: 0.5,
+                    },
+                }}
                 transition={{
                     duration: 10,
                     type: 'spring',
@@ -48,7 +55,7 @@ export const ThemeToggle = () => {
                 }}
             >
                 {!mounted ? (
-                    <LoaderIcon className="h-6 w-6 stroke-[0.7px]" />
+                    <LoaderIcon className="h-6 w-6 cursor-pointer stroke-[0.7px]" />
                 ) : (
                     <AccessibleIcon label={props.alt}>
                         {props.icon}

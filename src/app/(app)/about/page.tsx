@@ -19,7 +19,7 @@ export default function AboutPage() {
                 <Paragraph
                     title="Design"
                     text={`I don't consider myself a creative genius, but I'm passionate about functional design. 
-                    I'm fascinated by the psychology that drives intuitive interfaces and enjoy reading about it on my free time.`}
+                        I'm fascinated by the psychology behind intuitive interfaces and enjoy reading about it in my free time.`}
                 />
                 <Paragraph
                     title="Cooking"

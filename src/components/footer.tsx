@@ -1,10 +1,11 @@
 'use client'
 
+import { motion } from 'framer-motion'
 import { GithubIcon, LinkedinIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-import * as AccessibleIcon from '@radix-ui/react-accessible-icon'
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 
 import { cn } from '@/utils'
 
@@ -36,28 +37,57 @@ export const Footer = () => {
                     <div className="flex h-full flex-col items-end justify-between gap-4">
                         <div className="absolute bottom-0 right-0 flex gap-5">
                             <ThemeToggle />
-
-                            <Link
+                            <IconButton
+                                label="github"
                                 href="https://github.com/itaysarfaty"
-                                data-umami-event="Github button"
+                                umamiEvent="Github button"
                             >
-                                <AccessibleIcon.Root label="github">
-                                    <GithubIcon className="stroke-[0.7px] hover:stroke-1" />
-                                </AccessibleIcon.Root>
-                            </Link>
-                            <Link
+                                <GithubIcon className="stroke-[0.7px]" />
+                            </IconButton>
+                            <IconButton
+                                label="linkedin"
                                 href="https://www.linkedin.com/in/itaysarfaty/"
-                                data-umami-event="Linkedin button"
+                                umamiEvent="Linkedin button"
                             >
-                                <AccessibleIcon.Root label="linkedin">
-                                    <LinkedinIcon className="stroke-[0.7] hover:stroke-1" />
-                                </AccessibleIcon.Root>
-                            </Link>
+                                <LinkedinIcon className="stroke-[0.7px]" />
+                            </IconButton>
                         </div>
                     </div>
                 </TextScaffold>
             </div>
         </nav>
+    )
+}
+
+const IconButton = ({
+    label,
+    href,
+    umamiEvent,
+    children,
+}: {
+    label: string
+    href: string
+    umamiEvent?: string
+    children: React.ReactNode
+}) => {
+    return (
+        <motion.span
+            whileHover={{
+                rotate: [0, 7, -7, 0],
+                transition: {
+                    type: 'tween',
+                    duration: 0.5,
+                },
+            }}
+        >
+            <Link
+                href={href}
+                data-umami-event={umamiEvent}
+                className="cursor-pointer"
+            >
+                <AccessibleIcon label={label}>{children}</AccessibleIcon>
+            </Link>
+        </motion.span>
     )
 }
 
