@@ -24,14 +24,15 @@ export default function AboutPage() {
                 </Paragraph>
                 <Paragraph title="Design">
                     <ParagraphText>
-                        {`I'm by no means a creative genius, but I'm self proclaimed expert functional design. I'm fascinated by the
+                        {`I'm by no means a creative genius, but I'm a self proclaimed expert in functional design. I'm fascinated by the
                         psychology that drives intuitive interfaces and how small design choices can significantly impact user experience.`}
                     </ParagraphText>
                 </Paragraph>
                 <Paragraph title="Cooking">
                     <ParagraphText>
-                        {`If I'm not behind the screen you find me behind the grill. When cooking (or coding), 
-                        you can follow instructions perfectly, but ultimately, each person will have a unique experience.`}
+                        {`If I'm not behind the screen, you'll find me behind the grill.
+                        When cooking (or designing) you can follow the best practices to reach a 
+                        consistent outcome, but ultimately, each person's experience will be uniquely theirs.`}
                     </ParagraphText>
                 </Paragraph>
                 <Paragraph title="Education">
