@@ -41,7 +41,7 @@ export default function AboutPage() {
                     </ParagraphText>
                 </Paragraph>
                 <Paragraph title="Have a question?">
-                    <ParagraphText className="flex gap-2">
+                    <ParagraphText className="flex gap-[6px]">
                         Feel free to connect on{' '}
                         <Link
                             href={'https://www.linkedin.com/in/itaysarfaty/'}
