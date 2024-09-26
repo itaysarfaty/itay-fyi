@@ -6,7 +6,6 @@ import { Inter, Josefin_Slab } from 'next/font/google'
 import { cn } from '@/utils'
 
 import { Footer } from '@/components/footer'
-import { SettingsMenu } from '@/components/settings'
 
 import './globals.css'
 
@@ -43,8 +42,8 @@ export default async function RootLayout({
             </head>
             <body
                 className={cn(
-                    `flex min-h-[100svh] w-full bg-background font-serif font-normal text-foreground
-                    antialiased dark:font-light`,
+                    `flex min-h-[100svh] w-full bg-background font-serif font-light text-foreground
+                    antialiased`,
                     fontSerif.variable,
                     fontSans.variable
                 )}
