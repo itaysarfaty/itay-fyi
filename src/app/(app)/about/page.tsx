@@ -19,21 +19,19 @@ export default function AboutPage() {
                     <ParagraphText>
                         {`I've been coding for over six years now and have a knack for making things work and easy to use. 
                         A lot of my professional experience has been front-end related; however, 
-                        I've been venturing into full-stack development, and I love it.`}
+                        In recent years I've been venturing into full-stack development, and I love it.`}
                     </ParagraphText>
                 </Paragraph>
                 <Paragraph title="Design">
                     <ParagraphText>
-                        {`I'm by no means a creative genius, but I'm passionate about functional design. I enjoy reading about
-                         the psychology that drives intuitive interfaces. It's fascinating how small design choices can significantly 
-                         impact user experience.`}
+                        {`I'm by no means a creative genius, but I'm self proclaimed expert functional design. I'm fascinated by the
+                        psychology that drives intuitive interfaces and how small design choices can significantly impact user experience.`}
                     </ParagraphText>
                 </Paragraph>
                 <Paragraph title="Cooking">
                     <ParagraphText>
-                        {`If I'm not working you'll probably find me cooking. 
-                        Much like designing a user interface, I love the balance of science and art it offers. 
-                        You can measure everything perfectly, but ultimately, each person will have a unique experience.`}
+                        {`If I'm not behind the screen you find me behind the grill. When cooking (or coding), 
+                        you can follow instructions perfectly, but ultimately, each person will have a unique experience.`}
                     </ParagraphText>
                 </Paragraph>
                 <Paragraph title="Education">
