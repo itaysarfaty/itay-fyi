@@ -3,14 +3,25 @@
 import { motion, useAnimation, useInView } from 'framer-motion'
 import { useEffect, useRef } from 'react'
 
+import { cn } from '@/utils'
+
 import { TextScaffold } from './text-scaffold'
 
 export interface ParagraphProps {
     title: string
-    text: string
+    children: React.ReactNode
 }
 
-export const Paragraph = ({ title, text }: ParagraphProps) => {
+export const ParagraphText = ({
+    children,
+    className,
+}: {
+    children: React.ReactNode
+    className?: string
+}) => {
+    return <p className={cn('text-xl leading-8', className)}>{children}</p>
+}
+export const Paragraph = ({ title, children }: ParagraphProps) => {
     const ref = useRef<HTMLDivElement>(null)
     const controls = useAnimation()
     // @ts-ignore
@@ -38,9 +49,9 @@ export const Paragraph = ({ title, text }: ParagraphProps) => {
             <TextScaffold>
                 <h3 className="text-2xl font-semibold">{title}</h3>
             </TextScaffold>
-            <TextScaffold>
-                <p className="text-xl leading-8">{text}</p>
-            </TextScaffold>
+            <TextScaffold>{children}</TextScaffold>
         </motion.section>
     )
 }
+
+Paragraph.Text = ParagraphText
