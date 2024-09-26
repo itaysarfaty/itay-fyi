@@ -19,7 +19,7 @@ export default function AboutPage() {
                     <ParagraphText>
                         {`I've been coding for over six years now and have a knack for making things work and easy to use. 
                         A lot of my professional experience has been front-end related; however, 
-                        In recent years I've been venturing into full-stack development, and I love it.`}
+                        in recent years I've been venturing into full-stack development, and I love it.`}
                     </ParagraphText>
                 </Paragraph>
                 <Paragraph title="Design">
@@ -43,7 +43,10 @@ export default function AboutPage() {
                 <Paragraph title="Have a question?">
                     <ParagraphText className="flex gap-2">
                         Feel free to connect on{' '}
-                        <Link href={'https://www.linkedin.com/in/itaysarfaty/'}>
+                        <Link
+                            href={'https://www.linkedin.com/in/itaysarfaty/'}
+                            data-umami-event="Linkedin connect button"
+                        >
                             <span className="group flex w-fit items-center gap-2">
                                 LinkedIn
                                 <ExternalLinkIcon className="mb-[2px] h-4 w-4 stroke-[0.7] text-foreground" />
