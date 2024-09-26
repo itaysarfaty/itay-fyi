@@ -41,13 +41,14 @@ export default function AboutPage() {
                     </ParagraphText>
                 </Paragraph>
                 <Paragraph title="Have a question?">
-                    <ParagraphText className="flex gap-[6px]">
+                    <ParagraphText className="">
                         Feel free to connect on{' '}
                         <Link
                             href={'https://www.linkedin.com/in/itaysarfaty/'}
                             data-umami-event="Linkedin connect button"
+                            className="inline-block"
                         >
-                            <span className="group flex w-fit items-center gap-2">
+                            <span className="flex items-center gap-2">
                                 LinkedIn
                                 <ExternalLinkIcon className="mb-[2px] h-4 w-4 stroke-[0.7] text-foreground" />
                             </span>
