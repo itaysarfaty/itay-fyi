@@ -9,6 +9,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import { Media } from './collections/media'
+import { Technologies } from './collections/technologies'
 import { Users } from './collections/users'
 
 const filename = fileURLToPath(import.meta.url)
@@ -17,11 +18,19 @@ const dirname = path.dirname(filename)
 export default buildConfig({
     admin: {
         user: Users.slug,
+        autoLogin:
+            process.env.NODE_ENV === 'development'
+                ? {
+                      email: 'itaysarfaty@gmail.com',
+                      password: 'password',
+                  }
+                : false,
+
         importMap: {
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Users, Media],
+    collections: [Users, Media, Technologies],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {

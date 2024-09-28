@@ -1,32 +1,42 @@
+'use client'
+
+import { motion } from 'framer-motion'
+
 import { cn } from '@/utils'
 
+import { HeroHeadShot } from './hero-head-shot'
 import TextAnim from './text-animation/text-animation'
-import { TextScaffold } from './text-scaffold'
 
 export interface HeaderProps {
     title: string
     subTitle: string
     className?: string
+    showHeadshot?: boolean
 }
 
-export const Hero = ({ title, subTitle, className }: HeaderProps) => {
+export const Hero = ({
+    title,
+    subTitle,
+    className,
+    showHeadshot = false,
+}: HeaderProps) => {
     return (
-        <section
+        <motion.section
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            // @ts-ignore
             className={cn(
                 'flex h-[calc(100svh-84px)] w-full items-center @container',
                 className
             )}
         >
-            <header className="grid w-full gap-6">
-                <TextScaffold>
-                    <h1 className="text-5xl font-medium @[640px]:text-6xl">
-                        {title}
-                    </h1>
-                </TextScaffold>
-                <TextScaffold>
+            <div className="flex items-center gap-8 sm:gap-12">
+                {showHeadshot && <HeroHeadShot />}
+                <header className="grid w-full gap-3">
+                    <h1 className="text-4xl font-normal">{title}</h1>
                     <TextAnim text={subTitle} />
-                </TextScaffold>
-            </header>
-        </section>
+                </header>
+            </div>
+        </motion.section>
     )
 }

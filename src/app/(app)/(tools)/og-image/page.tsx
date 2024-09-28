@@ -1,9 +1,10 @@
 'use client'
 
 import { toPng } from 'html-to-image'
+import { InfoIcon, ScalingIcon } from 'lucide-react'
 import { forwardRef, useRef, useState } from 'react'
 
-import { TextScaffold } from '@/components/text-scaffold'
+import { YDivider } from '@/components/dividers'
 
 const canvasSize = {
     width: 600,
@@ -11,8 +12,8 @@ const canvasSize = {
 }
 
 const defaultValues = {
-    title: 'Itay Sarfaty',
-    subTitle: 'Software Engineer',
+    title: 'Header',
+    subTitle: 'You can edit this text',
 }
 
 export default function OGImagePage() {
@@ -41,49 +42,46 @@ export default function OGImagePage() {
             <section
                 className={'flex h-[500px] w-full items-center @container'}
             >
-                <header className="grid w-full gap-6">
-                    <TextScaffold>
+                <header className="grid w-full gap-4">
+                    <YDivider>
                         <input
-                            className="w-full border-none bg-transparent text-5xl font-medium placeholder-foreground
+                            className="w-full border-none bg-transparent text-4xl font-medium placeholder-foreground
                                 focus:outline-none"
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                             placeholder={defaultValues.title}
                             autoFocus
                         />
-                    </TextScaffold>
-                    <TextScaffold>
+                    </YDivider>
+                    <YDivider>
                         <input
                             type="textarea"
-                            className="w-full border-none bg-transparent text-2xl placeholder-foreground
+                            className="w-full border-none bg-transparent text-xl placeholder-foreground
                                 focus:outline-none"
                             value={subTitle}
                             onChange={(e) => setSubTitle(e.target.value)}
                             placeholder={defaultValues.subTitle}
                         />
-                    </TextScaffold>
+                    </YDivider>
                 </header>
             </section>
 
-            <div className="flex flex-col gap-6">
-                <TextScaffold>
-                    <h3 className="text-2xl font-medium">
-                        Open Graph Generator
-                    </h3>
-                </TextScaffold>
-                <TextScaffold>
-                    <p className="text-xl">
-                        I built this tool to easily generate an open graph
-                        image. Update the header above and download.
-                    </p>
-                </TextScaffold>
-                <button
-                    className="my-4 grid w-fit shrink-0 place-items-center rounded bg-foreground px-4 py-2
-                        font-sans text-sm font-normal text-background"
-                    onClick={handleDownload}
-                >
-                    Download
-                </button>
+            <div className="flex flex-col gap-4">
+                <h3>Header Preview</h3>
+                <p>Customize the header above and download the image</p>
+                <div className="my-4 mb-12 flex items-center gap-5">
+                    <button
+                        className="grid w-fit shrink-0 place-items-center rounded bg-foreground px-4 py-2 font-sans
+                            text-sm font-normal text-background"
+                        onClick={handleDownload}
+                    >
+                        Download
+                    </button>
+                    <div className="flex items-center gap-1 text-foreground/50">
+                        <ScalingIcon className="h-4" />
+                        <p className="text-xs font-normal">1200 x 630 pixels</p>
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -99,25 +97,34 @@ const HeaderContent = forwardRef<
     return (
         <div className="fixed -top-[1000px]">
             <div
-                className={'bg-background px-4'}
+                className={'relative bg-background px-4'}
                 style={{ width: canvasSize.width, height: canvasSize.height }}
                 ref={ref}
             >
-                <div className="x-dash mx-auto grid h-full max-w-[90%] gap-3 overflow-visible">
+                <div className="absolute z-0 h-full w-full bg-background">
+                    <div
+                        className="absolute h-full w-full bg-background
+                            bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)]
+                            [background-size:16px_16px]
+                            [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_80%,transparent_100%)]"
+                    />
+                </div>
+
+                <div className="mx-auto grid h-full max-w-[90%] gap-3 overflow-visible border-x border-border">
                     <section
                         className={'flex h-full w-full items-center @container'}
                     >
                         <header className="grid w-full gap-6">
-                            <TextScaffold>
+                            <YDivider>
                                 <h1 className="text-7xl font-medium">
                                     {title || defaultValues.title}
                                 </h1>
-                            </TextScaffold>
-                            <TextScaffold>
+                            </YDivider>
+                            <YDivider>
                                 <h2 className="text-4xl">
                                     {subTitle || defaultValues.subTitle}
                                 </h2>
-                            </TextScaffold>
+                            </YDivider>
                         </header>
                     </section>
                 </div>

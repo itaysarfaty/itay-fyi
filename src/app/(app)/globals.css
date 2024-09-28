@@ -4,20 +4,31 @@
 
 @layer base {
     :root {
-        --background: #f4f4f4;
-        --foreground: #1b1b1b;
-        --dash-color: #00000015;
-        /* --background: #405cb1;
-  --foreground: #e4eaf6;
-  --dash-color: #98aedd; */
         --dash-length: 10px;
         --dash-spacing: 15px;
         --dash-thickness: 1px;
+
+        --background: 0 0% 95.7%;
+        --foreground: 0 0% 10.6%;
+        --border: 0 0% 0% / 0.09;
+        --primary: 15 60% 50%;
     }
     .dark {
-        --background: #0f0f0f;
-        --foreground: #c7c7c7;
-        --dash-color: #ffffff11;
+        --background: 0 0% 5.9%;
+        --foreground: 0 0% 78%;
+        --primary: 0 55% 45%;
+        --border: 0 0% 100% / 0.08;
+    }
+
+    p {
+        @apply text-lg;
+    }
+
+    h2 {
+        @apply text-xl;
+    }
+    h3 {
+        @apply text-lg font-medium;
     }
 }
 
@@ -30,87 +41,15 @@
     }
 }
 
-.y-dash {
-    background-image: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 0px
-        ),
-        repeating-linear-gradient(
-            90deg,
-            var(--dash-color),
-            var(--dash-color) var(--dash-length),
-            transparent var(--dash-length),
-            transparent var(--dash-spacing),
-            var(--dash-color) var(--dash-spacing)
-        ),
-        repeating-linear-gradient(0deg, transparent, transparent 0px),
-        repeating-linear-gradient(
-            90deg,
-            var(--dash-color),
-            var(--dash-color) var(--dash-length),
-            transparent var(--dash-length),
-            transparent var(--dash-spacing),
-            var(--dash-color) var(--dash-spacing)
-        );
-    background-size:
-        100% var(--dash-thickness),
-        100% var(--dash-thickness),
-        100% var(--dash-thickness),
-        100% calc(var(--dash-thickness) * 0.9);
-    background-position:
-        0 0,
-        0 0,
-        100% 0,
-        0 100%;
-    background-repeat: no-repeat;
-}
-
-.x-dash {
-    background-image: repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 0px
-        ),
-        repeating-linear-gradient(
-            0deg,
-            var(--dash-color),
-            var(--dash-color) var(--dash-length),
-            transparent var(--dash-length),
-            transparent var(--dash-spacing),
-            var(--dash-color) var(--dash-spacing)
-        ),
-        repeating-linear-gradient(90deg, transparent, transparent 0px),
-        repeating-linear-gradient(
-            0deg,
-            var(--dash-color),
-            var(--dash-color) var(--dash-length),
-            transparent var(--dash-length),
-            transparent var(--dash-spacing),
-            var(--dash-color) var(--dash-spacing)
-        );
-    background-size:
-        var(--dash-thickness) 100%,
-        calc(var(--dash-thickness) * 0.9) 100%,
-        var(--dash-thickness) 100%,
-        var(--dash-thickness) 100%;
-    background-position:
-        0 0,
-        0 0,
-        100% 0,
-        100% 0;
-    background-repeat: no-repeat;
-}
-
 ::-moz-selection {
     /* Code for Firefox */
-    color: var(--background);
-    background: var(--foreground);
+    color: hsl(var(--background));
+    background: hsl(var(--foreground));
 }
 
 ::selection {
-    color: var(--background);
-    background: var(--foreground);
+    color: hsl(var(--background));
+    background: hsl(var(--foreground));
 }
 
 /* Focus theme */
@@ -119,7 +58,7 @@
 }
 
 :focus-visible {
-    outline: 1px solid var(--foreground);
-    outline-offset: 2px;
-    border-radius: 4px;
+    outline: 2px solid hsl(var(--foreground) / 0.5);
+    outline-offset: 4px;
+    border-radius: 1px;
 }

@@ -10,8 +10,7 @@ module.exports = {
                 center: true,
                 screens: {
                     sm: '600px',
-                    md: '728px',
-                    lg: '864px',
+                    md: '640px',
                 },
             },
             animation: {
@@ -22,9 +21,10 @@ module.exports = {
                 serif: ['var(--font-serif)', ...fontFamily.serif],
             },
             colors: {
-                background: 'var(--background)',
-                foreground: 'var(--foreground)',
-                border: 'var(--dash-color)',
+                background: 'hsl(var(--background))',
+                foreground: 'hsl(var(--foreground))',
+                border: 'hsl(var(--border))',
+                primary: 'hsl(var(--primary))',
             },
         },
     },
