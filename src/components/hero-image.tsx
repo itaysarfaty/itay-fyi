@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-export const HeroHeadShot = () => {
+export const HeroImage = ({ src }: { src: string }) => {
     return (
         <motion.div
             // @ts-ignore
@@ -11,7 +11,7 @@ export const HeroHeadShot = () => {
                 sm:h-[8rem] sm:w-[8rem]"
             initial={{ rotate: 0 }}
             animate={{
-                rotate: [0, 5, 0],
+                rotate: [0, 2, 0],
             }}
             transition={{
                 duration: 1.2,
@@ -21,10 +21,10 @@ export const HeroHeadShot = () => {
             }}
         >
             <Image
-                src="/assets/head-shot.jpeg"
+                src={src}
                 alt="Headshot"
                 className="h-full w-full object-cover dark:brightness-[0.8]"
-                layout="fill"
+                fill
             />
         </motion.div>
     )

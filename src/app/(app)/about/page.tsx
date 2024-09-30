@@ -9,57 +9,34 @@ export default function AboutPage() {
         <>
             <Hero title="About" subTitle="Thank's for taking an interest" />
             <div className="grid gap-[12rem] pb-[12rem]">
-                <AboutSection title="Hi there">
+                <AboutSection title="Hi there" margin="10%">
                     <p>
                         I&apos;m Itay (pronounced EE-tie) a software engineer
                         based in New York. I lead the{' '}
-                        <em className="font-light not-italic">
-                            frontend development
-                        </em>{' '}
-                        at CargoMatrix, a logistics software company.
+                        <em>frontend development</em> at CargoMatrix, a
+                        logistics software company.
                     </p>
                 </AboutSection>
                 <AboutSection title="Software">
                     <p>
-                        I&apos;ve been coding for{' '}
-                        <em className="font-light not-italic">
-                            over six years
-                        </em>{' '}
-                        now and have a knack for making things work and easy to
-                        use. A lot of my professional experience has been
-                        front-end related; however, in recent years I&apos;ve
-                        been venturing into full-stack development, and I love
-                        it.
+                        I&apos;ve been coding for <em>over six years</em> now
+                        and have a knack for making things easy to use. Most of
+                        my career has focused on frontend development, but in
+                        recent years I&apos;ve expanded into full-stack work, .
                     </p>
                 </AboutSection>
                 <AboutSection title="Design">
                     <p>
-                        I&apos;m by no means a creative genius, but I&apos;m a
-                        self proclaimed expert in{' '}
-                        <em className="font-light not-italic">functional</em>{' '}
-                        design. I&apos;m fascinated by the psychology that
-                        drives intuitive interfaces and how small design choices
-                        can significantly impact user experience.
-                    </p>
-                </AboutSection>
-                <AboutSection title="Cooking">
-                    <p>
-                        If I&apos;m not behind the screen, you&apos;ll find me
-                        over the cutting board. What I love about cooking (or
-                        designing) is that you can follow the best practices to
-                        reach a{' '}
-                        <em className="font-light not-italic">consistent</em>{' '}
-                        outcome, but ultimately, each person&apos;s experience
-                        will be uniquely theirs.
+                        I&apos;m not a creative genius, but I&apos;m a self
+                        proclaimed expert in <em>functional</em> design. The
+                        psychology behind intuitive interfaces and how subtle
+                        choices affect user experience captivates me.
                     </p>
                 </AboutSection>
                 <AboutSection title="Education">
                     <p>
-                        Bachelor of Science in{' '}
-                        <em className="font-light not-italic">
-                            Computer Science
-                        </em>
-                        , Binghamton University, Class of 2022
+                        Bachelor of Science in <em>Computer Science</em>,
+                        Binghamton University, Class of 2022
                     </p>
                 </AboutSection>
                 <AboutSection title="Have a question?">

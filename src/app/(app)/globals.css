@@ -11,12 +11,12 @@
         --background: 0 0% 95.7%;
         --foreground: 0 0% 10.6%;
         --border: 0 0% 0% / 0.09;
-        --primary: 15 60% 50%;
+        --primary: 47 84% 62%;
     }
     .dark {
         --background: 0 0% 5.9%;
         --foreground: 0 0% 78%;
-        --primary: 0 55% 45%;
+        --primary: 47 84% 62%;
         --border: 0 0% 100% / 0.08;
     }
 
@@ -29,6 +29,9 @@
     }
     h3 {
         @apply text-lg font-medium;
+    }
+    em {
+        @apply font-light not-italic;
     }
 }
 

@@ -6,14 +6,20 @@ import { useEffect, useRef } from 'react'
 export interface ParagraphProps {
     title: string
     children: React.ReactNode
+    margin?: string
 }
 
-export const AboutSection = ({ title, children }: ParagraphProps) => {
+export const AboutSection = ({
+    title,
+    children,
+    margin = '-30%',
+}: ParagraphProps) => {
     const ref = useRef<HTMLDivElement>(null)
     const controls = useAnimation()
     // @ts-ignore
     const isInView = useInView(ref, {
         once: true,
+        margin,
     })
 
     useEffect(() => {
@@ -30,7 +36,11 @@ export const AboutSection = ({ title, children }: ParagraphProps) => {
             ref={ref}
             // @ts-ignore
             className="grid w-full gap-2"
-            initial={{ opacity: 0, y: 70 }}
+            style={{
+                background:
+                    'radial-gradient(circle, hsl(var(--background)) 0%, transparent 100%)',
+            }}
+            initial={{ opacity: 0, y: 100 }}
             animate={controls}
         >
             <h3>{title}</h3>

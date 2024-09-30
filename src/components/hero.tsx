@@ -4,22 +4,17 @@ import { motion } from 'framer-motion'
 
 import { cn } from '@/utils'
 
-import { HeroHeadShot } from './hero-head-shot'
+import { HeroImage } from './hero-image'
 import TextAnim from './text-animation/text-animation'
 
 export interface HeaderProps {
     title: string
     subTitle: string
     className?: string
-    showHeadshot?: boolean
+    imageSrc?: string
 }
 
-export const Hero = ({
-    title,
-    subTitle,
-    className,
-    showHeadshot = false,
-}: HeaderProps) => {
+export const Hero = ({ title, subTitle, className, imageSrc }: HeaderProps) => {
     return (
         <motion.section
             initial={{ opacity: 0 }}
@@ -31,7 +26,7 @@ export const Hero = ({
             )}
         >
             <div className="flex items-center gap-8 sm:gap-12">
-                {showHeadshot && <HeroHeadShot />}
+                {imageSrc && <HeroImage src={imageSrc} />}
                 <header className="grid w-full gap-3">
                     <h1 className="text-4xl font-normal">{title}</h1>
                     <TextAnim text={subTitle} />

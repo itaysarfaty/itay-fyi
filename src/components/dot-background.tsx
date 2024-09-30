@@ -25,7 +25,7 @@ export const DotBackground = () => {
     const mask = useTransform(
         [springX, springY],
         ([x, y]) =>
-            `radial-gradient(circle at ${x}px ${y}px, black 100px, transparent 200px)`
+            `radial-gradient(circle at ${x}px ${y}px, hsl(var(--foreground)) 50px, transparent 150px)`
     )
     return (
         <div className="fixed inset-0 -z-10 bg-background">
@@ -37,7 +37,7 @@ export const DotBackground = () => {
             <motion.div
                 // @ts-ignore
                 className="absolute inset-0
-                    bg-[radial-gradient(hsl(var(--foreground)/0.15)_1px,transparent_1px)]
+                    bg-[radial-gradient(hsl(var(--foreground)/0.4)_1px,transparent_1px)]
                     [background-size:16px_16px]"
                 style={{
                     WebkitMaskImage: mask,
