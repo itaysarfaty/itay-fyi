@@ -21,14 +21,16 @@ export const Hero = ({ title, subTitle, className, imageSrc }: HeaderProps) => {
             animate={{ opacity: 1 }}
             // @ts-ignore
             className={cn(
-                'flex h-[calc(100svh-84px)] w-full items-center @container',
+                'flex h-[calc(100svh-84px)] w-full items-center',
                 className
             )}
         >
             <div className="flex items-center gap-8 sm:gap-12">
                 {imageSrc && <HeroImage src={imageSrc} />}
                 <header className="grid w-full gap-3">
-                    <h1 className="text-4xl font-normal">{title}</h1>
+                    <h1 className="text-bg w-fit text-4xl font-normal">
+                        {title}
+                    </h1>
                     <TextAnim text={subTitle} />
                 </header>
             </div>

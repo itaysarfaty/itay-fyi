@@ -12,8 +12,8 @@ const canvasSize = {
 }
 
 const defaultValues = {
-    title: 'Header',
-    subTitle: 'You can edit this text',
+    title: 'Hey',
+    subTitle: 'Edit this header',
 }
 
 export default function OGImagePage() {
@@ -42,31 +42,27 @@ export default function OGImagePage() {
             <section
                 className={'flex h-[500px] w-full items-center @container'}
             >
-                <header className="grid w-full gap-4">
-                    <YDivider>
-                        <input
-                            className="w-full border-none bg-transparent text-4xl font-medium placeholder-foreground
-                                focus:outline-none"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            placeholder={defaultValues.title}
-                            autoFocus
-                        />
-                    </YDivider>
-                    <YDivider>
-                        <input
-                            type="textarea"
-                            className="w-full border-none bg-transparent text-xl placeholder-foreground
-                                focus:outline-none"
-                            value={subTitle}
-                            onChange={(e) => setSubTitle(e.target.value)}
-                            placeholder={defaultValues.subTitle}
-                        />
-                    </YDivider>
+                <header className="text-bg grid w-full gap-4">
+                    <input
+                        className="w-full border-y border-border bg-transparent text-4xl font-medium
+                            placeholder-foreground focus:outline-none"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        placeholder={defaultValues.title}
+                        autoFocus
+                    />
+                    <input
+                        type="textarea"
+                        className="w-full border-y border-border bg-transparent text-xl placeholder-foreground
+                            focus:outline-none"
+                        value={subTitle}
+                        onChange={(e) => setSubTitle(e.target.value)}
+                        placeholder={defaultValues.subTitle}
+                    />
                 </header>
             </section>
 
-            <div className="flex flex-col gap-4">
+            <div className="text-bg flex flex-col gap-2">
                 <h3>Header Preview</h3>
                 <p>Customize the header above and download the image</p>
                 <div className="my-4 mb-12 flex items-center gap-5">
@@ -110,21 +106,17 @@ const HeaderContent = forwardRef<
                     />
                 </div>
 
-                <div className="mx-auto grid h-full max-w-[90%] gap-3 overflow-visible border-x border-border">
+                <div className="mx-auto grid h-full max-w-[90%] gap-3 overflow-visible">
                     <section
                         className={'flex h-full w-full items-center @container'}
                     >
                         <header className="grid w-full gap-6">
-                            <YDivider>
-                                <h1 className="text-7xl font-medium">
-                                    {title || defaultValues.title}
-                                </h1>
-                            </YDivider>
-                            <YDivider>
-                                <h2 className="text-4xl">
-                                    {subTitle || defaultValues.subTitle}
-                                </h2>
-                            </YDivider>
+                            <h1 className="text-7xl font-medium">
+                                {title || defaultValues.title}
+                            </h1>
+                            <h2 className="text-4xl">
+                                {subTitle || defaultValues.subTitle}
+                            </h2>
                         </header>
                     </section>
                 </div>

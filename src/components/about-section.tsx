@@ -35,15 +35,11 @@ export const AboutSection = ({
         <motion.section
             ref={ref}
             // @ts-ignore
-            className="grid w-full gap-2"
-            style={{
-                background:
-                    'radial-gradient(circle, hsl(var(--background)) 0%, transparent 100%)',
-            }}
+            className="grid w-fit gap-2"
             initial={{ opacity: 0, y: 100 }}
             animate={controls}
         >
-            <h3>{title}</h3>
+            <h3 className="text-bg w-fit">{title}</h3>
             {children}
         </motion.section>
     )

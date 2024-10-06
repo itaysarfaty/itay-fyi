@@ -20,6 +20,10 @@
         --border: 0 0% 100% / 0.08;
     }
 
+    a {
+        @apply text-base;
+    }
+
     p {
         @apply text-lg;
     }
@@ -32,6 +36,12 @@
     }
     em {
         @apply font-light not-italic;
+    }
+    .text-bg {
+        background: hsl(var(--background) / 0.6);
+        border-radius: 20px;
+        /* blurr the background */
+        backdrop-filter: blur(1px);
     }
 }
 

@@ -17,10 +17,10 @@ export const DotBackground = () => {
 
         window.addEventListener('mousemove', handleMouseMove)
         return () => window.removeEventListener('mousemove', handleMouseMove)
-    }, [])
+    }, [mouseX, mouseY])
 
-    const springX = useSpring(mouseX, { stiffness: 100, damping: 20 })
-    const springY = useSpring(mouseY, { stiffness: 100, damping: 20 })
+    const springX = useSpring(mouseX, { stiffness: 150, damping: 30 })
+    const springY = useSpring(mouseY, { stiffness: 150, damping: 30 })
 
     const mask = useTransform(
         [springX, springY],
@@ -37,8 +37,9 @@ export const DotBackground = () => {
             <motion.div
                 // @ts-ignore
                 className="absolute inset-0
-                    bg-[radial-gradient(hsl(var(--foreground)/0.4)_1px,transparent_1px)]
-                    [background-size:16px_16px]"
+                    bg-[radial-gradient(hsl(var(--foreground)/0.7)_1px,transparent_1px)]
+                    [background-size:16px_16px]
+                    dark:bg-[radial-gradient(hsl(var(--foreground)/0.4)_1px,transparent_1px)]"
                 style={{
                     WebkitMaskImage: mask,
                     maskImage: mask,

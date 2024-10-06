@@ -79,10 +79,7 @@ const Button = ({ label, href }: { label: string; href: string }) => {
     const highlight = pathName === href
     return (
         <li>
-            <Link
-                href={href}
-                className={cn('text-base', highlight ? 'font-medium' : '')}
-            >
+            <Link href={href} className={cn(highlight ? 'font-medium' : '')}>
                 {label}
             </Link>
         </li>

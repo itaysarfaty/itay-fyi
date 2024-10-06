@@ -46,8 +46,8 @@ export default async function RootLayout({
                 </head>
                 <body
                     className={cn(
-                        `flex min-h-[100svh] w-full bg-background font-sans font-extralight
-                        text-foreground antialiased`,
+                        `flex min-h-[100svh] w-full bg-background font-serif font-extralight
+                        text-foreground antialiased @container`,
                         fontSerif.variable,
                         fontSans.variable
                     )}
@@ -63,8 +63,10 @@ export default async function RootLayout({
                             <div className="container">
                                 <div className="mx-auto grid h-full max-w-[90%] gap-3 overflow-visible">
                                     {children}
-                                    <Divider className="mb-[0.5rem]" />
-                                    <Footer />
+                                    <div>
+                                        <Divider className="mb-[1.5rem]" />
+                                        <Footer />
+                                    </div>
                                 </div>
                             </div>
                         </ThemeProvider>

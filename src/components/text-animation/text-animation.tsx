@@ -7,7 +7,7 @@ import {
     useReducedMotion,
     useTransform,
 } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 
 import CursorBlinker from './cursor-blinker'
 
@@ -46,7 +46,7 @@ export default function TextAnim({ text }: { text: string }) {
 
     if (!isMounted) return <h2>{' '}</h2>
     return (
-        <h2>
+        <h2 className="text-bg">
             {!prefersReducedMotion ? (
                 <>
                     <motion.span>{displayText}</motion.span>

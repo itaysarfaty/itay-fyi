@@ -1,0 +1,47 @@
+.lr a {
+    @apply text-base;
+}
+
+.lr h1 {
+    @apply text-lg font-medium;
+}
+
+.lr h2 {
+    @apply text-lg;
+}
+
+.lr h3 {
+    @apply text-base font-medium;
+}
+
+.lr p {
+    @apply text-base;
+}
+
+.lr em {
+    @apply font-light not-italic;
+}
+
+.lr h1:has(+ p) {
+    @apply mb-3;
+}
+
+.lr h1:has(+ ul) {
+    @apply mb-2;
+}
+
+.lr h1 + p {
+    @apply mb-10;
+}
+
+.lr h1 + ul {
+    @apply mb-10;
+}
+
+.lr ul {
+    @apply list-disc pl-4;
+}
+
+.lr ul li {
+    @apply mb-[3px];
+}

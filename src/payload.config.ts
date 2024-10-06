@@ -9,6 +9,7 @@ import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
 import { Media } from './collections/media'
+import { Projects } from './collections/projects'
 import { Technologies } from './collections/technologies'
 import { Users } from './collections/users'
 
@@ -30,7 +31,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Users, Media, Technologies],
+    collections: [Projects, Technologies, Users, Media],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {
