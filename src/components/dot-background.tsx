@@ -13,6 +13,7 @@ export const DotBackground = () => {
         const handleMouseMove = (event: MouseEvent) => {
             mouseX.set(event.clientX)
             mouseY.set(event.clientY)
+            console.log('mouseY', mouseY)
         }
 
         window.addEventListener('mousemove', handleMouseMove)
