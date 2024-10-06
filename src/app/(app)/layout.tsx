@@ -46,7 +46,7 @@ export default async function RootLayout({
                 </head>
                 <body
                     className={cn(
-                        `flex min-h-[100svh] w-full bg-background font-serif font-extralight
+                        `flex min-h-[100vh] w-full bg-background font-serif font-extralight
                         text-foreground antialiased`,
                         fontSerif.variable,
                         fontSans.variable
