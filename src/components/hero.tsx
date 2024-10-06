@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 import { cn } from '@/utils'
 
@@ -15,15 +16,24 @@ export interface HeaderProps {
 }
 
 export const Hero = ({ title, subTitle, className, imageSrc }: HeaderProps) => {
+    const [height, setHeight] = useState<string>('')
+
+    useEffect(() => {
+        setHeight(`${window.innerHeight - 84}px`)
+        // Clean up the event listener
+    }, [])
+
     return (
         <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             // @ts-ignore
             className={cn(
-                'flex h-[calc(100svh-84px)] w-full items-center',
-                className
+                'flex w-full items-center',
+                className,
+                height ? '' : 'h-[calc(100vh-84px)]'
             )}
+            style={{ height }}
         >
             <div className="flex items-center gap-8 sm:gap-12">
                 {imageSrc && <HeroImage src={imageSrc} />}

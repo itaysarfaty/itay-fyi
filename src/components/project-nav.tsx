@@ -43,25 +43,24 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
             // @ts-expect-error
             className={cn(
                 `sticky top-10 z-50 mb-[30px] flex h-[60px] w-full justify-between
-                overflow-hidden rounded-lg bg-foreground/90 backdrop-blur-sm
-                transition-transform duration-500 @[800px]:-ml-[15%] @[800px]:w-[130%]
-                dark:bg-foreground/80`
+                overflow-hidden rounded-lg bg-[#e5e5e5] transition-transform duration-500
+                @[800px]:-ml-[15%] @[800px]:w-[130%] dark:bg-[#1a1a1a]`
             )}
         >
             <Link
                 href={'/projects'}
-                className="flex h-full items-center gap-2 px-6 text-sm font-normal text-background"
+                className="flex h-full items-center gap-2 px-6 text-sm font-normal"
             >
-                <ChevronLeftIcon className="-ml-1 h-4 w-4 stroke-[0.8] text-background" />
+                <ChevronLeftIcon className="-ml-1 h-4 w-4 stroke-2" />
                 Back
             </Link>
             {url && (
                 <Link
                     href={url}
-                    className="flex h-full items-center gap-3 px-6 text-sm font-normal text-background"
+                    className="flex h-full items-center gap-3 px-6 text-sm font-normal"
                 >
                     Open
-                    <ExternalLinkIcon className="-mr-1 h-4 w-4 stroke-[0.8] text-background" />
+                    <ExternalLinkIcon className="-mr-1 h-4 w-4 stroke-2" />
                 </Link>
             )}
         </motion.div>
