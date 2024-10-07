@@ -39,30 +39,35 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
         <motion.div
             initial={{ y: -120 }}
             animate={{ y: showBar ? 0 : -120 }}
-            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.2 }}
+            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}
             // @ts-expect-error
             className={cn(
-                `sticky top-10 z-50 mb-[30px] flex h-[60px] w-full justify-between
-                overflow-hidden rounded-lg bg-[#e5e5e5] transition-transform duration-500
-                @[800px]:-ml-[15%] @[800px]:w-[130%] dark:bg-[#1a1a1a]`
+                'sticky top-0 z-40 mb-[30px] @[800px]:-ml-[15%] @[800px]:w-[130%]'
             )}
         >
-            <Link
-                href={'/projects'}
-                className="flex h-full items-center gap-2 px-6 text-sm font-normal"
-            >
-                <ChevronLeftIcon className="-ml-1 h-4 w-4 stroke-2" />
-                Back
-            </Link>
-            {url && (
-                <Link
-                    href={url}
-                    className="flex h-full items-center gap-3 px-6 text-sm font-normal"
+            <div className="relative h-[100px] rounded-b-lg bg-background">
+                <div
+                    className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between overflow-hidden
+                        rounded-lg bg-[#e5e5e5] dark:bg-[#1a1a1a]"
                 >
-                    Open
-                    <ExternalLinkIcon className="-mr-1 h-4 w-4 stroke-2" />
-                </Link>
-            )}
+                    <Link
+                        href={'/projects'}
+                        className="flex h-full items-center gap-2 px-6 text-sm font-normal"
+                    >
+                        <ChevronLeftIcon className="-ml-1 h-4 w-4 stroke-2" />
+                        Back
+                    </Link>
+                    {url && (
+                        <Link
+                            href={url}
+                            className="flex h-full items-center gap-3 px-6 text-sm font-normal"
+                        >
+                            Open
+                            <ExternalLinkIcon className="-mr-1 h-4 w-4 stroke-2" />
+                        </Link>
+                    )}
+                </div>
+            </div>
         </motion.div>
     )
 }

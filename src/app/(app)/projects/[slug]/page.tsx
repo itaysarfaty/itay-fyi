@@ -25,12 +25,12 @@ export default async function ProjectPage({
 
     return (
         <>
-            <div className="relative flex flex-col pb-24 pt-10">
+            <div className="relative flex flex-col pb-24">
                 {/* Image */}
                 <ProjectNav url={project.url} />
 
                 <div
-                    className="relative aspect-[1.33] w-full overflow-hidden rounded-2xl bg-foreground/[0.05]
+                    className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-foreground/[0.05]
                         @[800px]:-ml-[15%] @[800px]:w-[130%]"
                 >
                     <PayloadMedia

@@ -48,7 +48,7 @@ export const ProjectCard = ({
             <div className="flex flex-col">
                 {/* Image */}
                 <div
-                    className="relative aspect-[1.33] w-full overflow-hidden rounded-2xl bg-foreground/[0.05]
+                    className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-foreground/[0.05]
                         lg:-ml-[15%] lg:w-[130%]"
                 >
                     <PayloadMedia

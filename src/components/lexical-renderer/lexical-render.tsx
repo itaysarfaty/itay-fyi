@@ -6,5 +6,10 @@ export interface LexicalRendersProps {
 
 export const LexicalRenderer = ({ content }: LexicalRendersProps) => {
     if (!content) return null
-    return <div dangerouslySetInnerHTML={{ __html: content }} className="lr" />
+    return (
+        <div
+            dangerouslySetInnerHTML={{ __html: content }}
+            className="text-bg lr"
+        />
+    )
 }
