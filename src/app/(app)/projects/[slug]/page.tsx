@@ -46,7 +46,7 @@ export default async function ProjectPage({
                         </h3>
                         <p className="text-bg text-base">{project.summary}</p>
                         {!!project.technologies && (
-                            <div className="mt-1 flex flex-wrap gap-4">
+                            <div className="mt-5 flex flex-wrap gap-4">
                                 {project.technologies.map((tech) => {
                                     if (typeof tech == 'number') return null
                                     return (
