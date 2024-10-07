@@ -30,8 +30,8 @@ export default async function ProjectPage({
                 <ProjectNav url={project.url} />
 
                 <div
-                    className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-foreground/[0.05]
-                        @[800px]:-ml-[15%] @[800px]:w-[130%]"
+                    className="relative -ml-[1%] aspect-[4/3] w-[102%] overflow-hidden rounded-2xl
+                        bg-foreground/[0.05] @[800px]:-ml-[15%] @[800px]:w-[130%]"
                 >
                     <PayloadMedia
                         image={project.previewImage}
@@ -39,7 +39,7 @@ export default async function ProjectPage({
                     />
                 </div>
 
-                <div className="grid gap-[50px] px-3 pt-[30px] @[670px]:px-0">
+                <div className="grid gap-[50px] pt-[30px]">
                     <div className="grid gap-3">
                         <h3 className="text-bg w-fit shrink-0">
                             {project.title}

@@ -48,8 +48,8 @@ export const ProjectCard = ({
             <div className="flex flex-col">
                 {/* Image */}
                 <div
-                    className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-foreground/[0.05]
-                        lg:-ml-[15%] lg:w-[130%]"
+                    className="relative -ml-[1%] aspect-[4/3] w-[102%] overflow-hidden rounded-2xl
+                        bg-foreground/[0.05] lg:-ml-[15%] lg:w-[130%]"
                 >
                     <PayloadMedia
                         image={previewImage}
@@ -57,7 +57,7 @@ export const ProjectCard = ({
                     />
                 </div>
 
-                <div className="mt-[30px] grid grid-cols-12 gap-5 px-4 lg:mt-[50px] lg:px-0">
+                <div className="mt-[30px] grid grid-cols-12 gap-5 px-0 lg:mt-[50px] lg:px-0">
                     <div className="order-2 col-span-12 flex items-center gap-8 lg:order-1 lg:col-span-4 lg:block">
                         <div className="h-px w-full bg-border lg:hidden" />
                         <p className="text-bg w-fit shrink-0 text-base lg:text-base">
