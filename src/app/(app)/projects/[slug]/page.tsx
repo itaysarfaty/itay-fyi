@@ -46,21 +46,21 @@ export default async function ProjectPage({
                         </h3>
                         <p className="text-bg text-base">{project.summary}</p>
                         {!!project.technologies && (
-                            <div className="mt-5 flex flex-wrap gap-4">
+                            <ul className="mt-5 flex flex-wrap gap-4">
                                 {project.technologies.map((tech) => {
                                     if (typeof tech == 'number') return null
                                     return (
-                                        <div
+                                        <li
                                             key={tech.id}
                                             className="rounded-md bg-foreground/[0.05] px-2 py-1 text-sm backdrop-blur-[3px]"
                                         >
                                             <p className="text-sm">
                                                 {tech.name}
                                             </p>
-                                        </div>
+                                        </li>
                                     )
                                 })}
-                            </div>
+                            </ul>
                         )}
                     </div>
 
