@@ -18,12 +18,19 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
     useEffect(() => {
         const handleScroll = () => {
             if (typeof window !== 'undefined') {
-                if (window.scrollY < lastScrollY || window.scrollY < 50) {
+                const scrollY = window.scrollY
+                const windowHeight = window.innerHeight
+                const documentHeight = document.documentElement.scrollHeight
+
+                // Check if the user is at the bottom of the page
+                const isAtBottom = scrollY + windowHeight >= documentHeight - 1
+
+                if ((scrollY < lastScrollY || scrollY < 50) && !isAtBottom) {
                     setShowBar(true)
                 } else {
                     setShowBar(false)
                 }
-                setLastScrollY(window.scrollY)
+                setLastScrollY(scrollY)
             }
         }
 
@@ -42,13 +49,14 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
             transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}
             // @ts-expect-error
             className={cn(
-                'sticky top-0 z-40 mb-[30px] @[800px]:-ml-[15%] @[800px]:w-[130%]'
+                `sticky top-0 z-40 -ml-[1%] mb-[40px] w-[102%] @[800px]:-ml-[15%]
+                @[800px]:w-[130%] sm:mb-[40px]`
             )}
         >
-            <div className="relative h-[100px] rounded-b-lg bg-background">
+            <div className="relative h-[100px] rounded-b-lg bg-background sm:h-[100px]">
                 <div
-                    className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between overflow-hidden
-                        rounded-lg bg-[#e5e5e5] dark:bg-[#1a1a1a]"
+                    className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between rounded-lg
+                        bg-[#ededed] dark:bg-[#141414]"
                 >
                     <Link
                         href={'/projects'}

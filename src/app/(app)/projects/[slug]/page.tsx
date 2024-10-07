@@ -39,7 +39,7 @@ export default async function ProjectPage({
                     />
                 </div>
 
-                <div className="grid gap-[30px] px-3 pt-[30px] @[670px]:px-0">
+                <div className="grid gap-[50px] px-3 pt-[30px] @[670px]:px-0">
                     <div className="grid gap-3">
                         <h3 className="text-bg w-fit shrink-0">
                             {project.title}
