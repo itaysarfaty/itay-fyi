@@ -43,7 +43,7 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
     }, [lastScrollY])
 
     return (
-        <motion.div
+        <motion.nav
             initial={{ y: -120 }}
             animate={{ y: showBar ? 0 : -120 }}
             transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}
@@ -55,8 +55,8 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
         >
             <div className="relative h-[100px] rounded-b-lg bg-background sm:h-[100px]">
                 <div
-                    className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between rounded-lg
-                        bg-[#ededed] dark:bg-[#141414]"
+                    className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between rounded-t-lg
+                        bg-[#ededed] dark:bg-[#191919]"
                 >
                     <Link
                         href={'/projects'}
@@ -76,6 +76,6 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
                     )}
                 </div>
             </div>
-        </motion.div>
+        </motion.nav>
     )
 }
