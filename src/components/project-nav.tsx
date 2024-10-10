@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { ChevronLeftIcon, ExternalLinkIcon } from 'lucide-react'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/utils'
 
@@ -11,25 +11,38 @@ export interface ProjectNavProps {
     url?: string | null
 }
 
+const THRESHOLD = 100
+
 export const ProjectNav = ({ url }: ProjectNavProps) => {
     const [showBar, setShowBar] = useState(true)
     const [lastScrollY, setLastScrollY] = useState(0)
+    const scrollDistance = useRef(0)
 
     useEffect(() => {
         const handleScroll = () => {
             if (typeof window !== 'undefined') {
                 const scrollY = window.scrollY
-                const windowHeight = window.innerHeight
-                const documentHeight = document.documentElement.scrollHeight
+                const isAtTop = scrollY === 0
 
-                // Check if the user is at the bottom of the page
-                const isAtBottom = scrollY + windowHeight >= documentHeight - 1
-
-                if ((scrollY < lastScrollY || scrollY < 50) && !isAtBottom) {
+                console.log(scrollDistance.current)
+                if (isAtTop) {
                     setShowBar(true)
-                } else {
-                    setShowBar(false)
+                    scrollDistance.current = 0
                 }
+
+                if (scrollDistance.current > THRESHOLD) {
+                    setShowBar(true)
+                    scrollDistance.current = THRESHOLD
+                    return
+                }
+
+                if (scrollDistance.current < -THRESHOLD) {
+                    setShowBar(false)
+                    scrollDistance.current = -THRESHOLD
+                    return
+                }
+
+                scrollDistance.current += lastScrollY - scrollY
                 setLastScrollY(scrollY)
             }
         }
@@ -46,7 +59,7 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
         <motion.nav
             initial={{ y: -120 }}
             animate={{ y: showBar ? 0 : -120 }}
-            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.5 }}
+            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.7 }}
             // @ts-expect-error
             className={cn(
                 `sticky top-0 z-40 -ml-[1%] mb-[40px] w-[102%] @[800px]:-ml-[15%]
