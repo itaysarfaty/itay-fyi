@@ -11,33 +11,32 @@ export default function AboutPage() {
             <div className="grid gap-[12rem] pb-[12rem]">
                 <AboutSection title="Hi there" margin="10%">
                     <p className="text-bg">
-                        I&apos;m Itay  <i>(EE-tie)</i>   a{' '}
-                        <em>software engineer</em> based in New York. I&apos;m
-                        currently working with CargoMatrix, a company
-                        that&apos;s been innovating in the logistics industry
-                        for over 20 years.
+                        I&apos;m Itay <i>(EE-tie)</i>  a software engineer based
+                        in New York. I&apos;m currently working with
+                        CargoMatrix, a company that&apos;s been innovating the
+                        logistics industry for over 20 years.
                     </p>
                 </AboutSection>
                 <AboutSection title="Software">
                     <p className="text-bg">
-                        I&apos;ve been coding for <em>over six years</em> and
-                        have a knack for making things easy to use. I specialize
-                        in frontend development, but in recent years I&apos;ve
+                        I&apos;ve been coding for over six years and have a
+                        knack for making things easy to use. I specialize in
+                        frontend development, but in recent years I&apos;ve
                         expanded into full-stack work.
                     </p>
                 </AboutSection>
                 <AboutSection title="Design">
                     <p className="text-bg">
                         I&apos;m not a creative genius, but I&apos;m a self
-                        proclaimed expert in <em>functional</em> design. The
-                        psychology behind intuitive interfaces and how subtle
-                        choices affect user experience captivates me.
+                        proclaimed expert in functional design. The psychology
+                        behind intuitive interfaces and how subtle choices
+                        affect user experience captivates me.
                     </p>
                 </AboutSection>
                 <AboutSection title="Education">
                     <p className="text-bg">
-                        Bachelor of Science in <em>Computer Science</em>,
-                        Binghamton University, Class of 2022
+                        Bachelor of Science in Computer Science, Binghamton
+                        University, Class of 2022
                     </p>
                 </AboutSection>
                 <AboutSection title="Have a question?">
