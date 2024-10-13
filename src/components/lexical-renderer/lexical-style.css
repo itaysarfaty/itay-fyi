@@ -9,7 +9,7 @@
 }
 
 .lr h2 {
-    @apply text-lg font-normal text-foreground;
+    @apply text-base font-normal text-foreground;
 }
 
 .lr p,
@@ -45,14 +45,4 @@
     @apply mb-10;
 }
 
-.lr h2:has(+ p),
-.lr h2:has(+ ul),
-.lr h2 + p,
-.lr h2 + ul {
-    @apply ml-4;
-}
-
 /* Specific Spacing for Headers with Adjacent Paragraphs */
-.lr h1:has(+ p) {
-    @apply mb-3;
-}
