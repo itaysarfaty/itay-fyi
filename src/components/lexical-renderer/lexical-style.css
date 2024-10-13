@@ -5,7 +5,7 @@
 
 .lr h1,
 .lr h3 {
-    @apply text-lg font-medium;
+    @apply text-xl font-medium;
 }
 
 .lr h2 {
@@ -23,10 +23,14 @@
 
 /* List Styling */
 .lr ul {
-    @apply list-disc pl-4;
+    @apply list-inside list-disc;
 }
 
-.lr ul li {
+.lr ol {
+    @apply list-inside list-decimal;
+}
+
+.lr li {
     @apply mb-[3px];
 }
 
@@ -34,15 +38,25 @@
 .lr h1:has(+ p),
 .lr h2:has(+ p),
 .lr h1:has(+ ul),
-.lr h2:has(+ ul) {
+.lr h2:has(+ ul),
+.lr h1:has(+ ol),
+.lr h2:has(+ ol) {
     @apply mb-2;
 }
 
 .lr h1 + p,
 .lr h2 + p,
 .lr h1 + ul,
-.lr h2 + ul {
+.lr h2 + ul,
+.lr h1 + ol,
+.lr h2 + ol {
     @apply mb-10;
+}
+
+.lr h2 + p,
+.lr h2 + ul,
+.lr h2 + ol {
+    @apply mb-6;
 }
 
 /* Specific Spacing for Headers with Adjacent Paragraphs */
