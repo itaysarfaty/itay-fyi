@@ -57,8 +57,8 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
 
     return (
         <motion.nav
-            initial={{ y: -120 }}
-            animate={{ y: showBar ? 0 : -120 }}
+            initial={{ y: -120, opacity: 0.8 }}
+            animate={{ y: showBar ? 0 : -120, opacity: showBar ? 1 : 0.8 }}
             transition={{ type: 'tween', ease: 'easeInOut', duration: 0.7 }}
             // @ts-expect-error
             className={cn(

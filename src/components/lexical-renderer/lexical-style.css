@@ -5,7 +5,7 @@
 
 .lr h1,
 .lr h3 {
-    @apply text-xl font-medium;
+    @apply text-lg font-medium;
 }
 
 .lr h2 {
