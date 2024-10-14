@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { AnimationProps, motion } from 'framer-motion'
 import { LoaderIcon, MoonIcon, SunIcon } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
@@ -34,26 +34,28 @@ export const ThemeToggle = () => {
         setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
     }
 
+    const transition: AnimationProps['transition'] = {
+        duration: 10,
+        type: 'spring',
+        stiffness: 200,
+        damping: 10,
+    }
+
     return (
         <motion.button
             aria-label={props.alt}
             onTap={toggleTheme}
-            whileTap={{ rotate: 180 }}
+            whileTap={{ rotate: 360, transition }}
             initial={{ rotate: -180 }}
             animate={{ rotate: 0 }}
             whileHover={{
-                rotate: [0, 7, -7, 0],
+                rotate: [0, 9, -9, 0],
                 transition: {
                     type: 'tween',
                     duration: 0.5,
                 },
             }}
-            transition={{
-                duration: 10,
-                type: 'spring',
-                stiffness: 100,
-                damping: 8,
-            }}
+            transition={transition}
         >
             {!mounted ? (
                 <LoaderIcon className="h-6 w-6 cursor-pointer stroke-[0.7px]" />
