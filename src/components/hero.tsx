@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import { cn } from '@/utils'
 
 import { HeroImage } from './hero-image'
-import TextAnim from './text-animation/text-animation'
+import TextAnim from './text-animation'
 
 export interface HeaderProps {
     title: string

@@ -7,7 +7,7 @@ import {
     useReducedMotion,
     useTransform,
 } from 'framer-motion'
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import CursorBlinker from './cursor-blinker'
 
