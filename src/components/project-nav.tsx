@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronLeftIcon, ExternalLinkIcon } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
@@ -17,6 +17,7 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
     const [showBar, setShowBar] = useState(true)
     const [lastScrollY, setLastScrollY] = useState(0)
     const scrollDistance = useRef(0)
+    const prefersReducedMotion = useReducedMotion()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -24,7 +25,6 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
                 const scrollY = window.scrollY
                 const isAtTop = scrollY === 0
 
-                console.log(scrollDistance.current)
                 if (isAtTop) {
                     setShowBar(true)
                     scrollDistance.current = 0
@@ -57,9 +57,21 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
 
     return (
         <motion.nav
-            initial={{ y: -120, opacity: 0.8 }}
-            animate={{ y: showBar ? 0 : -120, opacity: showBar ? 1 : 0.8 }}
-            transition={{ type: 'tween', ease: 'easeInOut', duration: 0.7 }}
+            initial={
+                prefersReducedMotion
+                    ? { opacity: 0.0 }
+                    : { y: -120, opacity: 0.8 }
+            }
+            animate={
+                prefersReducedMotion
+                    ? { opacity: showBar ? 1 : 0.0 }
+                    : { y: showBar ? 0 : -120, opacity: showBar ? 1 : 0.8 }
+            }
+            transition={{
+                type: 'tween',
+                ease: 'easeInOut',
+                duration: prefersReducedMotion ? 0.0 : 0.7,
+            }}
             // @ts-expect-error
             className={cn(
                 `sticky top-0 z-40 -ml-[1%] mb-[40px] w-[102%] @[800px]:-ml-[15%]

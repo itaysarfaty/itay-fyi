@@ -1,8 +1,6 @@
-import { ChevronLeftIcon, ExternalLinkIcon } from 'lucide-react'
-import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
-import { LexicalRenderer } from '@/components/lexical-renderer/lexical-render'
+import { LexicalRenderer } from '@/components/lexical-renderer/lexical-renderer'
 import { PayloadMedia } from '@/components/payload-media'
 import { ProjectNav } from '@/components/project-nav'
 

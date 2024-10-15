@@ -45,7 +45,7 @@ export const ThemeToggle = () => {
         <motion.button
             aria-label={props.alt}
             onTap={toggleTheme}
-            whileTap={{ rotate: 360, transition }}
+            whileTap={{ rotate: 360, transition, scale: 1.18 }}
             initial={{ rotate: -180 }}
             animate={{ rotate: 0 }}
             whileHover={{

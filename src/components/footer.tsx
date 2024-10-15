@@ -8,10 +8,14 @@ import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 
 import { cn } from '@/utils'
 
+import { useGlobalConfig } from '@/providers/global-config-provider'
+
+import { AnimateBgToggle } from './animate-bg-toggle'
 import { MotionLink } from './motion-link'
 import { ThemeToggle } from './theme-toggle'
 
 export const Footer = () => {
+    const { animateBg: bgAnimation, setConfig } = useGlobalConfig()
     return (
         <nav className="pb-[40px]">
             <div className="relative">
@@ -22,6 +26,7 @@ export const Footer = () => {
                 </ul>
                 <div className="flex h-full flex-col items-end justify-between gap-4">
                     <div className="absolute bottom-0 right-0 flex gap-5">
+                        <AnimateBgToggle />
                         <ThemeToggle />
                         <IconButton
                             label="github"

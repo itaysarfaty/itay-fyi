@@ -9,6 +9,7 @@ import { cn } from '@/utils'
 import { Divider } from '@/components/dividers'
 import { DotBackground } from '@/components/dot-background'
 import { Footer } from '@/components/footer'
+import { GlobalConfigProvider } from '@/providers/global-config-provider'
 
 import './globals.css'
 
@@ -52,27 +53,29 @@ export default async function RootLayout({
                         fontSans.variable
                     )}
                 >
-                    <DotBackground />
-                    <MotionConfig reducedMotion="user">
-                        <ThemeProvider
-                            attribute="class"
-                            defaultTheme="system"
-                            enableSystem
-                            disableTransitionOnChange
-                        >
-                            <div className="w-full @container">
-                                <div className="container">
-                                    <div className="mx-auto grid h-full max-w-[90%] gap-3 overflow-visible">
-                                        {children}
-                                        <div>
-                                            <Divider className="mb-[1.5rem]" />
-                                            <Footer />
+                    <GlobalConfigProvider>
+                        <DotBackground />
+                        <MotionConfig reducedMotion="user">
+                            <ThemeProvider
+                                attribute="class"
+                                defaultTheme="system"
+                                enableSystem
+                                disableTransitionOnChange
+                            >
+                                <div className="w-full @container">
+                                    <div className="container">
+                                        <div className="mx-auto grid h-full max-w-[90%] gap-3 overflow-visible">
+                                            {children}
+                                            <div>
+                                                <Divider className="mb-[1.5rem]" />
+                                                <Footer />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ThemeProvider>
-                    </MotionConfig>
+                            </ThemeProvider>
+                        </MotionConfig>
+                    </GlobalConfigProvider>
                 </body>
             </html>
         </ViewTransitions>
