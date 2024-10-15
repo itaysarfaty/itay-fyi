@@ -1,8 +1,7 @@
 'use client'
 
-import { CheckIcon, CopyIcon, MessageSquareShareIcon } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useState } from 'react'
+import { Suspense } from 'react'
 
 import { Hero } from '@/components/hero'
 
@@ -14,6 +13,17 @@ import { TimeInput } from './components/time-input'
 type Params = 'b' | 'l' | 'w'
 
 export default function PertPage() {
+    return (
+        <>
+            <Hero title="Pert" subTitle="Improving Task Estimates" />
+            <Suspense>
+                <PertContent />
+            </Suspense>
+        </>
+    )
+}
+
+const PertContent = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
     const getParamValue = (param: Params) =>
@@ -39,57 +49,54 @@ export default function PertPage() {
     )
 
     return (
-        <>
-            <Hero title="Pert" subTitle="Improving Task Estimates" />
-            <div className="pb-24">
-                <div className="grid gap-20">
-                    <TimeInput
-                        label="Best"
-                        value={best}
-                        onChange={(val) => updateParam('b', val)}
-                    />
-                    <TimeInput
-                        label="Likely"
-                        value={likely}
-                        onChange={(val) => updateParam('l', val)}
-                    />
-                    <TimeInput
-                        label="Worst"
-                        value={worst}
-                        onChange={(val) => updateParam('w', val)}
-                    />
+        <div className="pb-24">
+            <div className="grid gap-20">
+                <TimeInput
+                    label="Best"
+                    value={best}
+                    onChange={(val) => updateParam('b', val)}
+                />
+                <TimeInput
+                    label="Likely"
+                    value={likely}
+                    onChange={(val) => updateParam('l', val)}
+                />
+                <TimeInput
+                    label="Worst"
+                    value={worst}
+                    onChange={(val) => updateParam('w', val)}
+                />
 
-                    <div className="grid gap-20 sm:gap-20">
-                        <div className="grid gap-4">
-                            <h2 className="text-bg w-fit text-lg font-medium text-foreground">
-                                Estimate
-                            </h2>
-                            <div className="flex select-none flex-wrap items-center gap-5">
-                                <p className="text-bg w-fit text-base font-normal text-foreground">
+                <div className="grid gap-20 sm:gap-20">
+                    <div className="grid gap-4">
+                        <h2 className="text-bg w-fit text-lg font-medium text-foreground">
+                            Estimate
+                        </h2>
+                        <div className="flex select-none flex-wrap items-center gap-5">
+                            <p className="text-bg w-fit text-base font-normal text-foreground">
+                                {utils.hoursToString(
+                                    Number(estimate.toFixed(2))
+                                )}
+                            </p>
+                            <div className="flex items-center gap-5">
+                                <SDIndicator />
+                                <p className="text-bg mb-1 w-fit text-base font-normal text-foreground">
                                     {utils.hoursToString(
-                                        Number(estimate.toFixed(2))
+                                        Number(standardDeviation.toFixed(2))
                                     )}
                                 </p>
-                                <div className="flex items-center gap-5">
-                                    <SDIndicator />
-                                    <p className="text-bg mb-1 w-fit text-base font-normal text-foreground">
-                                        {utils.hoursToString(
-                                            Number(standardDeviation.toFixed(2))
-                                        )}
-                                    </p>
-                                </div>
                             </div>
                         </div>
-                        <div className="flex">
-                            <SharePertButton
-                                best={best}
-                                likely={likely}
-                                worst={worst}
-                            />
-                        </div>
+                    </div>
+                    <div className="flex">
+                        <SharePertButton
+                            best={best}
+                            likely={likely}
+                            worst={worst}
+                        />
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
