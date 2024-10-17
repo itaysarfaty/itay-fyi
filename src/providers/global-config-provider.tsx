@@ -19,7 +19,7 @@ export const GlobalConfigProvider = ({
     children,
 }: GlobalConfigProviderProps) => {
     const [config, setConfig] = useState<GlobalConfig>({
-        animateBg: true,
+        animateBg: false,
     })
 
     return (

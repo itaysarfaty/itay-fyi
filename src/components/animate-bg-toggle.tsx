@@ -1,7 +1,13 @@
 'use client'
 
 import { AnimationProps, motion, useReducedMotion } from 'framer-motion'
-import { CircleIcon, GripIcon, LoaderIcon, SquareIcon } from 'lucide-react'
+import {
+    CircleDotDashedIcon,
+    CircleIcon,
+    GripIcon,
+    LoaderIcon,
+    SquareIcon,
+} from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
@@ -20,14 +26,14 @@ export const AnimateBgToggle = () => {
     const props = animateBg
         ? {
               icon: (
-                  <CircleIcon className="h-6 w-6 stroke-[0.7px] hover:stroke-1" />
+                  <CircleDotDashedIcon className="h-6 w-6 stroke-[0.7px] hover:stroke-1" />
               ),
               alt: 'Animated background',
               title: 'Disable animated background',
           }
         : {
               icon: (
-                  <SquareIcon className="h-6 w-6 stroke-[0.7px] hover:stroke-1" />
+                  <CircleIcon className="h-6 w-6 stroke-[0.7px] hover:stroke-1" />
               ),
               alt: 'Still background',
               title: 'Enable animated background',
