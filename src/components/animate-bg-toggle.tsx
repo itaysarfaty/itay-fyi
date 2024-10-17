@@ -1,7 +1,7 @@
 'use client'
 
 import { AnimationProps, motion, useReducedMotion } from 'framer-motion'
-import { GripIcon, LoaderIcon, SquareIcon } from 'lucide-react'
+import { CircleIcon, GripIcon, LoaderIcon, SquareIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
@@ -20,15 +20,17 @@ export const AnimateBgToggle = () => {
     const props = animateBg
         ? {
               icon: (
-                  <GripIcon className="h-6 w-6 stroke-[0.7px] hover:stroke-1" />
+                  <CircleIcon className="h-6 w-6 stroke-[0.7px] hover:stroke-1" />
               ),
-              alt: 'Turn on light theme',
+              alt: 'Animated background',
+              title: 'Disable animated background',
           }
         : {
               icon: (
                   <SquareIcon className="h-6 w-6 stroke-[0.7px] hover:stroke-1" />
               ),
-              alt: 'Turn on dark theme',
+              alt: 'Still background',
+              title: 'Enable animated background',
           }
 
     const handleToggle = () => {

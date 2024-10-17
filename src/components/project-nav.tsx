@@ -36,9 +36,9 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
                     return
                 }
 
-                if (scrollDistance.current < -THRESHOLD) {
+                if (scrollDistance.current < -20) {
                     setShowBar(false)
-                    scrollDistance.current = -THRESHOLD
+                    scrollDistance.current = -20
                     return
                 }
 

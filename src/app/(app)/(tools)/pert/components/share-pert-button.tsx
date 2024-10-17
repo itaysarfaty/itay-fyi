@@ -7,7 +7,7 @@ import {
     useReducedMotion,
 } from 'framer-motion'
 import { CheckIcon, MessageSquareShareIcon } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export interface SharePertButtonProps {
     best: number
@@ -49,32 +49,32 @@ export const SharePertButton = ({
         <motion.button
             layout
             // @ts-ignore
-            className="flex w-full shrink-0 items-center gap-1 rounded bg-foreground px-3 py-2
-                font-sans text-sm font-normal text-background @xs:w-[98.23px]"
+            className="flex w-[146.8px] shrink-0 items-center gap-1 rounded bg-foreground px-3 py-2
+                font-sans text-sm font-normal text-background"
             onClick={onShare}
         >
             <AnimatePresence mode="wait">
                 {isShared ? (
                     <motion.div
-                        key="copied"
+                        key="clicked"
                         {...animationProps}
                         transition={{ duration: 0.2 }}
                         // @ts-ignore
                         className="flex items-center gap-1"
                     >
-                        <CheckIcon className="-ml-1 h-4" />
-                        Copied
+                        <CheckIcon className="-ml-1 h-4 stroke-[4px] text-green-700" />
+                        Copied link
                     </motion.div>
                 ) : (
                     <motion.div
-                        key="pending"
+                        key="idle"
                         {...animationProps}
                         transition={{ duration: 0.2 }}
                         // @ts-ignore
                         className="flex items-center gap-1"
                     >
                         <MessageSquareShareIcon className="-ml-1 h-4" />
-                        Share it
+                        Share estimate
                     </motion.div>
                 )}
             </AnimatePresence>

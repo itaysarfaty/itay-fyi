@@ -7,7 +7,7 @@ import { Inter, Lexend_Deca } from 'next/font/google'
 import { cn } from '@/utils'
 
 import { Divider } from '@/components/dividers'
-import { DotBackground } from '@/components/dot-background'
+import { Background } from '@/components/dot-background'
 import { Footer } from '@/components/footer'
 import { GlobalConfigProvider } from '@/providers/global-config-provider'
 
@@ -54,7 +54,7 @@ export default async function RootLayout({
                     )}
                 >
                     <GlobalConfigProvider>
-                        <DotBackground />
+                        <Background />
                         <MotionConfig reducedMotion="user">
                             <ThemeProvider
                                 attribute="class"

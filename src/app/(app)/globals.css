@@ -38,10 +38,7 @@
         @apply font-light not-italic;
     }
     .text-bg {
-        background: hsl(var(--background) / 0.6);
-        border-radius: 20px;
-        /* blurr the background */
-        backdrop-filter: blur(1px);
+        @apply bg-background/40 filter backdrop-blur-[1px] dark:brightness-[1.1];
     }
 }
 

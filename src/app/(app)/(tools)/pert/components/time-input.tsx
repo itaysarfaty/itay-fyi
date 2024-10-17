@@ -1,3 +1,5 @@
+import { useTransition } from 'react'
+
 export const TimeInput = ({
     label,
     value,
@@ -7,14 +9,18 @@ export const TimeInput = ({
     value: number
     onChange: (val: number) => void
 }) => {
+    const [isPending, startTransition] = useTransition()
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const regex = /^\d{0,3}(\.\d{0,2})?$/
         const inputValue = e.target.value
-        if (regex.test(inputValue)) {
-            const float = parseFloat(inputValue)
-            const parsedValue = isNaN(float) ? 0 : float
+        const float = parseFloat(inputValue)
+        const parsedValue = isNaN(float) ? 0 : float
+        startTransition(() => {
             onChange(parsedValue)
-        }
+        })
+    }
+    const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
+        e.target.select()
     }
     return (
         <div className="grid gap-4">
@@ -32,8 +38,10 @@ export const TimeInput = ({
                     max={999}
                     type="number"
                     value={value}
+                    inputMode="decimal"
                     onChange={handleChange}
                     placeholder={'0'}
+                    onFocus={handleFocus}
                     className="w-full rounded-md bg-foreground/[0.04] p-3 text-base font-normal
                         backdrop-blur-sm dark:bg-foreground/[0.018]"
                 />

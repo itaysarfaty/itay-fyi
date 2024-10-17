@@ -12,9 +12,9 @@ export default function AboutPage() {
                 <AboutSection title="Hi there" margin="10%">
                     <p className="text-bg">
                         I&apos;m Itay <i>(EE-tie)</i>  a software engineer based
-                        in New York. I&apos;m currently working with
-                        CargoMatrix, a company that&apos;s been innovating the
-                        logistics industry for over 20 years.
+                        in New York. I work at CargoMatrix, a company
+                        that&apos;s been innovating the logistics industry for
+                        over 20 years.
                     </p>
                 </AboutSection>
                 <AboutSection title="Software">
