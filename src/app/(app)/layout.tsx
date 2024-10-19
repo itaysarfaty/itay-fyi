@@ -23,9 +23,12 @@ const fontSerif = Lexend_Deca({
     variable: '--font-serif',
 })
 
+const metaDescription =
+    "I'm Itay (EE-tie), a software engineer based in New York. I work at CargoMatrix, a company that's been innovating the logistics industry for over 20 years."
+
 export const metadata: Metadata = {
     title: 'Itay',
-    description: 'My corner of the internet.',
+    description: metaDescription,
 }
 
 export default async function RootLayout({

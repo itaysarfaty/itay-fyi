@@ -62,7 +62,7 @@ export const SharePertButton = ({
                         // @ts-ignore
                         className="flex items-center gap-1"
                     >
-                        <CheckIcon className="-ml-1 h-4 stroke-[4px] text-green-700" />
+                        <CheckIcon className="-ml-1 h-4 stroke-[4px] text-green-500 dark:text-green-700" />
                         Copied link
                     </motion.div>
                 ) : (
