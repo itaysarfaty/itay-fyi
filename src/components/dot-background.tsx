@@ -56,11 +56,11 @@ export const Background = () => {
                     [background-size:16px_16px]"
             />
             <motion.div
-                // @ts-ignore
+                // @ts-expect-error
                 className="absolute inset-0
-                    bg-[radial-gradient(hsl(var(--foreground)/0.5)_1px,transparent_1px)]
+                    bg-[radial-gradient(hsl(var(--foreground)/0.3)_1px,transparent_1px)]
                     [background-size:16px_16px]
-                    dark:bg-[radial-gradient(hsl(var(--foreground)/0.25)_1px,transparent_1px)]"
+                    dark:bg-[radial-gradient(hsl(var(--foreground)/0.2)_1px,transparent_1px)]"
                 style={{
                     WebkitMaskImage: mask,
                     maskImage: mask,

@@ -15,11 +15,7 @@ export interface SharePertButtonProps {
     worst: number
 }
 
-export const SharePertButton = ({
-    best,
-    likely,
-    worst,
-}: SharePertButtonProps) => {
+export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
     const [isShared, setIsShared] = useState(false)
     const shouldReduceMotion = useReducedMotion()
 
@@ -27,7 +23,7 @@ export const SharePertButton = ({
         if (!navigator.clipboard || isShared) return
         // Copy to clipboard
         navigator.clipboard.writeText(
-            `${window.location.origin}${window.location.pathname}?b=${best}&l=${likely}&w=${worst}`
+            `${window.location.origin}${window.location.pathname}?share=:&b=${best}&l=${likely}&w=${worst}`
         )
         setIsShared(true)
         setTimeout(() => setIsShared(false), 3000)
@@ -48,9 +44,10 @@ export const SharePertButton = ({
     return (
         <motion.button
             layout
-            // @ts-ignore
-            className="flex w-[146.8px] shrink-0 items-center gap-1 rounded bg-foreground px-3 py-2
-                font-sans text-sm font-normal text-background"
+            // @ts-expect-error
+            className="flex w-[160px] shrink-0 items-center gap-1 rounded border-[1px]
+                border-foreground/10 bg-foreground/[0.04] p-3 px-3 py-2 font-sans text-sm
+                font-medium text-foreground backdrop-blur-sm dark:bg-foreground/[0.018]"
             onClick={onShare}
         >
             <AnimatePresence mode="wait">
@@ -59,10 +56,10 @@ export const SharePertButton = ({
                         key="clicked"
                         {...animationProps}
                         transition={{ duration: 0.2 }}
-                        // @ts-ignore
-                        className="flex items-center gap-1"
+                        // @ts-expect-error
+                        className="flex items-center gap-2"
                     >
-                        <CheckIcon className="-ml-1 h-4 stroke-[4px] text-green-500 dark:text-green-700" />
+                        <CheckIcon className="-ml-1 h-4 stroke-[3px] text-green-500" />
                         Copied link
                     </motion.div>
                 ) : (
@@ -70,10 +67,10 @@ export const SharePertButton = ({
                         key="idle"
                         {...animationProps}
                         transition={{ duration: 0.2 }}
-                        // @ts-ignore
-                        className="flex items-center gap-1"
+                        // @ts-expect-error
+                        className="flex items-center gap-2"
                     >
-                        <MessageSquareShareIcon className="-ml-1 h-4" />
+                        <MessageSquareShareIcon className="-ml-1 h-4 text-blue-500" />
                         Share estimate
                     </motion.div>
                 )}

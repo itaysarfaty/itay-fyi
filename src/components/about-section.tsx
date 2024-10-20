@@ -34,7 +34,7 @@ export const AboutSection = ({
     return (
         <motion.section
             ref={ref}
-            // @ts-ignore
+            // @ts-expect-error
             className="grid w-fit gap-2"
             initial={{ opacity: 0, y: 100 }}
             animate={controls}

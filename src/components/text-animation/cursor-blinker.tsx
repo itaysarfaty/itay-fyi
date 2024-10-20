@@ -20,7 +20,7 @@ export default function CursorBlinker() {
         <motion.div
             variants={cursorVariants}
             animate="blinking"
-            // @ts-ignore
+            // @ts-expect-error
             className="inline-block h-5 w-[1px] translate-y-1 bg-foreground"
         />
     )

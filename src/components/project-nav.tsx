@@ -57,15 +57,11 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
 
     return (
         <motion.nav
-            initial={
-                prefersReducedMotion
-                    ? { opacity: 0.0 }
-                    : { y: -120, opacity: 0.8 }
-            }
+            initial={prefersReducedMotion ? { opacity: 0.0 } : { y: -120 }}
             animate={
                 prefersReducedMotion
                     ? { opacity: showBar ? 1 : 0.0 }
-                    : { y: showBar ? 0 : -120, opacity: showBar ? 1 : 0.8 }
+                    : { y: showBar ? 0 : -120 }
             }
             transition={{
                 type: 'tween',
@@ -80,8 +76,9 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
         >
             <div className="relative h-[100px] rounded-b-lg bg-background sm:h-[100px]">
                 <div
-                    className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between rounded-t-lg
-                        bg-[#ededed] dark:bg-[#191919]"
+                    className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between rounded-lg
+                        border-[1px] border-foreground/10 bg-foreground/[0.05] backdrop-blur-sm
+                        dark:bg-foreground/[0.04]"
                 >
                     <Link
                         href={'/projects'}

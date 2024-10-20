@@ -6,7 +6,7 @@ import Image from 'next/image'
 export const HeroImage = ({ src }: { src: string }) => {
     return (
         <motion.div
-            // @ts-ignore
+            // @ts-expect-error
             className="relative h-[6rem] w-[6rem] flex-shrink-0 overflow-hidden rounded-full
                 sm:h-[8rem] sm:w-[8rem]"
             initial={{ rotate: 0 }}

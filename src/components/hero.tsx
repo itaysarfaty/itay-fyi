@@ -27,7 +27,7 @@ export const Hero = ({ title, subTitle, className, imageSrc }: HeaderProps) => {
         <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            // @ts-ignore
+            // @ts-expect-error
             className={cn(
                 'flex w-full items-center',
                 className,
