@@ -1,6 +1,7 @@
 'use client'
 
 import { motion, useAnimation, useInView } from 'framer-motion'
+import { BracesIcon } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 
 export interface ParagraphProps {

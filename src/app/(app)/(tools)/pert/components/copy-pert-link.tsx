@@ -45,7 +45,7 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
         <motion.button
             layout
             // @ts-expect-error
-            className="flex w-[160px] shrink-0 items-center gap-1 rounded border-[1px]
+            className="flex w-[128px] shrink-0 items-center gap-1 rounded border-[1px]
                 border-foreground/10 bg-foreground/[0.04] p-3 px-3 py-2 font-sans text-sm
                 font-medium text-foreground backdrop-blur-sm dark:bg-foreground/[0.018]"
             onClick={onShare}
@@ -60,7 +60,7 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
                         className="flex items-center gap-2"
                     >
                         <CheckIcon className="-ml-1 h-4 stroke-[3px] text-green-500" />
-                        Copied link
+                        Copied it
                     </motion.div>
                 ) : (
                     <motion.div
@@ -71,7 +71,7 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
                         className="flex items-center gap-2"
                     >
                         <MessageSquareShareIcon className="-ml-1 h-4 text-blue-500" />
-                        Share estimate
+                        Share link
                     </motion.div>
                 )}
             </AnimatePresence>

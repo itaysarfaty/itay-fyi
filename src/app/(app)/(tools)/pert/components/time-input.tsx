@@ -31,7 +31,7 @@ export const TimeInput = ({
             <div className="flex items-center gap-3">
                 <div
                     className={cn(
-                        'h-3 w-3 rounded-full bg-foreground',
+                        'h-[0.8rem] w-[0.8rem] rounded-full bg-foreground',
                         classNameDot
                     )}
                 />

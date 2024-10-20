@@ -81,19 +81,19 @@ export const PertContent = () => {
             <motion.div className="grid gap-14">
                 <div className="flex flex-col gap-14 sm:flex-row sm:gap-16">
                     <TimeInput
-                        label="Shortest"
+                        label="Least"
                         value={hours.best}
                         onChange={(val) => updateParam('b', val)}
                         classNameDot="bg-green-500"
                     />
                     <TimeInput
-                        label="Longest"
+                        label="Most"
                         value={hours.worst}
                         onChange={(val) => updateParam('w', val)}
                         classNameDot="bg-red-500"
                     />
                     <TimeInput
-                        label="Most Likely"
+                        label="Likely"
                         value={hours.likely}
                         onChange={(val) => updateParam('l', val)}
                         classNameDot="bg-blue-500"
@@ -102,15 +102,15 @@ export const PertContent = () => {
 
                 <div
                     className={cn(
-                        'grid gap-20 transition-opacity duration-150 sm:gap-20',
+                        'grid gap-6 transition-opacity duration-150',
                         showEstimate ? 'opacity-100' : 'opacity-0'
                     )}
                 >
-                    <div className="grid gap-4">
+                    <div className="grid h-full gap-4 rounded-lg border-[1px] border-foreground/10 px-6 py-5">
                         <h2 className="text-bg w-fit text-lg font-medium text-foreground">
                             Estimate
                         </h2>
-                        <div className="ml-[2px] flex select-none flex-wrap items-center gap-5">
+                        <div className="ml-[2px] flex h-fit min-h-10 select-none flex-wrap items-center gap-5">
                             <p className="text-bg w-fit text-base font-light text-foreground">
                                 {utils.hoursToString(
                                     Number(estimate.toFixed(2))
@@ -128,11 +128,13 @@ export const PertContent = () => {
                             )}
                         </div>
                     </div>
-                    <CopyPertLink
-                        best={hours.best}
-                        likely={hours.likely}
-                        worst={hours.worst}
-                    />
+                    <div className="flex justify-end">
+                        <CopyPertLink
+                            best={hours.best}
+                            likely={hours.likely}
+                            worst={hours.worst}
+                        />
+                    </div>
                 </div>
             </motion.div>
         </div>
