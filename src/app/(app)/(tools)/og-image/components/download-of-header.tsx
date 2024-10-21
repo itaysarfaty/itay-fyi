@@ -1,5 +1,3 @@
-'use client'
-
 import {
     AnimatePresence,
     AnimationProps,
@@ -9,24 +7,18 @@ import {
 import { CheckIcon, MessageSquareShareIcon } from 'lucide-react'
 import { useState } from 'react'
 
-export interface SharePertButtonProps {
-    best: number
-    likely: number
-    worst: number
+export interface DownloadOGHeaderProps {
+    onDownload: () => Promise<void>
 }
 
-export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
-    const [isShared, setIsShared] = useState(false)
+export const DownloadOGHeader = ({ onDownload }: DownloadOGHeaderProps) => {
+    const [isClicked, setIsClicked] = useState(false)
     const shouldReduceMotion = useReducedMotion()
 
-    const onShare = () => {
-        if (!navigator.clipboard || isShared) return
-        // Copy to clipboard
-        navigator.clipboard.writeText(
-            `${window.location.origin}${window.location.pathname}?share=:&b=${best}&l=${likely}&w=${worst}`
-        )
-        setIsShared(true)
-        setTimeout(() => setIsShared(false), 3000)
+    const handleDownload = async () => {
+        setIsClicked(true)
+        await onDownload()
+        setTimeout(() => setIsClicked(false), 3000)
     }
 
     const animationProps: AnimationProps = shouldReduceMotion
@@ -45,13 +37,13 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
         <motion.button
             layout
             // @ts-expect-error
-            className="flex w-[155px] shrink-0 items-center gap-1 rounded border-[1px]
+            className="flex w-[140px] shrink-0 items-center gap-1 rounded border-[1px]
                 border-foreground/10 bg-foreground/[0.04] p-3 px-3 py-2 font-sans text-sm
                 font-medium text-foreground backdrop-blur-sm dark:bg-foreground/[0.018]"
-            onClick={onShare}
+            onClick={handleDownload}
         >
             <AnimatePresence mode="wait">
-                {isShared ? (
+                {isClicked ? (
                     <motion.div
                         key="clicked"
                         {...animationProps}
@@ -60,7 +52,7 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
                         className="flex items-center gap-2"
                     >
                         <CheckIcon className="-ml-1 h-4 stroke-[3px] text-green-500" />
-                        Copied link
+                        Downloaded
                     </motion.div>
                 ) : (
                     <motion.div
@@ -71,7 +63,7 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
                         className="flex items-center gap-2"
                     >
                         <MessageSquareShareIcon className="-ml-1 h-4 text-blue-500" />
-                        Share estimate
+                        Download
                     </motion.div>
                 )}
             </AnimatePresence>

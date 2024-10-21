@@ -13,7 +13,7 @@ export const TimeInput = ({
     onChange: (val: number) => void
     classNameDot?: string
 }) => {
-    const [isPending, startTransition] = useTransition()
+    const [, startTransition] = useTransition()
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const inputValue = e.target.value
@@ -44,7 +44,7 @@ export const TimeInput = ({
                 </label>
             </div>
 
-            <div className="grid gap-3">
+            <div className="grid gap-2">
                 <input
                     id={label}
                     min={0}

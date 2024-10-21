@@ -1,18 +1,183 @@
 'use client'
 
-import { Suspense } from 'react'
+import { motion } from 'framer-motion'
+import { CircleHelpIcon, ClockIcon, RotateCcwIcon } from 'lucide-react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
-import { Hero } from '@/components/hero'
+import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 
-import { PertContent } from './page.client'
+import { cn } from '@/utils'
+
+import { pertUtils as utils } from './_utils'
+import { CopyPertLink } from './components/copy-pert-link'
+import { SDIndicator } from './components/sd-indicator'
+import { TimeInput } from './components/time-input'
+
+type Params = 'b' | 'l' | 'w'
+
+const paramMap: Record<Params, string> = {
+    b: 'best',
+    l: 'likely',
+    w: 'worst',
+}
+
+const getParamValue = (searchParams: URLSearchParams, param: Params) =>
+    parseFloat(searchParams.get(param) || '0')
+
+const updateSearchParams = (
+    searchParams: URLSearchParams,
+    param: Params,
+    value: number
+) => {
+    const newParams = new URLSearchParams(searchParams.toString())
+    if (isNaN(value) || value === 0) {
+        newParams.delete(param)
+        return newParams
+    }
+    newParams.set(param, value.toString())
+    return newParams
+}
 
 export default function PertPage() {
+    const router = useRouter()
+    const searchParams = useSearchParams()
+
+    const [hours, setHours] = useState({
+        best: getParamValue(searchParams, 'b'),
+        likely: getParamValue(searchParams, 'l'),
+        worst: getParamValue(searchParams, 'w'),
+    })
+    const showEstimate = Boolean(hours.best && hours.likely && hours.worst)
+
+    const updateParam = (param: Params, value: number) => {
+        setHours((prev) => ({ ...prev, [paramMap[param]]: value }))
+        const newSearchParams = updateSearchParams(searchParams, param, value)
+        router.replace(`?${newSearchParams.toString()}`, { scroll: false })
+    }
+
+    const handleReset = () => {
+        setHours({ best: 0, likely: 0, worst: 0 })
+        router.replace('/pert', { scroll: false })
+    }
+
+    const { estimate, standardDeviation } = utils.calculateHours(
+        hours.best,
+        hours.likely,
+        hours.worst
+    )
+
+    // If shared remove the shared param and navigate screen down
+    useEffect(() => {
+        const shared = Boolean(searchParams.get('share'))
+        if (shared) {
+            const newSearchParams = new URLSearchParams(searchParams.toString())
+            newSearchParams.delete('share')
+            router.replace(`?${newSearchParams.toString()}`, { scroll: false })
+
+            // Scroll window down
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth',
+            })
+        }
+    }, [router, searchParams])
+
+    // If params exists
     return (
-        <>
-            <Hero title="Pert" subTitle="Improving Task Estimates" />
-            <Suspense>
-                <PertContent />
-            </Suspense>
-        </>
+        <div className="grid min-h-[calc(100vh-84px)] w-full place-items-center">
+            {/* @ts-expect-error */}
+            <motion.div className="grid w-full gap-14 py-10">
+                <div className="flex flex-col gap-6 sm:flex-row sm:gap-16">
+                    <TimeInput
+                        label="Min"
+                        value={hours.best}
+                        onChange={(val) => updateParam('b', val)}
+                        classNameDot="bg-green-500"
+                    />
+                    <TimeInput
+                        label="Max"
+                        value={hours.worst}
+                        onChange={(val) => updateParam('w', val)}
+                        classNameDot="bg-red-500"
+                    />
+                    <TimeInput
+                        label="Likely"
+                        value={hours.likely}
+                        onChange={(val) => updateParam('l', val)}
+                        classNameDot="bg-yellow-500"
+                    />
+                </div>
+
+                {showEstimate ? (
+                    <div
+                        className={cn(
+                            'grid min-h-[200px] gap-6 transition-opacity duration-150'
+                        )}
+                    >
+                        <div className="grid h-full gap-4 rounded-lg border-[1px] border-foreground/10 px-6 py-5">
+                            <div className="flex items-center justify-between">
+                                <div className="-ml-[2px] flex items-center gap-2">
+                                    <ClockIcon className="h-[18px] text-blue-500" />
+                                    <h2 className="text-bg w-fit text-lg font-medium text-foreground">
+                                        Estimate
+                                    </h2>
+                                </div>
+                                <button onClick={handleReset}>
+                                    <AccessibleIcon label="Reset">
+                                        <RotateCcwIcon className="h-4" />
+                                    </AccessibleIcon>
+                                </button>
+                            </div>
+
+                            <div className="ml-[2px] flex h-fit min-h-10 select-none flex-wrap items-center gap-5 gap-y-2">
+                                <p className="text-bg w-fit text-base font-light text-foreground">
+                                    {utils.hoursToString(
+                                        Number(estimate.toFixed(2))
+                                    )}
+                                </p>
+                                {Boolean(standardDeviation) && (
+                                    <div className="flex items-center gap-5">
+                                        <SDIndicator />
+                                        <p className="text-bg mb-1 w-fit text-base font-light text-foreground">
+                                            {utils.hoursToString(
+                                                Number(
+                                                    standardDeviation.toFixed(2)
+                                                )
+                                            )}
+                                        </p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                        <div className="flex justify-end">
+                            <CopyPertLink
+                                best={hours.best}
+                                likely={hours.likely}
+                                worst={hours.worst}
+                            />
+                        </div>
+                    </div>
+                ) : (
+                    <div className="grid min-h-[200px] gap-4 rounded-lg border-[1px] border-foreground/10 px-6 py-5">
+                        <div className="-ml-[2px] flex items-center gap-2">
+                            <CircleHelpIcon className="h-4 text-blue-500" />
+                            <h2 className="text-bg w-fit text-lg font-medium text-foreground">
+                                Pert formula
+                            </h2>
+                        </div>
+                        <p className="text-bg w-fit text-base font-light text-foreground">
+                            Pert is a three-point estimation method that uses
+                            probability and statistics to estimate task duration
+                        </p>
+
+                        <p className="text-bg w-fit text-base font-light text-foreground">
+                            Enter the minimum, maximum, and most likely time
+                            needed to complete the task.
+                        </p>
+                    </div>
+                )}
+            </motion.div>
+        </div>
     )
 }

@@ -67,7 +67,7 @@ export default async function RootLayout({
                             >
                                 <div className="w-full @container">
                                     <div className="container">
-                                        <div className="mx-auto grid h-full max-w-[90%] gap-3 overflow-visible">
+                                        <div className="mx-auto flex h-full max-w-[90%] flex-col gap-3 overflow-visible">
                                             {children}
                                             <div>
                                                 <Divider className="mb-[1.5rem]" />

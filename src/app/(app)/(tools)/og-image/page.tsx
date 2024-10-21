@@ -4,14 +4,16 @@ import { toPng } from 'html-to-image'
 import { ScalingIcon } from 'lucide-react'
 import { forwardRef, useRef, useState } from 'react'
 
+import { DownloadOGHeader } from './components/download-of-header'
+
 const canvasSize = {
     width: 600,
     height: 315,
 }
 
 const defaultValues = {
-    title: 'Hey',
-    subTitle: 'Edit this header',
+    title: 'Itay',
+    subTitle: 'Pronounced EE-tie',
 }
 
 export default function OGImagePage() {
@@ -35,50 +37,59 @@ export default function OGImagePage() {
         link.click()
     }
     return (
-        <div>
+        <div className="grid gap-12">
             <HeaderContent ref={canvasRef} title={title} subTitle={subTitle} />
             <section
-                className={'flex h-[500px] w-full items-center @container'}
+                className={
+                    'flex h-fit w-full flex-col items-center gap-10 @container sm:flex-row sm:gap-14'
+                }
             >
-                <header className="text-bg grid w-full gap-4">
+                <div className="grid w-full gap-4">
+                    <label
+                        htmlFor="title"
+                        className="text-bg w-fit text-lg font-medium text-foreground"
+                    >
+                        Title
+                    </label>
+
                     <input
-                        className="w-full border-y border-border bg-transparent text-4xl font-medium
-                            placeholder-foreground focus:outline-none"
+                        id="title"
+                        type="text"
                         value={title}
                         onChange={(e) => {
                             const value = e.target.value.slice(0, 13)
                             setTitle(value)
                         }}
-                        placeholder={defaultValues.title}
-                        autoFocus
+                        className="w-full rounded-md border-[1px] border-foreground/10 bg-foreground/[0.04] p-3
+                            text-base font-normal backdrop-blur-sm dark:bg-foreground/[0.018]"
                     />
+                </div>
+
+                <div className="grid w-full gap-4">
+                    <label
+                        htmlFor="subtitle"
+                        className="text-bg w-fit text-lg font-medium text-foreground"
+                    >
+                        Subtitle
+                    </label>
+
                     <input
-                        type="textarea"
-                        className="w-full border-y border-border bg-transparent text-xl placeholder-foreground
-                            focus:outline-none"
+                        id="subtitle"
+                        type="text"
                         value={subTitle}
                         onChange={(e) => {
                             const value = e.target.value.slice(0, 28)
                             setSubTitle(value)
                         }}
-                        placeholder={defaultValues.subTitle}
+                        className="w-full rounded-md border-[1px] border-foreground/10 bg-foreground/[0.04] p-3
+                            text-base font-normal backdrop-blur-sm dark:bg-foreground/[0.018]"
                     />
-                </header>
+                </div>
             </section>
 
             <div className="mb-12 flex flex-col gap-2">
-                <h3 className="text-bg w-fit">Open Graph Image</h3>
-                <p className="text-bg w-fit">
-                    Customize the header above and download the image
-                </p>
                 <div className="my-4 flex items-center gap-5">
-                    <button
-                        className="grid w-fit shrink-0 place-items-center rounded bg-foreground px-4 py-2 font-sans
-                            text-sm font-normal text-background"
-                        onClick={handleDownload}
-                    >
-                        Download
-                    </button>
+                    <DownloadOGHeader onDownload={handleDownload} />
                     <div className="text-bg flex w-fit items-center gap-1 text-foreground/50">
                         <ScalingIcon className="h-4" />
                         <p className="text-xs font-normal">1200 x 630 pixels</p>
@@ -97,9 +108,9 @@ const HeaderContent = forwardRef<
     }
 >(({ title, subTitle }, ref) => {
     return (
-        <div className="fixed -top-[400px]">
+        <div className="mt-[20%] overflow-x-auto rounded-lg border border-foreground/50 drop-shadow-md">
             <div
-                className={'relative z-20 bg-background px-4'}
+                className="relative z-20 bg-background"
                 style={{ width: canvasSize.width, height: canvasSize.height }}
                 ref={ref}
             >
