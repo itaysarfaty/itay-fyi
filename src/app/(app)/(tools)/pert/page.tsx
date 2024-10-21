@@ -1,15 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CircleHelpIcon, ClockIcon, RotateCcwIcon } from 'lucide-react'
+import { ClockIcon, RotateCcwIcon } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 
 import { cn } from '@/utils'
 
 import { pertUtils as utils } from './_utils'
+import { AboutPert } from './components/about-pert'
 import { CopyPertLink } from './components/copy-pert-link'
 import { SDIndicator } from './components/sd-indicator'
 import { TimeInput } from './components/time-input'
@@ -22,9 +23,9 @@ const paramMap: Record<Params, string> = {
     w: 'worst',
 }
 
-const getParamValue = (searchParams: URLSearchParams, param: Params) =>
-    parseFloat(searchParams.get(param) || '0')
-
+const getParamValue = (searchParams: URLSearchParams, param: Params) => {
+    return parseFloat(searchParams.get(param) || '0')
+}
 const updateSearchParams = (
     searchParams: URLSearchParams,
     param: Params,
@@ -39,7 +40,15 @@ const updateSearchParams = (
     return newParams
 }
 
-export default function PertPage() {
+export default function PertSuspenseWrapper() {
+    return (
+        <Suspense>
+            <PertPage />
+        </Suspense>
+    )
+}
+
+function PertPage() {
     const router = useRouter()
     const searchParams = useSearchParams()
 
@@ -48,9 +57,8 @@ export default function PertPage() {
         likely: getParamValue(searchParams, 'l'),
         worst: getParamValue(searchParams, 'w'),
     })
-    const showEstimate = Boolean(hours.best && hours.likely && hours.worst)
 
-    const updateParam = (param: Params, value: number) => {
+    const handleParamUpdate = (param: Params, value: number) => {
         setHours((prev) => ({ ...prev, [paramMap[param]]: value }))
         const newSearchParams = updateSearchParams(searchParams, param, value)
         router.replace(`?${newSearchParams.toString()}`, { scroll: false })
@@ -66,8 +74,9 @@ export default function PertPage() {
         hours.likely,
         hours.worst
     )
+    const showEstimate = Boolean(hours.best && hours.likely && hours.worst)
 
-    // If shared remove the shared param and navigate screen down
+    // // If shared remove the shared param and navigate screen down
     useEffect(() => {
         const shared = Boolean(searchParams.get('share'))
         if (shared) {
@@ -92,19 +101,19 @@ export default function PertPage() {
                     <TimeInput
                         label="Min"
                         value={hours.best}
-                        onChange={(val) => updateParam('b', val)}
+                        onChange={(val) => handleParamUpdate('b', val)}
                         classNameDot="bg-green-500"
                     />
                     <TimeInput
                         label="Max"
                         value={hours.worst}
-                        onChange={(val) => updateParam('w', val)}
+                        onChange={(val) => handleParamUpdate('w', val)}
                         classNameDot="bg-red-500"
                     />
                     <TimeInput
                         label="Likely"
                         value={hours.likely}
-                        onChange={(val) => updateParam('l', val)}
+                        onChange={(val) => handleParamUpdate('l', val)}
                         classNameDot="bg-yellow-500"
                     />
                 </div>
@@ -159,23 +168,7 @@ export default function PertPage() {
                         </div>
                     </div>
                 ) : (
-                    <div className="grid min-h-[200px] gap-4 rounded-lg border-[1px] border-foreground/10 px-6 py-5">
-                        <div className="-ml-[2px] flex items-center gap-2">
-                            <CircleHelpIcon className="h-4 text-blue-500" />
-                            <h2 className="text-bg w-fit text-lg font-medium text-foreground">
-                                Pert formula
-                            </h2>
-                        </div>
-                        <p className="text-bg w-fit text-base font-light text-foreground">
-                            Pert is a three-point estimation method that uses
-                            probability and statistics to estimate task duration
-                        </p>
-
-                        <p className="text-bg w-fit text-base font-light text-foreground">
-                            Enter the minimum, maximum, and most likely time
-                            needed to complete the task.
-                        </p>
-                    </div>
+                    <AboutPert />
                 )}
             </motion.div>
         </div>
