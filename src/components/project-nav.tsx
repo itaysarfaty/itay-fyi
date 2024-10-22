@@ -77,8 +77,7 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
             <div className="relative h-[100px] rounded-b-lg bg-background sm:h-[100px]">
                 <div
                     className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between rounded-lg
-                        border-[1px] border-foreground/10 bg-foreground/[0.05] backdrop-blur-sm
-                        dark:bg-foreground/[0.04]"
+                        bg-foreground/[0.05] backdrop-blur-sm dark:bg-foreground/[0.04]"
                 >
                     <Link
                         href={'/projects'}
