@@ -1,12 +1,10 @@
 'use client'
 
-import { format, formatDistanceToNow } from 'date-fns'
+import { format } from 'date-fns'
 import { useAnimation, useInView } from 'framer-motion'
-import { SquareArrowOutUpRightIcon } from 'lucide-react'
 import { useEffect, useRef } from 'react'
 
 import { Project } from '@/payload-types'
-import { capitalize } from '@/utils'
 
 import { MotionLink } from './motion-link'
 import { PayloadMedia } from './payload-media'

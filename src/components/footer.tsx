@@ -20,6 +20,7 @@ export const Footer = () => {
                     <Button label="Home" href="/" />
                     <Button label="About" href="/about" />
                     <Button label="Projects" href="/projects" />
+                    <Button label="Tools" href="/tools" />
                 </ul>
                 <div className="flex h-full flex-col items-end justify-between gap-4">
                     <div className="absolute bottom-0 right-0 flex gap-5">

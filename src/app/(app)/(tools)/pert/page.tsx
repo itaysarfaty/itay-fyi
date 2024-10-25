@@ -84,11 +84,14 @@ function PertPage() {
             newSearchParams.delete('share')
             router.replace(`?${newSearchParams.toString()}`, { scroll: false })
 
-            // Scroll window down
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: 'smooth',
-            })
+            const element = document.getElementById('pert-estimate')
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'end',
+                    inline: 'end',
+                })
+            }
         }
     }, [router, searchParams])
 
@@ -120,6 +123,7 @@ function PertPage() {
 
                 {showEstimate ? (
                     <div
+                        id="pert-estimate"
                         className={cn(
                             'grid min-h-[200px] gap-6 transition-opacity duration-150'
                         )}

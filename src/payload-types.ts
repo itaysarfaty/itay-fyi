@@ -12,6 +12,7 @@ export interface Config {
   };
   collections: {
     projects: Project;
+    tools: Tool;
     technologies: Technology;
     users: User;
     media: Media;
@@ -109,6 +110,19 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tools".
+ */
+export interface Tool {
+  id: number;
+  title: string;
+  description: string;
+  actionLabel?: string | null;
+  slug: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -134,6 +148,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'projects';
         value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'tools';
+        value: number | Tool;
       } | null)
     | ({
         relationTo: 'technologies';
