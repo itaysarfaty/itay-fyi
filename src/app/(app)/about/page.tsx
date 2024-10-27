@@ -20,7 +20,7 @@ export default function AboutPage() {
                 <AboutSection title="Software">
                     <p className="text-bg">
                         I&apos;ve been developing for over six years,
-                        specializing in frontend development, but in recently
+                        specializing in frontend development, but recently
                         I&apos;ve expanded into full-stack work.
                     </p>
                 </AboutSection>
