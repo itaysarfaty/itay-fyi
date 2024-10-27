@@ -19,18 +19,16 @@ export default function AboutPage() {
                 </AboutSection>
                 <AboutSection title="Software">
                     <p className="text-bg">
-                        I&apos;ve been coding for over six years and have a
-                        knack for making things easy to use. I specialize in
-                        frontend development, but in recent years I&apos;ve
-                        expanded into full-stack work.
+                        I&apos;ve been developing for over six years,
+                        specializing in frontend development, but in recently
+                        I&apos;ve expanded into full-stack work.
                     </p>
                 </AboutSection>
                 <AboutSection title="Design">
                     <p className="text-bg">
-                        I&apos;m not a creative genius, but I&apos;m a self
-                        proclaimed expert in functional design. The psychology
-                        behind intuitive interfaces and how subtle choices
-                        affect user experience captivates me.
+                        I&apos;m not a creative genius, but I excel in
+                        functional design. I&apos;m captivated by the psychology
+                        that makes interfaces intuitive.
                     </p>
                 </AboutSection>
                 <AboutSection title="Education">

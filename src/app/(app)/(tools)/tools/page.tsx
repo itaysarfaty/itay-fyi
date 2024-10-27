@@ -7,7 +7,7 @@ export default async function ToolsPage() {
     const tools = await getTools()
     return (
         <>
-            <Hero title="Tools" subTitle="Just my virtual toolbox" />
+            <Hero title="Toolbox" subTitle="A collection of small tools" />
             <section className="grid gap-28 pb-28">
                 {tools.docs.map((tool, index) => (
                     <ToolCard

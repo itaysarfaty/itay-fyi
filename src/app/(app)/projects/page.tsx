@@ -10,7 +10,7 @@ export default async function ProjectsPage() {
     }
     return (
         <>
-            <Hero title="Projects" subTitle="Just some things I made" />
+            <Hero title="Projects" subTitle="Some things I made" />
             <section className="grid gap-28 pb-28">
                 {projects.docs.map((project, index) => (
                     <ProjectCard
