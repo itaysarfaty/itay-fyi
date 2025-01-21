@@ -43,6 +43,7 @@ export const Projects: CollectionConfig = {
             name: 'completedAt',
             type: 'date',
             required: true,
+            defaultValue: new Date().toISOString(),
         },
         {
             name: 'summary',

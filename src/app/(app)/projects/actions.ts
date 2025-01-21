@@ -7,6 +7,7 @@ export const getProjects = async () => {
     const payload = await getPayloadHMR({ config })
     return payload.find({
         collection: 'projects',
+        sort: 'completedAt',
     })
 }
 
