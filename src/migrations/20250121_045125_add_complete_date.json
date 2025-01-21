@@ -32,7 +32,7 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false,
-          "default": "'2025-01-21T04:44:19.484Z'"
+          "default": "'2025-01-21T04:51:25.229Z'"
         },
         "summary": {
           "name": "summary",
@@ -1021,6 +1021,6 @@
   "internal": {
     "indexes": {}
   },
-  "id": "f63ba14c-c84e-405a-a7c5-9bd93cb16b5a",
+  "id": "00bca8aa-fd64-4043-ba38-bafd666aeccc",
   "prevId": "00000000-0000-0000-0000-000000000000"
 }
