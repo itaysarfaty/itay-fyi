@@ -40,6 +40,11 @@ export const Projects: CollectionConfig = {
             required: true,
         },
         {
+            name: 'completedAt',
+            type: 'date',
+            required: true,
+        },
+        {
             name: 'summary',
             type: 'textarea',
             required: true,

@@ -12,9 +12,9 @@ import { PayloadMedia } from './payload-media'
 export const ProjectCard = ({
     slug,
     title,
-    createdAt,
     previewImage,
     summary,
+    completedAt,
     margin = '-30%',
 }: Project & { margin?: string }) => {
     const ref = useRef<HTMLAnchorElement>(null)
@@ -59,7 +59,7 @@ export const ProjectCard = ({
                     <div className="order-2 col-span-12 flex items-center gap-8 lg:order-1 lg:col-span-4 lg:block">
                         <div className="h-px w-full bg-border lg:hidden" />
                         <p className="text-bg w-fit shrink-0 text-base lg:text-base">
-                            {format(new Date(createdAt), 'MMMM yyyy')}
+                            {format(new Date(completedAt), 'MMMM yyyy')}
                         </p>
                     </div>
                     <div className="order-1 col-span-12 grid gap-3 lg:order-2 lg:col-span-8">
