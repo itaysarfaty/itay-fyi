@@ -8,11 +8,14 @@ import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 
 import { cn } from '@/utils'
 
+import { useIsMobile } from '@/hooks/is-mobile'
+
 import { AnimateBgToggle } from './animate-bg-toggle'
 import { MotionLink } from './motion-link'
 import { ThemeToggle } from './theme-toggle'
 
 export const Footer = () => {
+    const isMobile = useIsMobile()
     return (
         <nav className="pb-[40px]">
             <div className="relative">
@@ -24,7 +27,7 @@ export const Footer = () => {
                 </ul>
                 <div className="flex h-full flex-col items-end justify-between gap-4">
                     <div className="absolute bottom-0 right-0 flex gap-5">
-                        <AnimateBgToggle />
+                        {!isMobile && <AnimateBgToggle />}
                         <ThemeToggle />
                         <IconButton
                             label="github"

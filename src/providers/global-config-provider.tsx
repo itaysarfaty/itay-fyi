@@ -1,6 +1,14 @@
 'use client'
 
-import React, { ReactNode, createContext, useContext, useState } from 'react'
+import React, {
+    ReactNode,
+    createContext,
+    useContext,
+    useEffect,
+    useState,
+} from 'react'
+
+import { useIsMobile } from '@/hooks/is-mobile'
 
 interface GlobalConfig {
     animateBg: boolean
@@ -18,9 +26,18 @@ const GlobalConfigContext = createContext<SetGlobalConfig | null>(null)
 export const GlobalConfigProvider = ({
     children,
 }: GlobalConfigProviderProps) => {
+    const isMobile = useIsMobile()
     const [config, setConfig] = useState<GlobalConfig>({
-        animateBg: false,
+        animateBg: true,
     })
+
+    useEffect(() => {
+        if (isMobile && config.animateBg) {
+            setConfig({
+                animateBg: false,
+            })
+        }
+    }, [isMobile, config.animateBg])
 
     return (
         <GlobalConfigContext.Provider value={{ ...config, setConfig }}>
