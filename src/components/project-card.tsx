@@ -3,6 +3,7 @@
 import { format } from 'date-fns'
 import { useAnimation, useInView } from 'framer-motion'
 import { useEffect, useRef } from 'react'
+import Tilt from 'react-parallax-tilt'
 
 import { Project } from '@/payload-types'
 
@@ -43,17 +44,25 @@ export const ProjectCard = ({
             initial={{ opacity: 0, y: 100 }}
             animate={controls}
         >
-            <div className="flex flex-col">
-                {/* Image */}
-                <div
-                    className="relative -ml-[1%] aspect-[4/3] w-[102%] overflow-hidden rounded-2xl
-                        bg-foreground/[0.05] lg:-ml-[15%] lg:w-[130%]"
+            <div className="group flex flex-col">
+                <Tilt
+                    tiltMaxAngleX={5}
+                    tiltMaxAngleY={5}
+                    transitionSpeed={2500}
                 >
-                    <PayloadMedia
-                        image={previewImage}
-                        options={{ fill: true }}
-                    />
-                </div>
+                    {/* Image */}
+
+                    <div
+                        className="relative -ml-[1%] aspect-[4/3] w-[102%] overflow-hidden rounded-2xl
+                            bg-foreground/[0.05] duration-500 group-hover:scale-[1.025]
+                            group-hover:shadow-xl lg:-ml-[15%] lg:w-[130%]"
+                    >
+                        <PayloadMedia
+                            image={previewImage}
+                            options={{ fill: true }}
+                        />
+                    </div>
+                </Tilt>
 
                 <div className="mt-[30px] grid grid-cols-12 gap-5 px-0 lg:mt-[50px] lg:px-0">
                     <div className="order-2 col-span-12 flex items-center gap-8 lg:order-1 lg:col-span-4 lg:block">
