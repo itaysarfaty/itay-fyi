@@ -48,14 +48,13 @@ export const ProjectCard = ({
                 <Tilt
                     tiltMaxAngleX={5}
                     tiltMaxAngleY={5}
-                    transitionSpeed={2500}
+                    transitionSpeed={5000}
                 >
                     {/* Image */}
-
                     <div
                         className="relative -ml-[1%] aspect-[4/3] w-[102%] overflow-hidden rounded-2xl
-                            bg-foreground/[0.05] duration-500 group-hover:scale-[1.025]
-                            group-hover:shadow-xl lg:-ml-[15%] lg:w-[130%]"
+                            bg-foreground/[0.05] duration-500 group-hover:scale-[1.01] lg:-ml-[15%]
+                            lg:w-[130%]"
                     >
                         <PayloadMedia
                             image={previewImage}
