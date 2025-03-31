@@ -10,11 +10,13 @@ export const HeroImage = ({ src }: { src: string }) => {
             tiltMaxAngleX={26}
             tiltMaxAngleY={26}
             transitionSpeed={8000}
-            glareEnable
             glareBorderRadius="100%"
             className="rounded-full"
             glarePosition="bottom"
-            glareMaxOpacity={0.3}
+            glareMaxOpacity={0.25}
+            perspective={400}
+            glareEnable
+            gyroscope
         >
             <motion.div
                 // @ts-expect-error
