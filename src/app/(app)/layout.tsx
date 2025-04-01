@@ -23,9 +23,7 @@ const fontSerif = Lexend_Deca({
     variable: '--font-serif',
 })
 
-const metaDescription =
-    "I'm Itay (EE-tie), a software engineer based in New York. I work at CargoMatrix, a company that's been innovating the logistics industry for over 20 years."
-
+const metaDescription = `I'm Itay (EE-tie), a software engineer based in New York. I love everything web with a sprinkle of AI.`
 export const metadata: Metadata = {
     title: 'Itay',
     description: metaDescription,

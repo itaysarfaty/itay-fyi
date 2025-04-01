@@ -1,8 +1,16 @@
 import { ExternalLinkIcon } from 'lucide-react'
+import { Metadata } from 'next'
 import Link from 'next/link'
 
 import { AboutSection } from '@/components/about-section'
 import { Hero } from '@/components/hero'
+
+export const metadata: Metadata = {
+    title: 'Code Wizard',
+
+    description:
+        'I’m Itay Sarfaty, a software engineer based in New York specializing in full-stack web development. Computer Science graduate from Binghamton University.',
+}
 
 export default function AboutPage() {
     return (
