@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://itay.fyi'
 
     // Define the main routes of the website
-    const routes = ['', '/about', '/projects', '/blog']
+    const routes = ['', '/about', '/projects', '/pert']
 
     // Current date for lastModified
     const currentDate = new Date()
