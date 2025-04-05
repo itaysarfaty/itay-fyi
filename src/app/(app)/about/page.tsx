@@ -65,7 +65,7 @@ export default function AboutPage() {
                         >
                             <p className="text-bg flex items-center gap-2">
                                 Connect with me on LinkedIn
-                                <ExternalLinkIcon className="h-4 w-4 stroke-[0.8] text-foreground" />
+                                <ExternalLinkIcon className="text-foreground h-4 w-4 stroke-[0.8]" />
                             </p>
                         </Link>
                     </AboutSection>
