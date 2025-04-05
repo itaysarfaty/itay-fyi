@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 
 const cursorVariants = {
     blinking: {
@@ -20,7 +20,6 @@ export default function CursorBlinker() {
         <motion.div
             variants={cursorVariants}
             animate="blinking"
-            // @ts-expect-error
             className="inline-block h-5 w-[1px] translate-y-1 bg-foreground"
         />
     )

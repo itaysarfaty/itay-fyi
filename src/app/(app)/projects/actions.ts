@@ -1,10 +1,11 @@
 'use server'
 
+import { getPayload } from 'payload'
+
 import config from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
 
 export const getProjects = async () => {
-    const payload = await getPayloadHMR({ config })
+    const payload = await getPayload({ config })
     return payload.find({
         collection: 'projects',
         sort: '-completedAt',
@@ -12,7 +13,7 @@ export const getProjects = async () => {
 }
 
 export const getProject = async (slug: string) => {
-    const payload = await getPayloadHMR({ config })
+    const payload = await getPayload({ config })
     const res = await payload.find({
         collection: 'projects',
         limit: 1,

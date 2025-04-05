@@ -1,12 +1,12 @@
 'use client'
 
+import { CheckIcon, MessageSquareShareIcon } from 'lucide-react'
 import {
     AnimatePresence,
     AnimationProps,
     motion,
     useReducedMotion,
-} from 'framer-motion'
-import { CheckIcon, MessageSquareShareIcon } from 'lucide-react'
+} from 'motion/react'
 import { useState } from 'react'
 
 export interface SharePertButtonProps {
@@ -44,7 +44,6 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
     return (
         <motion.button
             layout
-            // @ts-expect-error
             className="flex w-[155px] shrink-0 items-center gap-1 rounded border-[1px]
                 border-foreground/10 bg-foreground/[0.04] p-3 px-3 py-2 font-sans text-sm
                 font-medium text-foreground backdrop-blur-sm dark:bg-foreground/[0.018]"
@@ -56,7 +55,6 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
                         key="clicked"
                         {...animationProps}
                         transition={{ duration: 0.2 }}
-                        // @ts-expect-error
                         className="flex items-center gap-2"
                     >
                         <CheckIcon className="-ml-1 h-4 stroke-[3px] text-green-500" />
@@ -67,7 +65,6 @@ export const CopyPertLink = ({ best, likely, worst }: SharePertButtonProps) => {
                         key="idle"
                         {...animationProps}
                         transition={{ duration: 0.2 }}
-                        // @ts-expect-error
                         className="flex items-center gap-2"
                     >
                         <MessageSquareShareIcon className="-ml-1 h-4 text-blue-500" />

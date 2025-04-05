@@ -6,7 +6,7 @@ import {
     useReducedMotion,
     useSpring,
     useTransform,
-} from 'framer-motion'
+} from 'motion/react'
 import { useEffect, useState } from 'react'
 
 import { useGlobalConfig } from '@/providers/global-config-provider'
@@ -56,7 +56,6 @@ export const Background = () => {
                     [background-size:16px_16px]"
             />
             <motion.div
-                // @ts-expect-error
                 className="absolute inset-0
                     bg-[radial-gradient(hsl(var(--foreground)/0.3)_1px,transparent_1px)]
                     [background-size:16px_16px]

@@ -1,6 +1,5 @@
 'use client'
 
-import { AnimationProps, motion, useReducedMotion } from 'framer-motion'
 import {
     CircleDotDashedIcon,
     CircleIcon,
@@ -8,6 +7,7 @@ import {
     LoaderIcon,
     SquareIcon,
 } from 'lucide-react'
+import { AnimationProps, motion, useReducedMotion } from 'motion/react'
 import { useEffect, useState } from 'react'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'

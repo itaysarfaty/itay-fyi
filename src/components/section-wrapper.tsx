@@ -1,6 +1,6 @@
 'use client'
 
-import { Variant, Variants, motion } from 'framer-motion'
+import { Variant, Variants, motion } from 'motion/react'
 import { ReactNode } from 'react'
 
 interface SectionWrapperProps {

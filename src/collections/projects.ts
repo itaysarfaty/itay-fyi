@@ -10,7 +10,7 @@ import {
 export const Projects: CollectionConfig = {
     slug: 'projects',
     admin: {
-        useAsTitle: 'title',
+        // useAsTitle: 'title',
     },
     disableDuplicate: true,
     hooks: {

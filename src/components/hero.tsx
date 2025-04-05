@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import { useEffect, useState } from 'react'
 
 import { cn } from '@/utils'
@@ -27,7 +27,6 @@ export const Hero = ({ title, subTitle, className, imageSrc }: HeaderProps) => {
         <motion.section
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            // @ts-expect-error
             className={cn(
                 'flex w-full items-center',
                 className,

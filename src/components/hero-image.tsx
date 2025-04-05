@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion } from 'motion/react'
 import Image from 'next/image'
 import Tilt from 'react-parallax-tilt'
 
@@ -19,7 +19,6 @@ export const HeroImage = ({ src }: { src: string }) => {
             gyroscope
         >
             <motion.div
-                // @ts-expect-error
                 className="relative h-[6rem] w-[6rem] flex-shrink-0 overflow-hidden rounded-full
                     sm:h-[11rem] sm:w-[11rem]"
                 initial={{ rotate: 0 }}

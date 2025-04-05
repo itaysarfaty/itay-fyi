@@ -1,7 +1,7 @@
 'use client'
 
-import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronLeftIcon, ExternalLinkIcon } from 'lucide-react'
+import { motion, useReducedMotion } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 
@@ -68,7 +68,6 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
                 ease: 'easeInOut',
                 duration: prefersReducedMotion ? 0.0 : 0.7,
             }}
-            // @ts-expect-error
             className={cn(
                 `sticky top-0 z-40 -ml-[1%] mb-[40px] w-[102%] @[800px]:-ml-[15%]
                 @[800px]:w-[130%] sm:mb-[40px]`

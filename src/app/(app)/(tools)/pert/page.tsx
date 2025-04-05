@@ -1,7 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { ClockIcon, RotateCcwIcon } from 'lucide-react'
+import { motion } from 'motion/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense, useEffect, useState } from 'react'
 
@@ -98,7 +98,6 @@ function PertPage() {
     // If params exists
     return (
         <div className="grid min-h-[calc(100vh-84px)] w-full place-items-center">
-            {/* @ts-expect-error */}
             <motion.div className="grid w-full gap-14 py-10">
                 <div className="flex flex-row flex-wrap gap-10 sm:gap-16">
                     <TimeInput

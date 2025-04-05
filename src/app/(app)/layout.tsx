@@ -1,4 +1,4 @@
-import { MotionConfig } from 'framer-motion'
+import { MotionConfig } from 'motion/react'
 import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { ViewTransitions } from 'next-view-transitions'

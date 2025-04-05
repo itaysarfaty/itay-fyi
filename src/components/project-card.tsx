@@ -1,7 +1,7 @@
 'use client'
 
 import { format } from 'date-fns'
-import { useAnimation, useInView } from 'framer-motion'
+import { useAnimation, useInView } from 'motion/react'
 import { useEffect, useRef } from 'react'
 import Tilt from 'react-parallax-tilt'
 
@@ -20,9 +20,9 @@ export const ProjectCard = ({
 }: Project & { margin?: string }) => {
     const ref = useRef<HTMLAnchorElement>(null)
     const controls = useAnimation()
-    // @ts-ignore
     const isInView = useInView(ref, {
         once: true,
+        // @ts-ignore
         margin,
     })
 

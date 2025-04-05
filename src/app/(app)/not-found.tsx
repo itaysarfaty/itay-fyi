@@ -1,7 +1,7 @@
 'use client'
 
-import { motion, useSpring } from 'framer-motion'
 import { ArrowLeft, ArrowRight, CompassIcon, HomeIcon } from 'lucide-react'
+import { motion, useSpring } from 'motion/react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
@@ -40,7 +40,6 @@ export default function NotFound() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.5 }}
-                    // @ts-expect-error
                     className="relative mb-12"
                 >
                     <motion.div
@@ -49,7 +48,6 @@ export default function NotFound() {
                             y: springY,
                             rotate: springRotate,
                         }}
-                        // @ts-expect-error
                         className="mb-4 text-8xl font-thin"
                     >
                         404
@@ -75,7 +73,6 @@ export default function NotFound() {
                         <motion.div
                             key="idle"
                             transition={{ duration: 0.2 }}
-                            // @ts-expect-error
                             className="flex w-full items-center justify-center gap-2"
                         >
                             <HomeIcon className="-ml-1 h-4 text-blue-500" />

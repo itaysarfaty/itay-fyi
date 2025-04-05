@@ -1,7 +1,7 @@
 'use client'
 
-import { AnimationProps, motion } from 'framer-motion'
 import { LoaderIcon, MoonIcon, SunIcon } from 'lucide-react'
+import { AnimationProps, motion } from 'motion/react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
 

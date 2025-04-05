@@ -1,7 +1,7 @@
 'use client'
 
-import { useAnimation, useInView } from 'framer-motion'
 import { SquareArrowOutUpRightIcon, SquareArrowUpRightIcon } from 'lucide-react'
+import { useAnimation, useInView } from 'motion/react'
 import { useEffect, useRef } from 'react'
 
 import { Tool } from '@/payload-types'
@@ -17,9 +17,9 @@ export const ToolCard = ({
 }: Tool & { margin?: string }) => {
     const ref = useRef<HTMLAnchorElement>(null)
     const controls = useAnimation()
-    // @ts-ignore
     const isInView = useInView(ref, {
         once: true,
+        // @ts-ignore
         margin,
     })
 
