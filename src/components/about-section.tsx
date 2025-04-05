@@ -23,7 +23,7 @@ export const AboutSection = ({ title, children }: ParagraphProps) => {
     return (
         <section
             ref={sectionRef}
-            className="grid w-fit gap-2 focus:outline-none"
+            className="grid w-fit gap-2 focus:outline-hidden"
             tabIndex={0}
             role="region"
             aria-labelledby={`section-${title.toLowerCase().replace(/\s+/g, '-')}`}

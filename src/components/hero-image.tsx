@@ -19,8 +19,8 @@ export const HeroImage = ({ src }: { src: string }) => {
             gyroscope
         >
             <motion.div
-                className="relative h-[6rem] w-[6rem] flex-shrink-0 overflow-hidden rounded-full
-                    sm:h-[11rem] sm:w-[11rem]"
+                className="relative h-[6rem] w-[6rem] shrink-0 overflow-hidden rounded-full sm:h-[11rem]
+                    sm:w-[11rem]"
                 initial={{ rotate: 0 }}
                 animate={{
                     rotate: [0, 2, 0],

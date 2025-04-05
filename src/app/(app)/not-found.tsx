@@ -65,9 +65,10 @@ export default function NotFound() {
                     style={{ display: 'inline-block' }}
                 >
                     <Link
-                        className="flex w-[140px] shrink-0 items-center justify-center gap-1 rounded border-[1px]
-                            border-foreground/10 bg-foreground/[0.04] p-3 px-3 py-2 font-sans text-sm
-                            font-medium text-foreground backdrop-blur-sm dark:bg-foreground/[0.018]"
+                        className="border-foreground/10 bg-foreground/[0.04] text-foreground
+                            dark:bg-foreground/[0.018] flex w-[140px] shrink-0 items-center justify-center
+                            gap-1 rounded border-[1px] p-3 px-3 py-2 font-sans text-sm font-medium
+                            backdrop-blur-xs"
                         href="/"
                     >
                         <motion.div

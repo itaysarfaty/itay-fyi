@@ -69,14 +69,14 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
                 duration: prefersReducedMotion ? 0.0 : 0.7,
             }}
             className={cn(
-                `sticky top-0 z-40 -ml-[1%] mb-[40px] w-[102%] @[800px]:-ml-[15%]
-                @[800px]:w-[130%] sm:mb-[40px]`
+                `sticky top-0 z-40 mb-[40px] -ml-[1%] w-[102%] sm:mb-[40px] @[800px]:-ml-[15%]
+                @[800px]:w-[130%]`
             )}
         >
-            <div className="relative h-[100px] rounded-b-lg bg-background sm:h-[100px]">
+            <div className="bg-background relative h-[100px] rounded-b-lg sm:h-[100px]">
                 <div
-                    className="absolute bottom-0 left-0 flex h-[60px] w-full justify-between rounded-lg
-                        bg-foreground/[0.05] backdrop-blur-sm dark:bg-foreground/[0.04]"
+                    className="bg-foreground/[0.05] dark:bg-foreground/[0.04] absolute bottom-0 left-0 flex
+                        h-[60px] w-full justify-between rounded-lg backdrop-blur-xs"
                 >
                     <Link
                         href={'/projects'}

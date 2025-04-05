@@ -41,13 +41,13 @@ export default function OGImagePage() {
             <HeaderContent ref={canvasRef} title={title} subTitle={subTitle} />
             <section
                 className={
-                    'flex h-fit w-full flex-col items-center gap-10 @container sm:flex-row sm:gap-14'
+                    '@container flex h-fit w-full flex-col items-center gap-10 sm:flex-row sm:gap-14'
                 }
             >
                 <div className="grid w-full gap-4">
                     <label
                         htmlFor="title"
-                        className="text-bg w-fit text-lg font-medium text-foreground"
+                        className="text-bg text-foreground w-fit text-lg font-medium"
                     >
                         Title
                     </label>
@@ -60,15 +60,15 @@ export default function OGImagePage() {
                             const value = e.target.value.slice(0, 13)
                             setTitle(value)
                         }}
-                        className="w-full rounded-md border-[1px] border-foreground/10 bg-foreground/[0.04] p-3
-                            text-base font-normal backdrop-blur-sm dark:bg-foreground/[0.018]"
+                        className="border-foreground/10 bg-foreground/[0.04] dark:bg-foreground/[0.018] w-full
+                            rounded-md border-[1px] p-3 text-base font-normal backdrop-blur-xs"
                     />
                 </div>
 
                 <div className="grid w-full gap-4">
                     <label
                         htmlFor="subtitle"
-                        className="text-bg w-fit text-lg font-medium text-foreground"
+                        className="text-bg text-foreground w-fit text-lg font-medium"
                     >
                         Subtitle
                     </label>
@@ -81,8 +81,8 @@ export default function OGImagePage() {
                             const value = e.target.value.slice(0, 28)
                             setSubTitle(value)
                         }}
-                        className="w-full rounded-md border-[1px] border-foreground/10 bg-foreground/[0.04] p-3
-                            text-base font-normal backdrop-blur-sm dark:bg-foreground/[0.018]"
+                        className="border-foreground/10 bg-foreground/[0.04] dark:bg-foreground/[0.018] w-full
+                            rounded-md border-[1px] p-3 text-base font-normal backdrop-blur-xs"
                     />
                 </div>
             </section>
@@ -90,7 +90,7 @@ export default function OGImagePage() {
             <div className="mb-12 flex flex-col gap-2">
                 <div className="my-4 flex items-center gap-5">
                     <DownloadOGHeader onDownload={handleDownload} />
-                    <div className="text-bg flex w-fit items-center gap-1 text-foreground/50">
+                    <div className="text-bg text-foreground/50 flex w-fit items-center gap-1">
                         <ScalingIcon className="h-4" />
                         <p className="text-xs font-normal">1200 x 630 pixels</p>
                     </div>
@@ -108,18 +108,18 @@ const HeaderContent = forwardRef<
     }
 >(({ title, subTitle }, ref) => {
     return (
-        <div className="mt-[20%] overflow-x-auto rounded-lg border border-foreground/50 drop-shadow-md">
+        <div className="border-foreground/50 mt-[20%] overflow-x-auto rounded-lg border drop-shadow-md">
             <div
-                className="relative z-20 bg-background"
+                className="bg-background relative z-20"
                 style={{ width: canvasSize.width, height: canvasSize.height }}
                 ref={ref}
             >
-                <div className="absolute -z-10 h-full w-full bg-background">
+                <div className="bg-background absolute -z-10 h-full w-full">
                     <div
-                        className="h-full w-full bg-background
+                        className="bg-background h-full w-full
                             bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)]
-                            [background-size:16px_16px]
-                            [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_80%,transparent_100%)]"
+                            [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_80%,transparent_100%)]
+                            [background-size:16px_16px]"
                     />
                 </div>
 
