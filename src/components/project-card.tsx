@@ -35,6 +35,16 @@ export const ProjectCard = ({
         })
     }, [isInView, controls])
 
+    const handleFocus = () => {
+        if (ref.current) {
+            ref.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+                inline: 'center',
+            })
+        }
+    }
+
     return (
         <MotionLink
             href={`/projects/${slug}`}
@@ -43,6 +53,7 @@ export const ProjectCard = ({
             ref={ref}
             initial={{ opacity: 0, y: 100 }}
             animate={controls}
+            onFocus={handleFocus}
         >
             <div className="group flex flex-col">
                 <Tilt
