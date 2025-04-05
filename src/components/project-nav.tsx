@@ -89,9 +89,11 @@ export const ProjectNav = ({ url }: ProjectNavProps) => {
                     {url && (
                         <Link
                             href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex h-full items-center gap-3 px-6 text-sm font-normal"
                         >
-                            Open
+                            View
                             <ExternalLinkIcon className="-mr-1 h-4 w-4 stroke-2" />
                         </Link>
                     )}
