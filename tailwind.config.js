@@ -32,11 +32,9 @@ module.exports = {
         require('@tailwindcss/container-queries'),
         function ({ addUtilities }) {
             addUtilities({
-                '.big-dash': {
-                    'border-width': '5px',
-                    'border-style': 'solid',
-                    'border-image':
-                        'linear-gradient(90deg, black 50%, rgba(255, 255, 255, 0) 0%) 5',
+                '.text-bg': {
+                    '@apply bg-background/40 filter backdrop-blur-[1px] dark:brightness-[1.1]':
+                        {},
                 },
             })
         },

@@ -48,7 +48,7 @@ export const ProjectCard = ({
     return (
         <MotionLink
             href={`/projects/${slug}`}
-            className="group text-left focus:outline-hidden" // Remove default focus outline
+            className="group text-left focus:outline-none"
             aria-label={`Open ${title} Project`}
             ref={ref}
             initial={{ opacity: 0, y: 100 }}
@@ -83,9 +83,8 @@ export const ProjectCard = ({
                     </div>
                     <div
                         className="group-focus-within:outline-foreground/50 order-1 col-span-12 grid gap-3
-                            group-focus-within:rounded-md group-focus-within:outline
-                            group-focus-within:outline-[2px] group-focus-within:outline-offset-4 lg:order-2
-                            lg:col-span-8"
+                            group-focus-within:rounded-md group-focus-within:outline-[2px]
+                            group-focus-within:outline-offset-4 lg:order-2 lg:col-span-8"
                     >
                         <h3 className="text-bg w-fit text-lg">{title}</h3>
                         <p className="text-bg w-fit text-base">{summary}</p>

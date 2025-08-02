@@ -21,24 +21,21 @@
     }
 
     a {
-        @apply text-base;
+        @reference text-base;
     }
 
     p {
-        @apply text-lg;
+        @reference text-lg;
     }
 
     h2 {
-        @apply text-xl;
+        @reference text-xl;
     }
     h3 {
-        @apply text-lg font-medium;
+        @reference text-lg font-medium;
     }
     em {
-        @apply font-light not-italic;
-    }
-    .text-bg {
-        @apply bg-background/40 filter backdrop-blur-[1px] dark:brightness-[1.1];
+        @reference font-light not-italic;
     }
 }
 

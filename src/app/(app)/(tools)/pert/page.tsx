@@ -127,11 +127,11 @@ function PertPage() {
                             'grid min-h-[200px] gap-6 transition-opacity duration-150'
                         )}
                     >
-                        <div className="grid h-full gap-4 rounded-lg border-[1px] border-foreground/10 px-6 py-5">
+                        <div className="border-foreground/10 grid h-full gap-4 rounded-lg border-[1px] px-6 py-5">
                             <div className="flex items-center justify-between">
                                 <div className="-ml-[2px] flex items-center gap-2">
                                     <ClockIcon className="h-[18px] text-blue-500" />
-                                    <h2 className="text-bg w-fit text-lg font-medium text-foreground">
+                                    <h2 className="text-bg text-foreground w-fit text-lg font-medium">
                                         Estimate
                                     </h2>
                                 </div>
@@ -142,8 +142,8 @@ function PertPage() {
                                 </button>
                             </div>
 
-                            <div className="ml-[2px] flex h-fit min-h-10 select-none flex-wrap items-center gap-5 gap-y-2">
-                                <p className="text-bg w-fit text-base font-light text-foreground">
+                            <div className="ml-[2px] flex h-fit min-h-10 flex-wrap items-center gap-5 gap-y-2 select-none">
+                                <p className="text-bg text-foreground w-fit text-base font-light">
                                     {utils.hoursToString(
                                         Number(estimate.toFixed(2))
                                     )}
@@ -151,7 +151,7 @@ function PertPage() {
                                 {Boolean(standardDeviation) && (
                                     <div className="flex items-center gap-5">
                                         <SDIndicator />
-                                        <p className="text-bg mb-1 w-fit text-base font-light text-foreground">
+                                        <p className="text-bg text-foreground mb-1 w-fit text-base font-light">
                                             {utils.hoursToString(
                                                 Number(
                                                     standardDeviation.toFixed(2)

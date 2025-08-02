@@ -18,7 +18,7 @@ export default function AboutPage() {
             <div className="grid gap-[12rem] pb-[12rem]">
                 <SectionWrapper>
                     <AboutSection title="Hi there">
-                        <p className="text-bg">
+                        <p>
                             I&apos;m Itay <i>(EE-tie)</i> a software engineer
                             based in New York. I work at CargoMatrix, a company
                             that&apos;s been innovating the logistics industry
@@ -29,27 +29,26 @@ export default function AboutPage() {
 
                 <SectionWrapper delay={0.1}>
                     <AboutSection title="Software">
-                        <p className="text-bg">
-                            I&apos;ve been developing for over six years,
-                            specializing in frontend development, but recently
-                            I&apos;ve expanded into full-stack work.
+                        <p>
+                            I have over 2 years of professional experience,
+                            backed by several more years of personal projects,
+                            with a focus on product development.
                         </p>
                     </AboutSection>
                 </SectionWrapper>
 
                 <SectionWrapper delay={0.2}>
                     <AboutSection title="Design">
-                        <p className="text-bg">
-                            I&apos;m not a creative genius, but I excel in
-                            functional design. I&apos;m captivated by the
-                            psychology that makes interfaces intuitive.
+                        <p>
+                            While I don’t claim to be a creative genius, I have
+                            a strong eye for functional, user-focused design.
                         </p>
                     </AboutSection>
                 </SectionWrapper>
 
                 <SectionWrapper delay={0.3}>
                     <AboutSection title="Education">
-                        <p className="text-bg">
+                        <p>
                             Bachelor of Science in Computer Science, Binghamton
                             University, Class of 2022
                         </p>
