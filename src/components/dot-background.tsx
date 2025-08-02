@@ -53,12 +53,12 @@ export const Background = () => {
             <div
                 className="bg-red absolute inset-0
                     bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)]
-                    [background-size:16px_16px]"
+                    bg-size-[16px_16px]"
             />
             <motion.div
                 className="absolute inset-0
                     bg-[radial-gradient(hsl(var(--foreground)/0.3)_1px,transparent_1px)]
-                    [background-size:16px_16px]
+                    bg-size-[16px_16px]
                     dark:bg-[radial-gradient(hsl(var(--foreground)/0.2)_1px,transparent_1px)]"
                 style={{
                     WebkitMaskImage: mask,
@@ -67,9 +67,9 @@ export const Background = () => {
             />
             <div
                 className="pointer-events-none absolute inset-0 bg-background
-                    [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,transparent_50%,hsl(var(--background))_100%)]
-                    sm:[mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,transparent_50%,hsl(var(--background))_100%)]
-                    md:[mask-image:radial-gradient(ellipse_40%_50%_at_50%_50%,transparent_50%,hsl(var(--background))_100%)]"
+                    mask-[radial-gradient(ellipse_60%_50%_at_50%_50%,transparent_50%,hsl(var(--background))_100%)]
+                    sm:mask-[radial-gradient(ellipse_50%_50%_at_50%_50%,transparent_50%,hsl(var(--background))_100%)]
+                    md:mask-[radial-gradient(ellipse_40%_50%_at_50%_50%,transparent_50%,hsl(var(--background))_100%)]"
             />
         </div>
     )

@@ -21,21 +21,21 @@
     }
 
     a {
-        @reference text-base;
+        @apply text-base;
     }
 
     p {
-        @reference text-lg;
+        @apply text-lg;
     }
 
     h2 {
-        @reference text-xl;
+        @apply text-xl;
     }
     h3 {
-        @reference text-lg font-medium;
+        @apply text-lg font-medium;
     }
     em {
-        @reference font-light not-italic;
+        @apply font-light not-italic;
     }
 }
 

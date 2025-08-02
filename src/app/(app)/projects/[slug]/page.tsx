@@ -29,7 +29,7 @@ export default async function ProjectPage({
                 <ProjectNav url={project.url} />
 
                 <div
-                    className="bg-foreground/[0.05] relative -ml-[1%] aspect-4/3 w-[102%] overflow-hidden
+                    className="bg-foreground/5 relative -ml-[1%] aspect-4/3 w-[102%] overflow-hidden
                         rounded-2xl @[800px]:-ml-[15%] @[800px]:w-[130%]"
                 >
                     <PayloadMedia
@@ -51,7 +51,7 @@ export default async function ProjectPage({
                                     return (
                                         <li
                                             key={tech.id}
-                                            className="bg-foreground/[0.05] rounded-md px-2 py-1 text-sm backdrop-blur-[3px]"
+                                            className="bg-foreground/5 rounded-md px-2 py-1 text-sm backdrop-blur-[3px]"
                                         >
                                             <p className="text-sm">
                                                 {tech.name}

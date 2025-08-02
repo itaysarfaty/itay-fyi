@@ -63,7 +63,7 @@ export const ProjectCard = ({
                 >
                     {/* Image */}
                     <div
-                        className="bg-foreground/[0.05] relative -ml-[1%] aspect-4/3 w-[102%] overflow-hidden
+                        className="bg-foreground/5 relative -ml-[1%] aspect-4/3 w-[102%] overflow-hidden
                             rounded-2xl duration-500 group-hover:scale-[1.01] lg:-ml-[15%] lg:w-[130%]"
                     >
                         <PayloadMedia
@@ -83,7 +83,7 @@ export const ProjectCard = ({
                     </div>
                     <div
                         className="group-focus-within:outline-foreground/50 order-1 col-span-12 grid gap-3
-                            group-focus-within:rounded-md group-focus-within:outline-[2px]
+                            group-focus-within:rounded-md group-focus-within:outline-2
                             group-focus-within:outline-offset-4 lg:order-2 lg:col-span-8"
                     >
                         <h3 className="text-bg w-fit text-lg">{title}</h3>

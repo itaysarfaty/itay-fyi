@@ -15,7 +15,7 @@ export default function AboutPage() {
     return (
         <>
             <Hero title="About" subTitle="Thank's for taking an interest" />
-            <div className="grid gap-[12rem] pb-[12rem]">
+            <div className="grid gap-48 pb-48">
                 <SectionWrapper>
                     <AboutSection title="Hi there">
                         <p>
@@ -28,20 +28,23 @@ export default function AboutPage() {
                 </SectionWrapper>
 
                 <SectionWrapper delay={0.1}>
-                    <AboutSection title="Software">
+                    <AboutSection title="Experience">
                         <p>
-                            I have over 2 years of professional experience,
-                            backed by several more years of personal projects,
-                            with a focus on product development.
+                            I have over 2 years of professional experience with
+                            a focus on product development, where I regularly
+                            take ownership of ambiguous tasks and turn them into
+                            user-centered solutions.
                         </p>
                     </AboutSection>
                 </SectionWrapper>
 
                 <SectionWrapper delay={0.2}>
-                    <AboutSection title="Design">
+                    <AboutSection title="Steaks">
                         <p>
-                            While I don’t claim to be a creative genius, I have
-                            a strong eye for functional, user-focused design.
+                            I enjoy experimenting with all things
+                            steak—occasionally dry-aging roasts at home and
+                            trying different cooking techniques to get the
+                            perfect flavor and texture.
                         </p>
                     </AboutSection>
                 </SectionWrapper>

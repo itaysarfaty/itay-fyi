@@ -48,7 +48,7 @@ export default async function RootLayout({
                 </head>
                 <body
                     className={cn(
-                        `bg-background text-foreground flex min-h-[100vh] w-full font-serif
+                        `bg-background text-foreground flex min-h-screen w-full font-serif
                         font-extralight antialiased`,
                         fontSerif.variable,
                         fontSans.variable
@@ -68,7 +68,7 @@ export default async function RootLayout({
                                         <div className="relative mx-auto flex h-full max-w-[90%] flex-col gap-3 overflow-visible">
                                             {children}
                                             <div>
-                                                <Divider className="mb-[1.5rem]" />
+                                                <Divider className="mb-6" />
                                                 <Footer />
                                             </div>
                                         </div>

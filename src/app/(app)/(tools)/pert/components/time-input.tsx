@@ -55,8 +55,8 @@ export const TimeInput = ({
                     onChange={handleChange}
                     placeholder={'0'}
                     onFocus={handleFocus}
-                    className="border-foreground/10 bg-foreground/[0.04] dark:bg-foreground/[0.018] w-full
-                        rounded-md border-[1px] p-3 text-base font-normal backdrop-blur-xs"
+                    className="border-foreground/10 bg-foreground/4 dark:bg-foreground/[0.018] w-full
+                        rounded-md border p-3 text-base font-normal backdrop-blur-xs"
                 />
                 {/* Status box */}
                 <p className="text-bg ml-1 w-fit text-base font-light">Hours</p>

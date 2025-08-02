@@ -60,8 +60,8 @@ export default function OGImagePage() {
                             const value = e.target.value.slice(0, 13)
                             setTitle(value)
                         }}
-                        className="border-foreground/10 bg-foreground/[0.04] dark:bg-foreground/[0.018] w-full
-                            rounded-md border-[1px] p-3 text-base font-normal backdrop-blur-xs"
+                        className="border-foreground/10 bg-foreground/4 dark:bg-foreground/[0.018] w-full
+                            rounded-md border p-3 text-base font-normal backdrop-blur-xs"
                     />
                 </div>
 
@@ -81,8 +81,8 @@ export default function OGImagePage() {
                             const value = e.target.value.slice(0, 28)
                             setSubTitle(value)
                         }}
-                        className="border-foreground/10 bg-foreground/[0.04] dark:bg-foreground/[0.018] w-full
-                            rounded-md border-[1px] p-3 text-base font-normal backdrop-blur-xs"
+                        className="border-foreground/10 bg-foreground/4 dark:bg-foreground/[0.018] w-full
+                            rounded-md border p-3 text-base font-normal backdrop-blur-xs"
                     />
                 </div>
             </section>
@@ -118,8 +118,8 @@ const HeaderContent = forwardRef<
                     <div
                         className="bg-background h-full w-full
                             bg-[radial-gradient(hsl(var(--border))_1px,transparent_1px)]
-                            [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_80%,transparent_100%)]
-                            [background-size:16px_16px]"
+                            mask-[radial-gradient(ellipse_50%_50%_at_50%_50%,#000_80%,transparent_100%)]
+                            bg-size-[16px_16px]"
                     />
                 </div>
 

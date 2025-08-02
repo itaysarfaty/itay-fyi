@@ -127,7 +127,7 @@ function PertPage() {
                             'grid min-h-[200px] gap-6 transition-opacity duration-150'
                         )}
                     >
-                        <div className="border-foreground/10 grid h-full gap-4 rounded-lg border-[1px] px-6 py-5">
+                        <div className="border-foreground/10 grid h-full gap-4 rounded-lg border px-6 py-5">
                             <div className="flex items-center justify-between">
                                 <div className="-ml-[2px] flex items-center gap-2">
                                     <ClockIcon className="h-[18px] text-blue-500" />
