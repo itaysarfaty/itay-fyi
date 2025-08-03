@@ -1,3 +1,6 @@
+@reference 'tailwindcss';
+@config '../../../tailwind.config.js';
+
 /* General Typography */
 .lr {
     @apply text-base;
@@ -9,7 +12,7 @@
 }
 
 .lr h2 {
-    @apply text-base font-normal text-foreground;
+    @apply text-foreground text-base font-normal;
 }
 
 .lr p,
@@ -60,7 +63,7 @@
 }
 
 .text-bg {
-    @apply w-fit bg-background/40 filter backdrop-blur-[1px] dark:brightness-[1.1];
+    @apply bg-background/40 w-fit filter backdrop-blur-[1px] dark:brightness-[1.1];
 }
 
 .lr h1,

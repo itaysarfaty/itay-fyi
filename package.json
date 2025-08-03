@@ -18,11 +18,11 @@
         "format": "prettier --write \"./**/*.{tsx,ts,css,html}\""
     },
     "dependencies": {
-        "@payloadcms/db-sqlite": "3.33.0",
-        "@payloadcms/next": "3.33.0",
-        "@payloadcms/payload-cloud": "3.33.0",
-        "@payloadcms/richtext-lexical": "3.33.0",
-        "@payloadcms/storage-vercel-blob": "3.33.0",
+        "@payloadcms/db-sqlite": "3.49.1",
+        "@payloadcms/next": "3.49.1",
+        "@payloadcms/payload-cloud": "3.49.1",
+        "@payloadcms/richtext-lexical": "3.49.1",
+        "@payloadcms/storage-vercel-blob": "3.49.1",
         "@radix-ui/react-accessible-icon": "^1.1.2",
         "@tailwindcss/container-queries": "^0.1.1",
         "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -35,10 +35,10 @@
         "libsql": "0.5.4",
         "lucide-react": "^0.487.0",
         "motion": "^12.6.3",
-        "next": "15.2.4",
+        "next": "15.4.5",
         "next-themes": "^0.4.6",
         "next-view-transitions": "^0.3.4",
-        "payload": "3.33.0",
+        "payload": "3.49.1",
         "prettier-plugin-classnames": "^0.7.3",
         "prettier-plugin-merge": "^0.7.1",
         "prettier-plugin-tailwindcss": "^0.6.14",
@@ -62,11 +62,14 @@
     },
     "engines": {
         "node": "^18.20.2 || >=20.9.0",
-        "pnpm": "^9.0.0"
+        "pnpm": ">=9.0.0"
     },
     "pnpm": {
         "onlyBuiltDependencies": [
             "sharp"
+        ],
+        "ignoredBuiltDependencies": [
+            "esbuild"
         ]
     }
 }
