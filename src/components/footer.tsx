@@ -13,6 +13,7 @@ import { useIsMobile } from '@/hooks/is-mobile'
 import { AnimateBgToggle } from './animate-bg-toggle'
 import { MotionLink } from './motion-link'
 import { ThemeToggle } from './theme-toggle'
+import { Tooltip } from './tooltip'
 
 export const Footer = () => {
     const isMobile = useIsMobile()
@@ -25,19 +26,22 @@ export const Footer = () => {
                     <Button label="Projects" href="/projects" />
                     <Button label="Tools" href="/tools" />
                 </ul>
-                <div className="flex h-full flex-col items-end justify-between gap-4">
-                    <div className="absolute bottom-0 right-0 flex gap-5">
+                <div
+                    className="flex h-full flex-col items-end justify-between
+                        gap-4"
+                >
+                    <div className="absolute right-0 bottom-0 flex gap-5">
                         {!isMobile && <AnimateBgToggle />}
                         <ThemeToggle />
                         <IconButton
-                            label="github"
+                            label="Github"
                             href="https://github.com/itaysarfaty"
                             umamiEvent="Github button"
                         >
                             <GithubIcon className="stroke-[0.7px]" />
                         </IconButton>
                         <IconButton
-                            label="linkedin"
+                            label="LinkedIn"
                             href="https://www.linkedin.com/in/itaysarfaty/"
                             umamiEvent="Linkedin button"
                         >
@@ -64,8 +68,10 @@ const IconButton = ({
     return (
         <MotionLink
             href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             data-umami-event={umamiEvent}
-            className="cursor-pointer"
+            className="h-fit cursor-pointer"
             initial={{ rotate: 0 }}
             whileHover={{
                 rotate: [0, 7, -7, 0],
@@ -75,7 +81,9 @@ const IconButton = ({
                 },
             }}
         >
-            <AccessibleIcon label={label}>{children}</AccessibleIcon>
+            <Tooltip context={label} side="top">
+                <AccessibleIcon label={label}>{children}</AccessibleIcon>
+            </Tooltip>
         </MotionLink>
     )
 }

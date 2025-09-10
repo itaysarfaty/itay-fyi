@@ -6,8 +6,6 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
 export default function NotFound() {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-
     // Create spring-animated values for smoother movement
     const springX = useSpring(0, { stiffness: 50, damping: 10 })
     const springY = useSpring(0, { stiffness: 50, damping: 10 })
@@ -19,9 +17,6 @@ export default function NotFound() {
             // Get mouse position relative to the center of the screen
             const x = e.clientX - window.innerWidth / 2
             const y = e.clientY - window.innerHeight / 2
-
-            // Update the raw mouse position
-            setMousePosition({ x, y })
 
             // Update spring values - these will animate smoothly
             springX.set(x * 0.03)
@@ -65,10 +60,9 @@ export default function NotFound() {
                     style={{ display: 'inline-block' }}
                 >
                     <Link
-                        className="border-foreground/10 bg-foreground/4 text-foreground
-                            dark:bg-foreground/[0.018] flex w-[140px] shrink-0 items-center justify-center
-                            gap-1 rounded border p-3 px-3 py-2 font-sans text-sm font-medium
-                            backdrop-blur-xs"
+                        className="border-foreground/10 bg-foreground/4 text-foreground dark:bg-foreground/[0.018]
+                            flex w-[140px] shrink-0 items-center justify-center gap-1 rounded border p-3
+                            px-3 py-2 font-sans text-sm font-medium backdrop-blur-xs"
                         href="/"
                     >
                         <motion.div

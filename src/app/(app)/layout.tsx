@@ -1,4 +1,3 @@
-import { MotionConfig } from 'motion/react'
 import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 import { ViewTransitions } from 'next-view-transitions'
@@ -9,6 +8,7 @@ import { cn } from '@/utils'
 import { Divider } from '@/components/dividers'
 import { Background } from '@/components/dot-background'
 import { Footer } from '@/components/footer'
+import { MotionConfigWrapper } from '@/components/motion-config-wrapper'
 import { GlobalConfigProvider } from '@/providers/global-config-provider'
 
 import './globals.css'
@@ -56,7 +56,7 @@ export default async function RootLayout({
                 >
                     <GlobalConfigProvider>
                         <Background />
-                        <MotionConfig reducedMotion="user">
+                        <MotionConfigWrapper>
                             <ThemeProvider
                                 attribute="class"
                                 defaultTheme="system"
@@ -75,7 +75,7 @@ export default async function RootLayout({
                                     </div>
                                 </div>
                             </ThemeProvider>
-                        </MotionConfig>
+                        </MotionConfigWrapper>
                     </GlobalConfigProvider>
                 </body>
             </html>

@@ -7,12 +7,14 @@ import {
     LoaderIcon,
     SquareIcon,
 } from 'lucide-react'
-import { AnimationProps, motion, useReducedMotion } from 'motion/react'
+import { Transition, motion, useReducedMotion } from 'motion/react'
 import { useEffect, useState } from 'react'
 
 import { AccessibleIcon } from '@radix-ui/react-accessible-icon'
 
 import { useGlobalConfig } from '@/providers/global-config-provider'
+
+import { Tooltip } from './tooltip'
 
 export const AnimateBgToggle = () => {
     const { animateBg, setConfig } = useGlobalConfig()
@@ -26,7 +28,9 @@ export const AnimateBgToggle = () => {
     const props = animateBg
         ? {
               icon: (
-                  <CircleDotDashedIcon className="h-6 w-6 stroke-[0.7px] hover:stroke-1" />
+                  <CircleDotDashedIcon
+                      className="h-6 w-6 stroke-[0.7px] hover:stroke-1"
+                  />
               ),
               alt: 'Animated background',
               title: 'Disable animated background',
@@ -45,7 +49,7 @@ export const AnimateBgToggle = () => {
         })
     }
 
-    const transition: AnimationProps['transition'] = {
+    const transition: Transition = {
         duration: 10,
         type: 'spring',
         stiffness: 200,
@@ -55,26 +59,32 @@ export const AnimateBgToggle = () => {
     if (prefersReducedMotion) return null
 
     return (
-        <motion.button
-            aria-label={props.alt}
-            onTap={handleToggle}
-            whileTap={{ rotate: 180, transition, scale: 1.18 }}
-            initial={prefersReducedMotion ? undefined : { rotate: -180 }}
-            animate={{ rotate: 0 }}
-            whileHover={{
-                rotate: [0, 9, -9, 0],
-                transition: {
-                    type: 'tween',
-                    duration: 0.5,
-                },
-            }}
-            transition={transition}
-        >
-            {!mounted ? (
-                <SquareIcon className="h-6 w-6 cursor-pointer stroke-[0.7px]" />
-            ) : (
-                <AccessibleIcon label={props.alt}>{props.icon}</AccessibleIcon>
-            )}
-        </motion.button>
+        <Tooltip context={`BG Animation`} side="top">
+            <motion.button
+                aria-label={props.alt}
+                onTap={handleToggle}
+                whileTap={{ rotate: 180, transition, scale: 1.18 }}
+                initial={prefersReducedMotion ? undefined : { rotate: -180 }}
+                animate={{ rotate: 0 }}
+                whileHover={{
+                    rotate: [0, 9, -9, 0],
+                    transition: {
+                        type: 'tween',
+                        duration: 0.5,
+                    },
+                }}
+                transition={transition}
+            >
+                {!mounted ? (
+                    <SquareIcon
+                        className="h-6 w-6 cursor-pointer stroke-[0.7px]"
+                    />
+                ) : (
+                    <AccessibleIcon label={props.alt}>
+                        {props.icon}
+                    </AccessibleIcon>
+                )}
+            </motion.button>
+        </Tooltip>
     )
 }

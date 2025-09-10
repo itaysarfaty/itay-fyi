@@ -1,8 +1,8 @@
 'use client'
 
-import { motion } from 'motion/react'
+import { Variants, motion } from 'motion/react'
 
-const cursorVariants = {
+const cursorVariants: Variants = {
     blinking: {
         opacity: [0, 0, 1, 1],
         transition: {
@@ -20,7 +20,7 @@ export default function CursorBlinker() {
         <motion.div
             variants={cursorVariants}
             animate="blinking"
-            className="inline-block h-5 w-px translate-y-1 bg-foreground"
+            className="bg-foreground inline-block h-5 w-px translate-y-1"
         />
     )
 }

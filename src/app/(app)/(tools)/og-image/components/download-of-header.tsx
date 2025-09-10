@@ -1,7 +1,7 @@
 import { CheckIcon, MessageSquareShareIcon } from 'lucide-react'
 import {
     AnimatePresence,
-    AnimationProps,
+    HTMLMotionProps,
     motion,
     useReducedMotion,
 } from 'motion/react'
@@ -21,7 +21,7 @@ export const DownloadOGHeader = ({ onDownload }: DownloadOGHeaderProps) => {
         setTimeout(() => setIsClicked(false), 3000)
     }
 
-    const animationProps: AnimationProps = shouldReduceMotion
+    const animationProps: HTMLMotionProps<'div'> = shouldReduceMotion
         ? {
               initial: { opacity: 0 },
               animate: { opacity: 1 },
@@ -37,8 +37,9 @@ export const DownloadOGHeader = ({ onDownload }: DownloadOGHeaderProps) => {
         <motion.button
             layout
             className="border-foreground/10 bg-foreground/4 text-foreground
-                dark:bg-foreground/[0.018] flex w-[140px] shrink-0 items-center gap-1 rounded
-                border p-3 px-3 py-2 font-sans text-sm font-medium backdrop-blur-xs"
+                dark:bg-foreground/[0.018] flex w-[140px] shrink-0 items-center
+                gap-1 rounded border p-3 px-3 py-2 font-sans text-sm font-medium
+                backdrop-blur-xs"
             onClick={handleDownload}
         >
             <AnimatePresence mode="wait">
@@ -49,7 +50,9 @@ export const DownloadOGHeader = ({ onDownload }: DownloadOGHeaderProps) => {
                         transition={{ duration: 0.2 }}
                         className="flex items-center gap-2"
                     >
-                        <CheckIcon className="-ml-1 h-4 stroke-[3px] text-green-500" />
+                        <CheckIcon
+                            className="-ml-1 h-4 stroke-[3px] text-green-500"
+                        />
                         Downloaded
                     </motion.div>
                 ) : (
@@ -59,7 +62,9 @@ export const DownloadOGHeader = ({ onDownload }: DownloadOGHeaderProps) => {
                         transition={{ duration: 0.2 }}
                         className="flex items-center gap-2"
                     >
-                        <MessageSquareShareIcon className="-ml-1 h-4 text-blue-500" />
+                        <MessageSquareShareIcon
+                            className="-ml-1 h-4 text-blue-500"
+                        />
                         Download
                     </motion.div>
                 )}

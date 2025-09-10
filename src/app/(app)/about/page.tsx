@@ -39,12 +39,11 @@ export default function AboutPage() {
                 </SectionWrapper>
 
                 <SectionWrapper delay={0.2}>
-                    <AboutSection title="Steaks">
+                    <AboutSection title="Cooking">
                         <p>
-                            I enjoy experimenting with all things
-                            steak—occasionally dry-aging roasts at home and
-                            trying different cooking techniques to get the
-                            perfect flavor and texture.
+                            I love cooking steak, sometimes dry-aging roasts at
+                            home and exploring new ways to bring out the flavor
+                            and texture.
                         </p>
                     </AboutSection>
                 </SectionWrapper>
@@ -64,10 +63,15 @@ export default function AboutPage() {
                             href={'https://www.linkedin.com/in/itaysarfaty/'}
                             data-umami-event="Linkedin connect button"
                             className="inline-block"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             <p className="text-bg flex items-center gap-2">
                                 Connect with me on LinkedIn
-                                <ExternalLinkIcon className="text-foreground h-4 w-4 stroke-[0.8]" />
+                                <ExternalLinkIcon
+                                    className="text-foreground h-4 w-4
+                                        stroke-[0.8]"
+                                />
                             </p>
                         </Link>
                     </AboutSection>
