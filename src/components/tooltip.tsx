@@ -1,6 +1,8 @@
 import { AnimatePresence, motion } from 'motion/react'
 import React, { useEffect, useRef, useState } from 'react'
 
+import { useIsMobile } from '@/hooks/is-mobile'
+
 interface TooltipProps {
     children: React.ReactNode
     context: string
@@ -18,8 +20,12 @@ export const Tooltip: React.FC<TooltipProps> = ({
 }) => {
     const [shouldShow, setShouldShow] = useState(false)
     const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+    const touchTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+    const touchedRef = useRef(false)
+    const isMobile = useIsMobile()
 
     const handleMouseEnter = () => {
+        if (touchedRef.current) return
         timeoutRef.current = setTimeout(() => {
             setShouldShow(true)
         }, delay)
@@ -33,10 +39,35 @@ export const Tooltip: React.FC<TooltipProps> = ({
         setShouldShow(false)
     }
 
+    const handleTouchStart = () => {
+        touchedRef.current = true
+        // Start long press timer for mobile
+        if (isMobile) {
+            touchTimeoutRef.current = setTimeout(() => {
+                setShouldShow(true)
+            }, delay)
+        }
+        setTimeout(() => {
+            touchedRef.current = false
+        }, 500)
+    }
+
+    const handleTouchEnd = () => {
+        // Clear long press timer and hide tooltip
+        if (touchTimeoutRef.current) {
+            clearTimeout(touchTimeoutRef.current)
+            touchTimeoutRef.current = null
+        }
+        setShouldShow(false)
+    }
+
     useEffect(() => {
         return () => {
             if (timeoutRef.current) {
                 clearTimeout(timeoutRef.current)
+            }
+            if (touchTimeoutRef.current) {
+                clearTimeout(touchTimeoutRef.current)
             }
         }
     }, [])
@@ -60,6 +91,9 @@ export const Tooltip: React.FC<TooltipProps> = ({
             className={`relative inline ${className}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            onTouchCancel={handleTouchEnd}
         >
             {children}
             <AnimatePresence>
