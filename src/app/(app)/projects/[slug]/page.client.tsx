@@ -1,5 +1,6 @@
 'use client'
 
+import { format } from 'date-fns'
 import { HTMLMotionProps, motion } from 'motion/react'
 
 import { Project } from '@/payload-types'
@@ -39,11 +40,35 @@ export function ProjectPageContent({ project }: ProjectPageContentProps) {
                 {...animationProps}
                 className="grid gap-[50px] pt-[30px]"
             >
-                <div className="grid gap-3">
-                    <h3 className="text-bg w-fit shrink-0">{project.title}</h3>
-                    <p className="text-bg text-base">{project.summary}</p>
+                <div className="flex flex-col gap-4 lg:gap-5">
+                    {/* Title and Summary */}
+                    <div className="flex flex-col gap-2.5">
+                        <h3
+                            className="text-bg shrink-0 text-lg leading-tight
+                                font-medium"
+                        >
+                            {project.title}
+                        </h3>
+                        <p
+                            className="text-bg text-base leading-relaxed
+                                opacity-90"
+                        >
+                            {project.summary}
+                        </p>
+                    </div>
+
+                    {/* Divider and Date */}
+                    <div className="flex items-center gap-4">
+                        <div className="bg-border h-px flex-1" />
+                        <p className="text-bg shrink-0 text-base opacity-75">
+                            {format(new Date(project.completedAt), 'MMMM yyyy')}
+                        </p>
+                        <div className="bg-border h-px flex-1" />
+                    </div>
+
+                    {/* Technologies */}
                     {!!project.technologies && (
-                        <ul className="mt-5 flex flex-wrap gap-4">
+                        <ul className="flex flex-wrap gap-4">
                             {project.technologies.map((tech) => {
                                 if (typeof tech == 'number') return null
                                 return (

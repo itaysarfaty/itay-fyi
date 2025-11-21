@@ -83,31 +83,34 @@ export const ProjectCard = ({
 
                 {/* Text content */}
                 <div
-                    className="border-border
-                        group-focus-visible:outline-foreground/50 mt-[30px] grid
-                        grid-cols-12 gap-5 px-0 group-focus-visible:rounded-md
+                    className="group-focus-visible:outline-foreground/50 mt-6
+                        flex flex-col gap-4 px-0 group-focus-visible:rounded-md
                         group-focus-visible:outline-2
-                        group-focus-visible:outline-offset-4 lg:mt-[50px]
-                        lg:px-0"
+                        group-focus-visible:outline-offset-4 lg:mt-8 lg:gap-5"
                 >
-                    <div
-                        className="order-2 col-span-12 flex items-center gap-8
-                            lg:order-1 lg:col-span-4 lg:block"
-                    >
-                        <div className="bg-border h-px w-full lg:hidden" />
-                        <p
-                            className="text-bg w-fit shrink-0 text-base
-                                lg:text-base"
+                    {/* Title and Summary */}
+                    <div className="flex flex-col gap-2.5">
+                        <h3
+                            className="text-bg text-lg leading-tight
+                                font-medium"
                         >
-                            {format(new Date(completedAt), 'MMMM yyyy')}
+                            {title}
+                        </h3>
+                        <p
+                            className="text-bg text-base leading-relaxed
+                                opacity-90"
+                        >
+                            {summary}
                         </p>
                     </div>
-                    <div
-                        className="order-1 col-span-12 grid gap-3 lg:order-2
-                            lg:col-span-8"
-                    >
-                        <h3 className="text-bg w-fit text-lg">{title}</h3>
-                        <p className="text-bg w-fit text-base">{summary}</p>
+
+                    {/* Divider and Date */}
+                    <div className="flex items-center gap-4">
+                        <div className="bg-border h-px flex-1" />
+                        <p className="text-bg shrink-0 text-base opacity-75">
+                            {format(new Date(completedAt), 'MMMM yyyy')}
+                        </p>
+                        <div className="bg-border h-px flex-1" />
                     </div>
                 </div>
             </div>
