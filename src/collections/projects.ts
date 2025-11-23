@@ -77,6 +77,7 @@ export const Projects: CollectionConfig = {
             name: 'content',
             type: 'textarea',
             required: true,
+            defaultValue: '',
         },
     ],
 }
