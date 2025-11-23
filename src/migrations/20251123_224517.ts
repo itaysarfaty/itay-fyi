@@ -19,7 +19,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   );
   `)
     await db.run(
-        sql`INSERT INTO \`__new_projects\`("id", "title", "description", "completed_at", "summary", "slug", "url", "preview_image_id", "content", "updated_at", "created_at") SELECT "id", "title", "description", "completed_at", "summary", "slug", "url", "preview_image_id", "content", "updated_at", "created_at" FROM \`projects\`;`
+        sql`INSERT INTO \`__new_projects\`("id", "title", "description", "completed_at", "summary", "slug", "url", "preview_image_id", "content", "updated_at", "created_at") SELECT "id", "title", "description", "completed_at", "summary", "slug", "url", "preview_image_id", COALESCE("content", ''), "updated_at", "created_at" FROM \`projects\`;`
     )
     await db.run(sql`DROP TABLE \`projects\`;`)
     await db.run(sql`ALTER TABLE \`__new_projects\` RENAME TO \`projects\`;`)
