@@ -5,7 +5,7 @@ import { HTMLMotionProps, motion } from 'motion/react'
 
 import { Project } from '@/payload-types'
 
-import { LexicalRenderer } from '@/components/lexical-renderer'
+import { MarkdownRenderer } from '@/components/markdown-renderer'
 import { PayloadMedia } from '@/components/payload-media'
 import { ProjectNav } from '@/components/project-nav'
 
@@ -86,7 +86,7 @@ export function ProjectPageContent({ project }: ProjectPageContentProps) {
                     )}
                 </div>
 
-                <LexicalRenderer content={project.content_html} />
+                <MarkdownRenderer content={project.content} />
             </motion.div>
         </div>
     )

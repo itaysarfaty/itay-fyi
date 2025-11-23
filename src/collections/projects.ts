@@ -1,12 +1,6 @@
 import { revalidatePath } from 'next/cache'
 import { CollectionConfig } from 'payload'
 
-import {
-    HTMLConverterFeature,
-    lexicalEditor,
-    lexicalHTML,
-} from '@payloadcms/richtext-lexical'
-
 export const Projects: CollectionConfig = {
     slug: 'projects',
     admin: {
@@ -81,14 +75,8 @@ export const Projects: CollectionConfig = {
         },
         {
             name: 'content',
-            type: 'richText',
-            editor: lexicalEditor({
-                features: ({ defaultFeatures }) => [
-                    ...defaultFeatures,
-                    HTMLConverterFeature({}),
-                ],
-            }),
+            type: 'textarea',
+            required: true,
         },
-        lexicalHTML('content', { name: 'content_html' }),
     ],
 }

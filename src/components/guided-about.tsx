@@ -41,8 +41,9 @@ const sections: Section[] = [
         title: 'Cooking',
         content: (
             <p>
-                I love cooking steak, sometimes dry-aging roasts at home and
-                exploring new ways to bring out the flavor and texture.
+                Steak is my specialty. I’m that guy who dry-ages roasts at home
+                for fun and keeps finding new ways to make them taste even
+                better, but honestly I love cooking everything.{' '}
             </p>
         ),
     },

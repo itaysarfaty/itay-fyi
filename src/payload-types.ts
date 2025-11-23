@@ -133,22 +133,7 @@ export interface Project {
   technologies?: (number | Technology)[] | null;
   url?: string | null;
   previewImage?: (number | null) | Media;
-  content?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  content_html?: string | null;
+  content: string;
   updatedAt: string;
   createdAt: string;
 }
@@ -301,7 +286,6 @@ export interface ProjectsSelect<T extends boolean = true> {
   url?: T;
   previewImage?: T;
   content?: T;
-  content_html?: T;
   updatedAt?: T;
   createdAt?: T;
 }

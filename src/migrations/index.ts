@@ -2,6 +2,7 @@ import * as migration_20241025_015648_init from './20241025_015648_init';
 import * as migration_20250121_045125_add_complete_date from './20250121_045125_add_complete_date';
 import * as migration_20250405_230919_version_updates from './20250405_230919_version_updates';
 import * as migration_20250803_000039_users_sessions from './20250803_000039_users_sessions';
+import * as migration_20251123_222759 from './20251123_222759';
 
 export const migrations = [
   {
@@ -22,6 +23,11 @@ export const migrations = [
   {
     up: migration_20250803_000039_users_sessions.up,
     down: migration_20250803_000039_users_sessions.down,
-    name: '20250803_000039_users_sessions'
+    name: '20250803_000039_users_sessions',
+  },
+  {
+    up: migration_20251123_222759.up,
+    down: migration_20251123_222759.down,
+    name: '20251123_222759'
   },
 ];
