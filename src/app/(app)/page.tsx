@@ -5,7 +5,7 @@ export default function Page() {
         <Hero
             title="Itay"
             subTitle="Software Engineer"
-            imageSrc="/assets/head-shot.jpeg"
+            imageSrc="/assets/head-shot.webp"
         />
     )
 }

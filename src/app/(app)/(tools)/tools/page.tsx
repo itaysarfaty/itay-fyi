@@ -1,7 +1,14 @@
+import { Metadata } from 'next'
+
 import { Hero } from '@/components/hero'
 import { ToolCard } from '@/components/tool-card'
 
 import { getTools } from './actions'
+
+export const metadata: Metadata = {
+    title: 'Toolbox',
+    description: 'A collection of small tools',
+}
 
 export default async function ToolsPage() {
     const tools = await getTools()

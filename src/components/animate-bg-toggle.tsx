@@ -59,7 +59,7 @@ export const AnimateBgToggle = () => {
     if (prefersReducedMotion) return null
 
     return (
-        <Tooltip context={`BG Animation`} side="top">
+        <Tooltip context={`Background`} side="top">
             <motion.button
                 aria-label={props.alt}
                 onTap={handleToggle}

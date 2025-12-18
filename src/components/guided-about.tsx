@@ -19,7 +19,7 @@ const sections: Section[] = [
         title: 'Hi there',
         content: (
             <p>
-                I&apos;m Itay <i>(EE-tie)</i> a software engineer based in New
+                I&apos;m Itay <i>(EE-tie)</i>  a software engineer based in New
                 York. I work at CargoMatrix, a company that&apos;s been
                 innovating the logistics industry for over 20 years.
             </p>
@@ -30,7 +30,7 @@ const sections: Section[] = [
         title: 'Experience',
         content: (
             <p>
-                I have over 2 years of professional experience with a focus on
+                I have almost 3 years of professional experience with a focus on
                 product development, where I regularly take ownership of
                 ambiguous tasks and turn them into user-centered solutions.
             </p>
@@ -41,9 +41,9 @@ const sections: Section[] = [
         title: 'Cooking',
         content: (
             <p>
-                Steak is my specialty. I’m that guy who dry-ages roasts at home
-                for fun and keeps finding new ways to make them taste even
-                better, but honestly I love cooking everything.{' '}
+                Steak is my specialty. I’m the kind of guy who will dry-age a
+                full roast at home and is always experimenting. That said, I
+                love cooking just about everything.
             </p>
         ),
     },
