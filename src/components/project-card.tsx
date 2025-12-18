@@ -1,6 +1,7 @@
 'use client'
 
 import { format } from 'date-fns'
+import { SquareArrowOutUpRightIcon } from 'lucide-react'
 import { useAnimation, useInView } from 'motion/react'
 import { useEffect, useRef } from 'react'
 import Tilt from 'react-parallax-tilt'
@@ -91,10 +92,14 @@ export const ProjectCard = ({
                     {/* Title and Summary */}
                     <div className="flex flex-col gap-2.5">
                         <h3
-                            className="text-bg text-lg leading-tight
-                                font-medium"
+                            className="text-bg flex items-center gap-3 text-lg
+                                leading-tight font-medium"
                         >
                             {title}
+                            <SquareArrowOutUpRightIcon
+                                className="text-foreground/50 h-4 w-4
+                                    stroke-[1.5px] transition-colors"
+                            />
                         </h3>
                         <p
                             className="text-bg text-base leading-relaxed
