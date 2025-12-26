@@ -18,6 +18,9 @@
         "format": "prettier --write \"./**/*.{tsx,ts,css,html}\""
     },
     "dependencies": {
+        "@ai-sdk/openai": "^3.0.1",
+        "@ai-sdk/react": "^3.0.3",
+        "@ai-sdk/rsc": "^2.0.3",
         "@payloadcms/db-sqlite": "3.55.0",
         "@payloadcms/next": "3.55.0",
         "@payloadcms/payload-cloud": "3.55.0",
@@ -26,6 +29,8 @@
         "@radix-ui/react-accessible-icon": "^1.1.7",
         "@tailwindcss/container-queries": "^0.1.1",
         "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+        "ai": "^6.0.3",
+        "canvas-confetti": "^1.9.4",
         "clsx": "^2.1.1",
         "cross-env": "^10.0.0",
         "date-fns": "^4.1.0",
@@ -52,6 +57,7 @@
     },
     "devDependencies": {
         "@tailwindcss/postcss": "^4.1.13",
+        "@types/canvas-confetti": "^1.9.0",
         "@types/node": "^24.3.1",
         "@types/react": "19.1.12",
         "@types/react-dom": "19.1.9",

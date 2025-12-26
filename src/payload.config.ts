@@ -8,6 +8,7 @@ import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 
+import { Greetings } from './collections/greeting'
 import { Media } from './collections/media'
 import { Projects } from './collections/projects'
 import { Technologies } from './collections/technologies'
@@ -32,7 +33,7 @@ export default buildConfig({
             baseDir: path.resolve(dirname),
         },
     },
-    collections: [Projects, Tools, Technologies, Users, Media],
+    collections: [Projects, Tools, Technologies, Users, Media, Greetings],
     editor: lexicalEditor(),
     secret: process.env.PAYLOAD_SECRET || '',
     typescript: {
