@@ -12,10 +12,16 @@ import { ProjectNav } from '@/components/project-nav'
 interface ProjectPageContentProps {
     project: Project
 }
-const animationProps: HTMLMotionProps<'div'> = {
-    initial: { y: 140, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    transition: { duration: 0.9, ease: 'easeOut' },
+const imageAnimationProps: HTMLMotionProps<'div'> = {
+    initial: { y: 80, opacity: 0, scale: 0.98 },
+    animate: { y: 0, opacity: 1, scale: 1 },
+    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1] },
+}
+
+const contentAnimationProps: HTMLMotionProps<'div'> = {
+    initial: { y: 80, opacity: 0, scale: 0.98 },
+    animate: { y: 0, opacity: 1, scale: 1 },
+    transition: { duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.15 },
 }
 
 export function ProjectPageContent({ project }: ProjectPageContentProps) {
@@ -25,20 +31,26 @@ export function ProjectPageContent({ project }: ProjectPageContentProps) {
             <ProjectNav url={project.url} />
 
             <motion.div
-                {...animationProps}
+                {...imageAnimationProps}
                 className="bg-foreground/5 relative -ml-[1%] aspect-4/3 w-[102%]
-                    overflow-hidden rounded-2xl @[800px]:-ml-[15%]
-                    @[800px]:w-[130%]"
+                    overflow-hidden rounded-2xl ring-1 ring-foreground/[0.06]
+                    @[800px]:-ml-[15%] @[800px]:w-[130%]"
             >
                 <PayloadMedia
                     image={project.previewImage}
                     options={{ fill: true }}
                 />
+                <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-x-0 bottom-0
+                        h-1/3 bg-gradient-to-t from-background/30
+                        to-transparent"
+                />
             </motion.div>
 
             <motion.div
-                {...animationProps}
-                className="grid gap-[50px] pt-[30px]"
+                {...contentAnimationProps}
+                className="grid gap-12 pt-8 lg:gap-16"
             >
                 <div className="flex flex-col gap-4 lg:gap-5">
                     {/* Title and Summary */}
@@ -51,7 +63,7 @@ export function ProjectPageContent({ project }: ProjectPageContentProps) {
                         </h3>
                         <p
                             className="text-bg text-base leading-relaxed
-                                opacity-90"
+                                opacity-75"
                         >
                             {project.summary}
                         </p>
@@ -60,15 +72,18 @@ export function ProjectPageContent({ project }: ProjectPageContentProps) {
                     {/* Divider and Date */}
                     <div className="flex items-center gap-4">
                         <div className="bg-border h-px flex-1" />
-                        <p className="text-bg shrink-0 text-base opacity-75">
-                            {format(new Date(project.completedAt), 'MMMM yyyy')}
+                        <p className="shrink-0 font-sans text-xs uppercase tracking-[0.2em] opacity-75">
+                            {format(new Date(project.completedAt), 'MMM yyyy')}
                         </p>
                         <div className="bg-border h-px flex-1" />
                     </div>
 
                     {/* Technologies */}
                     {!!project.technologies && (
-                        <ul className="flex flex-wrap gap-4">
+                        <ul
+                            aria-label="Technologies used"
+                            className="flex flex-wrap gap-4"
+                        >
                             {project.technologies.map((tech) => {
                                 if (typeof tech == 'number') return null
                                 return (
@@ -78,7 +93,7 @@ export function ProjectPageContent({ project }: ProjectPageContentProps) {
                                             px-2 py-1 text-sm
                                             backdrop-blur-[3px]"
                                     >
-                                        <p className="text-sm">{tech.name}</p>
+                                        {tech.name}
                                     </li>
                                 )
                             })}

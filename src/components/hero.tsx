@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { cn } from '@/utils'
 
@@ -15,8 +15,15 @@ export interface HeaderProps {
     imageSrc?: string
 }
 
+const animatedHeroes = new Set<string>()
+
 export const Hero = ({ title, subTitle, className, imageSrc }: HeaderProps) => {
+    const skipAnimation = useRef(animatedHeroes.has(title))
     const [height, setHeight] = useState<string>('')
+
+    useEffect(() => {
+        animatedHeroes.add(title)
+    }, [title])
 
     useEffect(() => {
         setHeight(`${window.innerHeight - 84}px`)
@@ -25,7 +32,7 @@ export const Hero = ({ title, subTitle, className, imageSrc }: HeaderProps) => {
 
     return (
         <motion.section
-            initial={{ opacity: 0 }}
+            initial={skipAnimation.current ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             className={cn(
                 'flex w-full items-center',

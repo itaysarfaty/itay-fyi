@@ -7,19 +7,29 @@ import {
     useReducedMotion,
     useTransform,
 } from 'motion/react'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import CursorBlinker from './cursor-blinker'
 
+const animatedTexts = new Set<string>()
+
 export default function TextAnim({ text }: { text: string }) {
+    const skipAnimation = useRef(animatedTexts.has(text))
     const prefersReducedMotion = useReducedMotion()
     const count = useMotionValue(0)
     const rounded = useTransform(count, (latest) => Math.round(latest))
     const displayText = useTransform(rounded, (latest) => text.slice(0, latest))
-    const [animationComplete, setAnimationComplete] = useState(false)
+    const [animationComplete, setAnimationComplete] = useState(
+        skipAnimation.current
+    )
     const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
+        animatedTexts.add(text)
+    }, [text])
+
+    useEffect(() => {
+        if (skipAnimation.current) return
         if (!prefersReducedMotion && isMounted) {
             const controls = animate(count, text.length, {
                 type: 'tween',
@@ -44,10 +54,10 @@ export default function TextAnim({ text }: { text: string }) {
         setIsMounted(true)
     }, [])
 
-    if (!isMounted) return <h2>{' '}</h2>
+    if (!isMounted) return <h2>{' '}</h2>
     return (
         <h2 className="text-bg">
-            {!prefersReducedMotion ? (
+            {!prefersReducedMotion && !skipAnimation.current ? (
                 <>
                     <motion.span>{displayText}</motion.span>
                     {!animationComplete && <CursorBlinker />}
