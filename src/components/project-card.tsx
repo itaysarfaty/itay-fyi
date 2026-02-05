@@ -23,7 +23,8 @@ export const ProjectCard = ({
     completedAt,
     technologies,
     margin = '-30%',
-}: Project & { margin?: string }) => {
+    index = 0,
+}: Project & { margin?: string; index?: number }) => {
     const skipAnimation = useRef(hasAnimatedCards)
     const ref = useRef<HTMLAnchorElement>(null)
     const controls = useAnimation()
@@ -92,14 +93,11 @@ export const ProjectCard = ({
                     >
                         <PayloadMedia
                             image={previewImage}
-                            options={{ fill: true }}
-                        />
-                        {/* Gradient overlay */}
-                        <div
-                            aria-hidden="true"
-                            className="pointer-events-none absolute inset-x-0
-                                bottom-0 h-1/3 bg-gradient-to-t
-                                from-background/30 to-transparent"
+                            options={{
+                                fill: true,
+                                sizes: '(max-width: 768px) 100vw, 60vw',
+                                priority: index === 0,
+                            }}
                         />
                     </div>
                 </Tilt>

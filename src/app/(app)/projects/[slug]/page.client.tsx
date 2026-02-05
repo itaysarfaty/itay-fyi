@@ -38,13 +38,11 @@ export function ProjectPageContent({ project }: ProjectPageContentProps) {
             >
                 <PayloadMedia
                     image={project.previewImage}
-                    options={{ fill: true }}
-                />
-                <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0
-                        h-1/3 bg-gradient-to-t from-background/30
-                        to-transparent"
+                    options={{
+                        fill: true,
+                        sizes: '(max-width: 768px) 100vw, 60vw',
+                        priority: true,
+                    }}
                 />
             </motion.div>
 

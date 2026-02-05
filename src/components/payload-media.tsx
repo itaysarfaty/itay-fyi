@@ -18,19 +18,17 @@ export const PayloadMedia = ({
     image: number | Media | null | undefined
     options?: PayloadMediaOptions
 }) => {
-    const [media, setMedia] = useState<Media | null>(null)
+    const [media, setMedia] = useState<Media | null>(
+        typeof image === 'object' && image !== null ? image : null
+    )
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        if (image == null) return
+        if (image == null || typeof image !== 'number') return
         const fetchMedia = async () => {
             setLoading(true)
-            if (typeof image === 'number') {
-                const fetchedMedia = await getMedia(image)
-                setMedia(fetchedMedia)
-            } else {
-                setMedia(image)
-            }
+            const fetchedMedia = await getMedia(image)
+            setMedia(fetchedMedia)
             setLoading(false)
         }
         fetchMedia()

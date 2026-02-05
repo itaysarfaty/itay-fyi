@@ -1,9 +1,14 @@
 'use client'
 
 import { ExternalLinkIcon } from 'lucide-react'
-import { motion, useScroll, useTransform } from 'motion/react'
+import {
+    motion,
+    useMotionValue,
+    useScroll,
+    useTransform,
+} from 'motion/react'
 import Link from 'next/link'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { AboutSection } from '@/components/about-section'
 
@@ -19,7 +24,7 @@ const sections: Section[] = [
         title: 'Hi there',
         content: (
             <p>
-                I&apos;m Itay <i>(EE-tie)</i>  a software engineer based in New
+                I&apos;m Itay <i>(EE-tie)</i>  a software engineer based in New
                 York. I work at CargoMatrix, a company that&apos;s been
                 innovating the logistics industry for over 20 years.
             </p>
@@ -41,7 +46,7 @@ const sections: Section[] = [
         title: 'Cooking',
         content: (
             <p>
-                Steak is my specialty. I’m the kind of guy who will dry-age a
+                Steak is my specialty. I&apos;m the kind of guy who will dry-age a
                 full roast at home and is always experimenting. That said, I
                 love cooking just about everything.
             </p>
@@ -79,6 +84,36 @@ const sections: Section[] = [
     },
 ]
 
+// Character cascade title component
+const CascadeTitle = ({
+    title,
+    index,
+}: {
+    title: string
+    index: number
+}) => {
+    const chars = title.split('')
+    return (
+        <>
+            {chars.map((char, charIndex) => (
+                <motion.span
+                    key={charIndex}
+                    initial={{ opacity: 0, y: 20, filter: 'blur(4px)' }}
+                    whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    viewport={{ once: true }}
+                    transition={{
+                        duration: 0.5,
+                        delay: index * 0.08 + charIndex * 0.03,
+                        ease: [0.22, 1, 0.36, 1],
+                    }}
+                >
+                    {char === ' ' ? '\u00A0' : char}
+                </motion.span>
+            ))}
+        </>
+    )
+}
+
 interface AnimatedSectionProps {
     section: Section
     index: number
@@ -93,24 +128,40 @@ const AnimatedSection = ({
     sectionRefs,
 }: AnimatedSectionProps) => {
     const sectionRef = useRef<HTMLDivElement>(null)
-    const [isInView, setIsInView] = useState(false)
+    const [isHovered, setIsHovered] = useState(false)
+
+    // Mouse tracking for spotlight
+    const mouseX = useMotionValue(0)
+    const mouseY = useMotionValue(0)
+    const spotlightBackground = useTransform(
+        [mouseX, mouseY],
+        ([x, y]: number[]) =>
+            `radial-gradient(600px circle at ${x}px ${y}px, hsl(var(--foreground) / 0.03), transparent)`
+    )
+
+    const handleMouseMove = useCallback(
+        (e: React.MouseEvent<HTMLDivElement>) => {
+            const rect = e.currentTarget.getBoundingClientRect()
+            mouseX.set(e.clientX - rect.left)
+            mouseY.set(e.clientY - rect.top)
+        },
+        [mouseX, mouseY]
+    )
 
     useEffect(() => {
-        // Store ref in the map
+        const refs = sectionRefs.current
         if (sectionRef.current) {
-            sectionRefs.current.set(section.id, sectionRef.current)
+            refs.set(section.id, sectionRef.current)
         }
         return () => {
-            sectionRefs.current.delete(section.id)
+            refs.delete(section.id)
         }
     }, [section.id, sectionRefs])
 
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
-                const ratio = entry.intersectionRatio
-                setIsInView(entry.isIntersecting && ratio > 0.3)
-                onInView?.(section.id, ratio)
+                onInView?.(section.id, entry.intersectionRatio)
             },
             {
                 threshold: Array.from({ length: 21 }, (_, i) => i * 0.05),
@@ -124,6 +175,7 @@ const AnimatedSection = ({
 
         return () => observer.disconnect()
     }, [section.id, onInView])
+
     const { scrollYProgress } = useScroll({
         target: sectionRef,
         offset: ['start end', 'end start'],
@@ -149,19 +201,24 @@ const AnimatedSection = ({
     // Blur effect for sections going out of view
     const blur = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [5, 0, 0, 3])
 
-    // Line highlight position based on scroll
-    const lineHighlightY = useTransform(
+    // Scroll-driven line fill
+    const lineFill = useTransform(scrollYProgress, [0.1, 0.9], [0, 1])
+    const dotTop = useTransform(lineFill, (v) => `${v * 100}%`)
+    const dotOpacity = useTransform(
         scrollYProgress,
-        [0, 0.2, 0.8, 1],
-        ['-100%', '0%', '100%', '200%']
+        [0.08, 0.15, 0.85, 0.92],
+        [0, 1, 1, 0]
     )
 
-    // Line highlight opacity based on scroll
-    const lineHighlightOpacity = useTransform(
-        scrollYProgress,
-        [0, 0.15, 0.3, 0.7, 0.85, 1],
-        [0, 0.5, 0.8, 0.8, 0.5, 0]
-    )
+    // Background number parallax — moves slightly faster than content
+    const numberY = useTransform(scrollYProgress, [0, 1], [80, -80])
+
+    // Title character count for content delay calculation
+    const titleChars = section.title.split('')
+    const contentDelay = index * 0.08 + titleChars.length * 0.03 + 0.1
+
+    // Formatted section number
+    const sectionNumber = String(index + 1).padStart(2, '0')
 
     return (
         <motion.div
@@ -169,52 +226,89 @@ const AnimatedSection = ({
             style={{ y, opacity, scale }}
             className="relative flex items-center py-24"
         >
+            {/* Large background section number — outside overflow container */}
             <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, margin: '-80px' }}
-                transition={{
-                    duration: 0.9,
-                    delay: index * 0.08,
-                    ease: [0.22, 1, 0.36, 1], // Custom easing for smooth feel
-                }}
-                className="group relative w-full"
+                className="pointer-events-none absolute top-0 right-0 select-none text-[8rem] leading-none font-extralight text-foreground/[0.06]"
+                style={{ y: numberY }}
+                aria-hidden="true"
             >
-                {/* Accent border that appears on scroll - hidden on mobile */}
+                {sectionNumber}
+            </motion.div>
+
+            <div
+                className="group relative w-full overflow-hidden"
+                onMouseMove={handleMouseMove}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+            >
+                {/* Cursor-following spotlight — desktop only */}
                 <motion.div
-                    className="bg-foreground/30 absolute top-0 bottom-0 -left-6
-                        hidden w-[1px] md:block"
+                    className="pointer-events-none absolute inset-0 hidden md:block"
+                    style={{ background: spotlightBackground }}
+                    animate={{ opacity: isHovered ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                />
+
+                {/* Scroll-driven progress line — hidden on mobile */}
+                <div
+                    className="absolute top-0 bottom-0 -left-6 hidden w-[1px]
+                        md:block"
                 >
-                    {/* Animated highlight that travels along the line */}
+                    {/* Base track */}
+                    <div className="bg-foreground/10 absolute inset-0" />
+                    {/* Active fill */}
                     <motion.div
-                        initial={{ y: '-100%', opacity: 0 }}
-                        whileInView={{
-                            y: ['0%', '100%'],
-                            opacity: [0, 1, 1, 0],
-                        }}
-                        viewport={{ once: true, margin: '-120px' }}
-                        transition={{
-                            duration: 2.2,
-                            delay: index * 0.08 + 1,
-                            ease: [0.22, 1, 0.36, 1],
-                            times: [0, 0.1, 0.9, 1],
-                        }}
-                        className="via-foreground absolute top-0 left-0 h-1/3
-                            w-full bg-gradient-to-b from-transparent
-                            to-transparent"
+                        className="bg-foreground/60 absolute top-0 left-0 h-full
+                            w-full origin-top"
+                        style={{ scaleY: lineFill }}
+                    />
+                    {/* Leading dot with glow */}
+                    <motion.div
+                        className="bg-foreground/60 absolute -left-[1px] h-[3px]
+                            w-[3px] rounded-full"
                         style={{
-                            opacity: isInView ? 0.8 : 0,
-                            transition: 'opacity 0.3s ease',
+                            top: dotTop,
+                            opacity: dotOpacity,
+                            boxShadow:
+                                '0 0 6px hsl(var(--foreground) / 0.2)',
                         }}
                     />
-                </motion.div>
+                </div>
 
                 <motion.div style={{ filter: `blur(${blur}px)` }}>
-                    <AboutSection title={section.title}>
-                        {section.content}
+                    <AboutSection
+                        title={section.title}
+                        titleElement={
+                            <CascadeTitle
+                                title={section.title}
+                                index={index}
+                            />
+                        }
+                    >
+                        {/* Content paragraph fade-in */}
+                        <motion.div
+                            initial={{
+                                opacity: 0,
+                                y: 12,
+                                filter: 'blur(4px)',
+                            }}
+                            whileInView={{
+                                opacity: 1,
+                                y: 0,
+                                filter: 'blur(0px)',
+                            }}
+                            viewport={{ once: true }}
+                            transition={{
+                                duration: 0.6,
+                                delay: contentDelay,
+                                ease: [0.22, 1, 0.36, 1],
+                            }}
+                        >
+                            {section.content}
+                        </motion.div>
                     </AboutSection>
                 </motion.div>
-            </motion.div>
+            </div>
         </motion.div>
     )
 }
@@ -225,29 +319,26 @@ export const GuidedAbout = () => {
     const sectionVisibility = useRef<Map<string, number>>(new Map())
     const sectionRefs = useRef<Map<string, HTMLDivElement | null>>(new Map())
 
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ['start start', 'end end'],
-    })
+    const handleSectionInView = useCallback(
+        (id: string, ratio: number) => {
+            sectionVisibility.current.set(id, ratio)
 
-    const handleSectionInView = (id: string, ratio: number) => {
-        sectionVisibility.current.set(id, ratio)
+            let maxRatio = 0
+            let mostVisibleSection: string | null = null
 
-        // Find the section with the highest visibility ratio
-        let maxRatio = 0
-        let mostVisibleSection: string | null = null
+            sectionVisibility.current.forEach((value, key) => {
+                if (value > maxRatio) {
+                    maxRatio = value
+                    mostVisibleSection = key
+                }
+            })
 
-        sectionVisibility.current.forEach((value, key) => {
-            if (value > maxRatio) {
-                maxRatio = value
-                mostVisibleSection = key
+            if (mostVisibleSection && maxRatio > 0.2) {
+                setActiveSection(mostVisibleSection)
             }
-        })
-
-        if (mostVisibleSection && maxRatio > 0.2) {
-            setActiveSection(mostVisibleSection)
-        }
-    }
+        },
+        []
+    )
 
     const scrollToSection = (id: string) => {
         const element = sectionRefs.current.get(id)

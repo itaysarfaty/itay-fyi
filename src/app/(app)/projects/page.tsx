@@ -22,6 +22,7 @@ export default async function ProjectsPage() {
                     <ProjectCard
                         key={project.id}
                         margin={index === 0 ? '30px' : undefined}
+                        index={index}
                         {...project}
                     />
                 ))}

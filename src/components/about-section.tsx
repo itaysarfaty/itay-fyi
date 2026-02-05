@@ -4,10 +4,11 @@ import { useRef } from 'react'
 
 export interface ParagraphProps {
     title: string
+    titleElement?: React.ReactNode
     children: React.ReactNode
 }
 
-export const AboutSection = ({ title, children }: ParagraphProps) => {
+export const AboutSection = ({ title, titleElement, children }: ParagraphProps) => {
     const sectionRef = useRef<HTMLElement>(null)
 
     const handleFocus = () => {
@@ -33,7 +34,7 @@ export const AboutSection = ({ title, children }: ParagraphProps) => {
                 id={`section-${title.toLowerCase().replace(/\s+/g, '-')}`}
                 className="text-bg w-fit"
             >
-                {title}
+                {titleElement ?? title}
             </h3>
             {children}
         </section>

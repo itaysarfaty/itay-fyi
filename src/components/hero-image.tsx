@@ -2,43 +2,26 @@
 
 import { motion } from 'motion/react'
 import Image from 'next/image'
-import Tilt from 'react-parallax-tilt'
 
 export const HeroImage = ({ src }: { src: string }) => {
     return (
-        <Tilt
-            tiltMaxAngleX={26}
-            tiltMaxAngleY={26}
-            transitionSpeed={8000}
-            glareBorderRadius="100%"
-            className="rounded-full"
-            glarePosition="bottom"
-            glareMaxOpacity={0.25}
-            perspective={400}
-            glareEnable
-            gyroscope
+        <motion.div
+            className="blob-morph relative h-[5.5rem] w-[5.5rem] shrink-0 overflow-hidden sm:h-40
+                sm:w-40"
+            initial={{ scale: 0.85 }}
+            animate={{ scale: 1 }}
+            transition={{
+                type: 'spring',
+                stiffness: 200,
+                damping: 20,
+            }}
         >
-            <motion.div
-                className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full sm:h-44
-                    sm:w-44"
-                initial={{ rotate: 0 }}
-                animate={{
-                    rotate: [0, 2, 0],
-                }}
-                transition={{
-                    duration: 1.2,
-                    ease: 'easeInOut',
-                    delay: 1.5,
-                    type: 'tween',
-                }}
-            >
-                <Image
-                    src={src}
-                    alt="Headshot"
-                    className="h-full w-full object-cover dark:brightness-[0.8]"
-                    fill
-                />
-            </motion.div>
-        </Tilt>
+            <Image
+                src={src}
+                alt="Headshot"
+                className="h-full w-full object-cover dark:brightness-[0.8]"
+                fill
+            />
+        </motion.div>
     )
 }
