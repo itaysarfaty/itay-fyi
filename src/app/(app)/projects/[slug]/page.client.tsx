@@ -27,7 +27,6 @@ const contentAnimationProps: HTMLMotionProps<'div'> = {
 export function ProjectPageContent({ project }: ProjectPageContentProps) {
     return (
         <div className="relative flex flex-col pb-24">
-            {/* Image */}
             <ProjectNav url={project.url} />
 
             <motion.div
