@@ -1,7 +1,6 @@
 'use client'
 
 import { format } from 'date-fns'
-import { SquareArrowOutUpRightIcon } from 'lucide-react'
 import { useAnimation, useInView } from 'motion/react'
 import { useEffect, useRef } from 'react'
 import Tilt from 'react-parallax-tilt'
@@ -21,7 +20,6 @@ export const ProjectCard = ({
     previewImage,
     summary,
     completedAt,
-    technologies,
     margin = '-30%',
     index = 0,
 }: Project & { margin?: string; index?: number }) => {
@@ -104,80 +102,41 @@ export const ProjectCard = ({
 
                 {/* Text content */}
                 <div
-                    className="group-focus-visible:outline-foreground/50 mt-6
-                        flex flex-col gap-4 px-0 group-focus-visible:rounded-md
+                    className="group-focus-visible:outline-foreground/50 mt-5
+                        flex flex-col gap-4 group-focus-visible:rounded-md
                         group-focus-visible:outline-2
-                        group-focus-visible:outline-offset-4 lg:mt-8 lg:gap-5"
+                        group-focus-visible:outline-offset-4 lg:mt-7"
                 >
-                    {/* Title and Summary */}
-                    <div className="flex flex-col gap-2.5">
+                    {/* Title + Date */}
+                    <div
+                        className="flex flex-wrap items-center
+                            gap-x-4 gap-y-2"
+                    >
                         <h3
-                            className="text-bg flex items-center gap-3 text-lg
-                                leading-tight font-medium"
+                            className="text-bg text-lg leading-snug
+                                font-medium tracking-tight sm:text-xl
+                                lg:text-[1.375rem]"
                         >
-                            <span className="relative">
-                                {title}
-                                {/* Animated underline */}
-                                <span
-                                    aria-hidden="true"
-                                    className="bg-foreground/40 absolute -bottom-0.5
-                                        left-0 h-px w-0 transition-all
-                                        duration-500 group-hover:w-full"
-                                />
-                            </span>
-                            <SquareArrowOutUpRightIcon
-                                className="text-foreground/50 h-4 w-4
-                                    shrink-0 stroke-[1.5px] transition-colors"
-                            />
+                            {title}
                         </h3>
-                        <p
-                            className="text-bg text-base leading-relaxed
-                                opacity-75 transition-opacity duration-300
-                                group-hover:opacity-90"
-                        >
-                            {summary}
-                        </p>
-                    </div>
-
-                    {/* Technology Tags */}
-                    {!!technologies?.length && (
-                        <ul
-                            aria-label="Technologies used"
-                            className="flex flex-wrap gap-2"
-                        >
-                            {technologies.map((tech) => {
-                                if (typeof tech === 'number') return null
-                                return (
-                                    <li
-                                        key={tech.id}
-                                        className="bg-foreground/5 rounded-md
-                                            px-2 py-0.5 text-xs
-                                            backdrop-blur-[3px]"
-                                    >
-                                        {tech.name}
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    )}
-
-                    {/* Divider and Date */}
-                    <div className="flex items-center gap-4">
-                        <div
-                            className="bg-border h-px flex-1 transition-colors
-                                duration-300 group-hover:bg-foreground/15"
-                        />
-                        <p
-                            className="shrink-0 font-sans text-xs uppercase
-                                tracking-[0.2em] opacity-75"
+                        <time
+                            className="text-bg rounded-lg bg-background/70
+                                px-3 py-0.5 text-sm font-medium
+                                opacity-75 shadow-sm
+                                shadow-foreground/[0.04] ring-1
+                                ring-foreground/[0.08] backdrop-blur-md
+                                dark:bg-background/60"
                         >
                             {format(new Date(completedAt), 'MMM yyyy')}
-                        </p>
-                        <div
-                            className="bg-border h-px flex-1 transition-colors
-                                duration-300 group-hover:bg-foreground/15"
-                        />
+                        </time>
                     </div>
+
+                    {/* Summary */}
+                    <p
+                        className="text-bg text-base leading-relaxed"
+                    >
+                        {summary}
+                    </p>
                 </div>
             </div>
         </MotionLink>

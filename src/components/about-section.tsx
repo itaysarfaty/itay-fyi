@@ -32,7 +32,7 @@ export const AboutSection = ({ title, titleElement, children }: ParagraphProps) 
         >
             <h3
                 id={`section-${title.toLowerCase().replace(/\s+/g, '-')}`}
-                className="text-bg w-fit"
+                className="w-fit"
             >
                 {titleElement ?? title}
             </h3>

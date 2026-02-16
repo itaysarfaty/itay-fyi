@@ -2,7 +2,7 @@
 
 import { toPng } from 'html-to-image'
 import { ScalingIcon } from 'lucide-react'
-import { forwardRef, useRef, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useRef, useState } from 'react'
 
 import { DownloadOGHeader } from './components/download-of-header'
 
@@ -107,11 +107,35 @@ const HeaderContent = forwardRef<
         subTitle: string
     }
 >(({ title, subTitle }, ref) => {
+    const containerRef = useRef<HTMLDivElement>(null)
+    const [scale, setScale] = useState(1)
+
+    const updateScale = useCallback(() => {
+        if (!containerRef.current) return
+        const containerWidth = containerRef.current.clientWidth
+        setScale(Math.min(1, containerWidth / canvasSize.width))
+    }, [])
+
+    useEffect(() => {
+        updateScale()
+        const observer = new ResizeObserver(updateScale)
+        if (containerRef.current) observer.observe(containerRef.current)
+        return () => observer.disconnect()
+    }, [updateScale])
+
     return (
-        <div className="border-foreground/50 mt-[20%] overflow-x-auto rounded-lg border drop-shadow-md">
+        <div
+            ref={containerRef}
+            className="border-foreground/50 mt-[20%] overflow-hidden rounded-lg border drop-shadow-md"
+            style={{ height: canvasSize.height * scale }}
+        >
             <div
-                className="bg-background relative z-20"
-                style={{ width: canvasSize.width, height: canvasSize.height }}
+                className="bg-background relative z-20 origin-top-left"
+                style={{
+                    width: canvasSize.width,
+                    height: canvasSize.height,
+                    transform: `scale(${scale})`,
+                }}
                 ref={ref}
             >
                 <div className="bg-background absolute -z-10 h-full w-full">

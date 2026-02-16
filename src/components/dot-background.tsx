@@ -16,8 +16,10 @@ import { useGlobalConfig } from '@/providers/global-config-provider'
 const GRID_SPACING = 20
 const DOT_RADIUS = 1
 const WARP_RADIUS = 160
-const MAX_SHRINK = 0.75
-const MAX_PULL = 4
+const MAX_SHRINK = 0.6
+const MAX_PULL = 8
+const BASE_DOT_ALPHA_LIGHT = 0.3
+const BASE_DOT_ALPHA_DARK = 0.15
 
 export const Background = () => {
     const mouseX = useMotionValue(0)
@@ -46,8 +48,7 @@ export const Background = () => {
     const springX = useSpring(mouseX, { stiffness: 150, damping: 30 })
     const springY = useSpring(mouseY, { stiffness: 150, damping: 30 })
 
-    // on mobile max size is 150
-    const circleSize = disableAnimation ? 250 : 200
+    const circleSize = 250 // used for disabled animation fallback
     const halfGrid = GRID_SPACING / 2
 
     // Canvas animation for warped dots
@@ -60,15 +61,15 @@ export const Background = () => {
         if (!ctx) return
 
         let fg = ''
-        let baseAlpha = 0.3
+        let dotAlpha = BASE_DOT_ALPHA_LIGHT
 
         const updateColors = () => {
             fg = getComputedStyle(document.documentElement)
                 .getPropertyValue('--foreground')
                 .trim()
-            baseAlpha = document.documentElement.classList.contains('dark')
-                ? 0.35
-                : 0.45
+            dotAlpha = document.documentElement.classList.contains('dark')
+                ? BASE_DOT_ALPHA_DARK
+                : BASE_DOT_ALPHA_LIGHT
         }
         updateColors()
 
@@ -100,7 +101,7 @@ export const Background = () => {
             const mx = springX.get()
             const my = springY.get()
 
-            const margin = circleSize + 10
+            const margin = WARP_RADIUS + 10
             const startCol = Math.max(
                 0,
                 Math.floor((mx - margin - halfGrid) / GRID_SPACING)
@@ -127,37 +128,33 @@ export const Background = () => {
                     const dy = baseY - my
                     const dist = Math.sqrt(dx * dx + dy * dy)
 
-                    if (dist > circleSize) continue
+                    if (dist > WARP_RADIUS) continue
 
-                    // Flashlight alpha falloff
-                    let alpha = baseAlpha
-                    if (dist > 40) {
-                        alpha *= 1 - (dist - 40) / (circleSize - 40)
-                    }
+                    const t = dist / WARP_RADIUS
+                    // Smooth cubic falloff for gentle transition at edges
+                    const smooth = 1 - t * t * (3 - 2 * t)
+
+                    // Dots near center get smaller
+                    const radius = DOT_RADIUS * (1 - MAX_SHRINK * smooth)
 
                     let drawX = baseX
                     let drawY = baseY
-                    let radius = DOT_RADIUS
 
-                    // Warp: shrink + pull toward mouse (latex press)
-                    if (dist < WARP_RADIUS) {
-                        const t = dist / WARP_RADIUS
-                        // Smooth cubic falloff for gentle transition at edges
-                        const smooth = 1 - t * t * (3 - 2 * t)
-
-                        // Dots near center get smaller
-                        radius *= 1 - MAX_SHRINK * smooth
-
-                        // Dots pull toward mouse with smooth bell curve
-                        if (dist > 0.5) {
-                            const pullT =
-                                t * (1 - t * t * (3 - 2 * t)) * 2.5
-                            const pullAmount = MAX_PULL * pullT
-                            const angle = Math.atan2(dy, dx)
-                            drawX -= Math.cos(angle) * pullAmount
-                            drawY -= Math.sin(angle) * pullAmount
-                        }
+                    // Dots pull toward mouse with smooth bell curve
+                    if (dist > 0.5) {
+                        const pullT =
+                            t * (1 - t * t * (3 - 2 * t)) * 2.5
+                        const pullAmount = MAX_PULL * pullT
+                        const angle = Math.atan2(dy, dx)
+                        drawX -= Math.cos(angle) * pullAmount
+                        drawY -= Math.sin(angle) * pullAmount
                     }
+
+                    // Fade out canvas dots in the overlap zone where base CSS dots fade in
+                    const edgeStart = WARP_RADIUS - 20
+                    const edgeFade = dist > edgeStart
+                        ? 1 - (dist - edgeStart) / 20
+                        : 1
 
                     ctx.beginPath()
                     ctx.arc(
@@ -167,7 +164,7 @@ export const Background = () => {
                         0,
                         Math.PI * 2
                     )
-                    ctx.fillStyle = `hsl(${fg} / ${alpha})`
+                    ctx.fillStyle = `hsl(${fg} / ${dotAlpha * edgeFade})`
                     ctx.fill()
                 }
             }
@@ -182,7 +179,7 @@ export const Background = () => {
             window.removeEventListener('resize', resize)
             observer.disconnect()
         }
-    }, [springX, springY, circleSize, disableAnimation, halfGrid])
+    }, [springX, springY, disableAnimation, halfGrid])
 
     // CSS mask fallback for disabled animation
     const mask = useTransform(
@@ -191,13 +188,29 @@ export const Background = () => {
             `radial-gradient(circle at ${x}px ${y}px, hsl(var(--foreground)) 40px, transparent ${circleSize}px)`
     )
 
+    // Mask to cut a hole in the base dots where the canvas draws warped ones
+    const baseDotsMask = useTransform(
+        [springX, springY],
+        ([x, y]) =>
+            `radial-gradient(circle at ${x}px ${y}px, transparent ${WARP_RADIUS - 20}px, black ${WARP_RADIUS}px)`
+    )
+
     return (
         <div className="fixed inset-0 -z-10 bg-background">
             {/* Base dots */}
-            <div
-                className="bg-red absolute inset-0
-                    bg-[radial-gradient(hsl(var(--foreground)/0.15)_1px,transparent_1px)]
-                    bg-size-[20px_20px]"
+            <motion.div
+                className="absolute inset-0
+                    bg-[radial-gradient(hsl(var(--foreground)/0.3)_1px,transparent_1px)]
+                    bg-size-[20px_20px]
+                    dark:bg-[radial-gradient(hsl(var(--foreground)/0.15)_1px,transparent_1px)]"
+                style={
+                    !disableAnimation
+                        ? {
+                              WebkitMaskImage: baseDotsMask,
+                              maskImage: baseDotsMask,
+                          }
+                        : undefined
+                }
             />
             {/* Animated dots with warp (canvas) */}
             {!disableAnimation && (
@@ -210,9 +223,9 @@ export const Background = () => {
             {disableAnimation && (
                 <motion.div
                     className="absolute inset-0
-                        bg-[radial-gradient(hsl(var(--foreground)/0.45)_1px,transparent_1px)]
+                        bg-[radial-gradient(hsl(var(--foreground)/0.3)_1px,transparent_1px)]
                         bg-size-[20px_20px]
-                        dark:bg-[radial-gradient(hsl(var(--foreground)/0.35)_1px,transparent_1px)]"
+                        dark:bg-[radial-gradient(hsl(var(--foreground)/0.15)_1px,transparent_1px)]"
                     style={{
                         WebkitMaskImage: mask,
                         maskImage: mask,

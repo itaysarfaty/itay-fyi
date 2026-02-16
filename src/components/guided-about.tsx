@@ -1,12 +1,7 @@
 'use client'
 
 import { ExternalLinkIcon } from 'lucide-react'
-import {
-    motion,
-    useMotionValue,
-    useScroll,
-    useTransform,
-} from 'motion/react'
+import { motion, useScroll, useTransform } from 'motion/react'
 import Link from 'next/link'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
@@ -24,7 +19,7 @@ const sections: Section[] = [
         title: 'Hi there',
         content: (
             <p>
-                I&apos;m Itay <i>(EE-tie)</i>  a software engineer based in New
+                I&apos;m Itay <i>(EE-tie)</i> a software engineer based in New
                 York. I work at CargoMatrix, a company that&apos;s been
                 innovating the logistics industry for over 20 years.
             </p>
@@ -42,14 +37,65 @@ const sections: Section[] = [
         ),
     },
     {
-        id: 'cooking',
-        title: 'Cooking',
+        id: 'food',
+        title: 'Food',
         content: (
-            <p>
-                Steak is my specialty. I&apos;m the kind of guy who will dry-age a
-                full roast at home and is always experimenting. That said, I
-                love cooking just about everything.
-            </p>
+            <>
+                <p>
+                    I&apos;ve always been a food person, so a lot of my side
+                    projects tend to live somewhere between the kitchen and the
+                    keyboard.
+                </p>
+                <div className="mt-8 flex flex-col gap-3">
+                    <Link
+                        href="https://reciperemi.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link"
+                    >
+                        <span className="flex items-center gap-1.5 font-medium">
+                            Remi
+                            <ExternalLinkIcon
+                                className="text-foreground/40
+                                    group-hover/link:text-foreground h-3 w-3
+                                    transition-all duration-200
+                                    group-hover/link:translate-x-0.5
+                                    group-hover/link:-translate-y-0.5"
+                            />
+                        </span>
+                        <span
+                            className="text-foreground/80 mt-0.5 block
+                                text-base"
+                        >
+                            AI-powered family cookbook
+                        </span>
+                    </Link>
+                    <div className="bg-foreground/10 h-px w-1/2" />
+                    <Link
+                        href="https://apps.apple.com/us/app/rechek/id6749420397"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/link"
+                    >
+                        <span className="flex items-center gap-1.5 font-medium">
+                            Rechek
+                            <ExternalLinkIcon
+                                className="text-foreground/40
+                                    group-hover/link:text-foreground h-3 w-3
+                                    transition-all duration-200
+                                    group-hover/link:translate-x-0.5
+                                    group-hover/link:-translate-y-0.5"
+                            />
+                        </span>
+                        <span
+                            className="text-foreground/80 mt-0.5 block
+                                text-base"
+                        >
+                            NYC restaurant inspections with on-device AI
+                        </span>
+                    </Link>
+                </div>
+            </>
         ),
     },
     {
@@ -85,13 +131,7 @@ const sections: Section[] = [
 ]
 
 // Character cascade title component
-const CascadeTitle = ({
-    title,
-    index,
-}: {
-    title: string
-    index: number
-}) => {
+const CascadeTitle = ({ title, index }: { title: string; index: number }) => {
     const chars = title.split('')
     return (
         <>
@@ -128,25 +168,6 @@ const AnimatedSection = ({
     sectionRefs,
 }: AnimatedSectionProps) => {
     const sectionRef = useRef<HTMLDivElement>(null)
-    const [isHovered, setIsHovered] = useState(false)
-
-    // Mouse tracking for spotlight
-    const mouseX = useMotionValue(0)
-    const mouseY = useMotionValue(0)
-    const spotlightBackground = useTransform(
-        [mouseX, mouseY],
-        ([x, y]: number[]) =>
-            `radial-gradient(600px circle at ${x}px ${y}px, hsl(var(--foreground) / 0.03), transparent)`
-    )
-
-    const handleMouseMove = useCallback(
-        (e: React.MouseEvent<HTMLDivElement>) => {
-            const rect = e.currentTarget.getBoundingClientRect()
-            mouseX.set(e.clientX - rect.left)
-            mouseY.set(e.clientY - rect.top)
-        },
-        [mouseX, mouseY]
-    )
 
     useEffect(() => {
         const refs = sectionRefs.current
@@ -228,27 +249,16 @@ const AnimatedSection = ({
         >
             {/* Large background section number — outside overflow container */}
             <motion.div
-                className="pointer-events-none absolute top-0 right-0 select-none text-[8rem] leading-none font-extralight text-foreground/[0.06]"
+                className="text-foreground/[0.06] pointer-events-none absolute
+                    top-0 right-0 text-[8rem] leading-none font-extralight
+                    select-none"
                 style={{ y: numberY }}
                 aria-hidden="true"
             >
                 {sectionNumber}
             </motion.div>
 
-            <div
-                className="group relative w-full overflow-hidden"
-                onMouseMove={handleMouseMove}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                {/* Cursor-following spotlight — desktop only */}
-                <motion.div
-                    className="pointer-events-none absolute inset-0 hidden md:block"
-                    style={{ background: spotlightBackground }}
-                    animate={{ opacity: isHovered ? 1 : 0 }}
-                    transition={{ duration: 0.3 }}
-                />
-
+            <div className="group relative w-full overflow-hidden">
                 {/* Scroll-driven progress line — hidden on mobile */}
                 <div
                     className="absolute top-0 bottom-0 -left-6 hidden w-[1px]
@@ -269,8 +279,7 @@ const AnimatedSection = ({
                         style={{
                             top: dotTop,
                             opacity: dotOpacity,
-                            boxShadow:
-                                '0 0 6px hsl(var(--foreground) / 0.2)',
+                            boxShadow: '0 0 6px hsl(var(--foreground) / 0.2)',
                         }}
                     />
                 </div>
@@ -279,10 +288,7 @@ const AnimatedSection = ({
                     <AboutSection
                         title={section.title}
                         titleElement={
-                            <CascadeTitle
-                                title={section.title}
-                                index={index}
-                            />
+                            <CascadeTitle title={section.title} index={index} />
                         }
                     >
                         {/* Content paragraph fade-in */}
@@ -319,26 +325,23 @@ export const GuidedAbout = () => {
     const sectionVisibility = useRef<Map<string, number>>(new Map())
     const sectionRefs = useRef<Map<string, HTMLDivElement | null>>(new Map())
 
-    const handleSectionInView = useCallback(
-        (id: string, ratio: number) => {
-            sectionVisibility.current.set(id, ratio)
+    const handleSectionInView = useCallback((id: string, ratio: number) => {
+        sectionVisibility.current.set(id, ratio)
 
-            let maxRatio = 0
-            let mostVisibleSection: string | null = null
+        let maxRatio = 0
+        let mostVisibleSection: string | null = null
 
-            sectionVisibility.current.forEach((value, key) => {
-                if (value > maxRatio) {
-                    maxRatio = value
-                    mostVisibleSection = key
-                }
-            })
-
-            if (mostVisibleSection && maxRatio > 0.2) {
-                setActiveSection(mostVisibleSection)
+        sectionVisibility.current.forEach((value, key) => {
+            if (value > maxRatio) {
+                maxRatio = value
+                mostVisibleSection = key
             }
-        },
-        []
-    )
+        })
+
+        if (mostVisibleSection && maxRatio > 0.2) {
+            setActiveSection(mostVisibleSection)
+        }
+    }, [])
 
     const scrollToSection = (id: string) => {
         const element = sectionRefs.current.get(id)

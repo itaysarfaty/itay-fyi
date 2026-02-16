@@ -48,8 +48,8 @@ export default async function RootLayout({
                 </head>
                 <body
                     className={cn(
-                        `bg-background text-foreground flex min-h-screen w-full font-serif
-                        font-extralight antialiased`,
+                        `bg-background text-foreground flex min-h-screen w-full
+                        font-serif font-extralight antialiased`,
                         fontSerif.variable,
                         fontSans.variable
                     )}
@@ -65,7 +65,11 @@ export default async function RootLayout({
                             >
                                 <div className="@container w-full">
                                     <div className="container">
-                                        <div className="relative mx-auto flex h-full max-w-[90%] flex-col gap-3 overflow-visible">
+                                        <div
+                                            className="relative mx-auto flex
+                                                h-full max-w-[90%] flex-col
+                                                gap-3 overflow-visible"
+                                        >
                                             {children}
                                             <div>
                                                 <Divider className="mb-6" />

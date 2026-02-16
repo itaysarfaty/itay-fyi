@@ -49,31 +49,36 @@ export function ProjectPageContent({ project }: ProjectPageContentProps) {
                 {...contentAnimationProps}
                 className="grid gap-12 pt-8 lg:gap-16"
             >
-                <div className="flex flex-col gap-4 lg:gap-5">
-                    {/* Title and Summary */}
-                    <div className="flex flex-col gap-2.5">
+                <div className="flex flex-col gap-4">
+                    {/* Title + Date */}
+                    <div
+                        className="flex flex-wrap items-center
+                            gap-x-4 gap-y-2"
+                    >
                         <h3
-                            className="text-bg shrink-0 text-lg leading-tight
-                                font-medium"
+                            className="text-bg text-lg leading-snug font-medium
+                                tracking-tight sm:text-xl lg:text-[1.375rem]"
                         >
                             {project.title}
                         </h3>
-                        <p
-                            className="text-bg text-base leading-relaxed
-                                opacity-75"
+                        <time
+                            className="text-bg rounded-lg bg-background/70
+                                px-3 py-0.5 text-sm font-medium
+                                opacity-75 shadow-sm
+                                shadow-foreground/[0.04] ring-1
+                                ring-foreground/[0.08] backdrop-blur-md
+                                dark:bg-background/60"
                         >
-                            {project.summary}
-                        </p>
+                            {format(new Date(project.completedAt), 'MMM yyyy')}
+                        </time>
                     </div>
 
-                    {/* Divider and Date */}
-                    <div className="flex items-center gap-4">
-                        <div className="bg-border h-px flex-1" />
-                        <p className="shrink-0 font-sans text-xs uppercase tracking-[0.2em] opacity-75">
-                            {format(new Date(project.completedAt), 'MMM yyyy')}
-                        </p>
-                        <div className="bg-border h-px flex-1" />
-                    </div>
+                    {/* Summary */}
+                    <p
+                        className="text-bg text-base leading-relaxed"
+                    >
+                        {project.summary}
+                    </p>
 
                     {/* Technologies */}
                     {!!project.technologies && (

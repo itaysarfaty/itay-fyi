@@ -27,7 +27,6 @@
         "@payloadcms/richtext-lexical": "3.55.0",
         "@payloadcms/storage-vercel-blob": "3.55.0",
         "@radix-ui/react-accessible-icon": "^1.1.7",
-        "@tailwindcss/container-queries": "^0.1.1",
         "@trivago/prettier-plugin-sort-imports": "^5.2.2",
         "ai": "^6.0.3",
         "canvas-confetti": "^1.9.4",
