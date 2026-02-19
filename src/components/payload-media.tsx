@@ -11,6 +11,15 @@ import { getMedia } from '@/actions/get-media'
 
 type PayloadMediaOptions = Partial<ComponentProps<typeof Image>>
 
+const blobBaseUrl = process.env.NEXT_PUBLIC_BLOB_BASE_URL
+
+function getImageUrl(media: Media): string | null {
+    if (blobBaseUrl && media.filename) {
+        return `${blobBaseUrl}/${encodeURIComponent(media.filename)}`
+    }
+    return media.url ?? null
+}
+
 export const PayloadMedia = ({
     image,
     options,
@@ -42,9 +51,14 @@ export const PayloadMedia = ({
         )
     }
 
-    if (!media || !media.url) {
+    if (!media) {
         return null
     }
 
-    return <Image src={media.url} alt={media.alt} {...options} />
+    const src = getImageUrl(media)
+    if (!src) {
+        return null
+    }
+
+    return <Image src={src} alt={media.alt} {...options} />
 }
